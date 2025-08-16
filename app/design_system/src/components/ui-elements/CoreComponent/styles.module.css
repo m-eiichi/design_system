@@ -1,0 +1,210 @@
+@import "src/assets/styles/common/bg-color.css";
+
+@import "src/assets/styles/common/text-color.css";
+
+@import "src/assets/styles/common/font.css";
+
+@import "src/assets/styles/common/display.css";
+
+@import "src/assets/styles/common/flex-direction.css";
+
+@import "src/assets/styles/common/flex-wrap.css";
+
+@import "src/assets/styles/common/align-items.css";
+
+@import "src/assets/styles/common/justify-content.css";
+
+@import "src/assets/styles/common/flex.css";
+
+@import "src/assets/styles/common/grow.css";
+
+@import "src/assets/styles/common/shrink.css";
+
+@import "src/assets/styles/common/position.css";
+
+@import "src/assets/styles/common/overflow.css";
+
+@import "src/assets/styles/common/text-align.css";
+
+@import "src/assets/styles/common/cursor.css";
+
+.core_component {
+  box-sizing: border-box;
+}
+
+/* Flexbox utilities */
+
+/* .flex1 {
+  flex: 1 1 0%;
+}
+
+.flexAuto {
+  flex: 1 1 auto;
+}
+
+.flexInitial {
+  flex: 0 1 auto;
+}
+
+.flexNone {
+  flex: none;
+} */
+
+/* Grid utilities */
+
+/* .gridCols1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.gridCols2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gridCols3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gridCols4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gridCols5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.gridCols6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.gridCols12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.colSpan1 {
+  grid-column: span 1 / span 1;
+}
+
+.colSpan2 {
+  grid-column: span 2 / span 2;
+}
+
+.colSpan3 {
+  grid-column: span 3 / span 3;
+}
+
+.colSpan4 {
+  grid-column: span 4 / span 4;
+}
+
+.colSpan5 {
+  grid-column: span 5 / span 5;
+}
+
+.colSpan6 {
+  grid-column: span 6 / span 6;
+}
+
+.colSpanFull {
+  grid-column: 1 / -1;
+}
+
+.gridRows1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
+.gridRows2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.gridRows3 {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+.gridRows4 {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+
+.gridRows5 {
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+}
+
+.gridRows6 {
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+}
+
+.rowSpan1 {
+  grid-row: span 1 / span 1;
+}
+
+.rowSpan2 {
+  grid-row: span 2 / span 2;
+}
+
+.rowSpan3 {
+  grid-row: span 3 / span 3;
+}
+
+.rowSpan4 {
+  grid-row: span 4 / span 4;
+}
+
+.rowSpan5 {
+  grid-row: span 5 / span 5;
+}
+
+.rowSpan6 {
+  grid-row: span 6 / span 6;
+}
+
+.rowSpanFull {
+  grid-row: 1 / -1;
+} */
+
+/* Gap utilities */
+.gap0 {
+  gap: 0;
+}
+
+.gap1 {
+  gap: var(--base-size-4px);
+}
+
+.gap2 {
+  gap: var(--base-size-8px);
+}
+
+.gap3 {
+  gap: 12px;
+}
+
+.gap4 {
+  gap: var(--base-size-16px);
+}
+
+.gap5 {
+  gap: 20px;
+}
+
+.gap6 {
+  gap: var(--base-size-24px);
+}
+
+.gap8 {
+  gap: var(--base-size-32px);
+}
+
+.gap10 {
+  gap: var(--base-size-40px);
+}
+
+.gap12 {
+  gap: var(--base-size-48px);
+}
+
+.gap16 {
+  gap: var(--base-size-64px);
+}
+
+.gap20 {
+  gap: var(--base-size-80px);
+}

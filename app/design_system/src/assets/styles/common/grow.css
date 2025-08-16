@@ -1,0 +1,37 @@
+.grow_1 {
+  flex-grow: 1;
+}
+
+.grow_0 {
+  flex-grow: 0;
+}
+
+@media screen and (width <= 575px) {
+  .grow_sp_1 {
+    flex-grow: 1;
+  }
+
+  .grow_sp_0 {
+    flex-grow: 0;
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .grow_tb_1 {
+    flex-grow: 1;
+  }
+
+  .grow_tb_0 {
+    flex-grow: 0;
+  }
+}
+
+@media screen and (width >= 993px) {
+  .grow_pc_1 {
+    flex-grow: 1;
+  }
+
+  .grow_pc_0 {
+    flex-grow: 0;
+  }
+}

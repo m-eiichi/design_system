@@ -1,0 +1,69 @@
+.flex1 {
+  flex: 1;
+}
+
+.flexAuto {
+  flex: auto;
+}
+
+.flexInitial {
+  flex: initial;
+}
+
+.flexNone {
+  flex: none;
+}
+
+@media screen and (width <= 575px) {
+  .flex_sp_1 {
+    flex: 1;
+  }
+
+  .flex_sp_auto {
+    flex: auto;
+  }
+
+  .flex_sp_initial {
+    flex: initial;
+  }
+
+  .flex_sp_none {
+    flex: none;
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .flex_tb_1 {
+    flex: 1;
+  }
+
+  .flex_tb_auto {
+    flex: auto;
+  }
+
+  .flex_tb_initial {
+    flex: initial;
+  }
+
+  .flex_tb_none {
+    flex: none;
+  }
+}
+
+@media screen and (width >= 993px) {
+  .flex_pc_1 {
+    flex: 1;
+  }
+
+  .flex_pc_auto {
+    flex: auto;
+  }
+
+  .flex_pc_initial {
+    flex: initial;
+  }
+
+  .flex_pc_none {
+    flex: none;
+  }
+}

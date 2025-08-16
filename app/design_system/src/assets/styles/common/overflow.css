@@ -1,0 +1,197 @@
+.overflow_auto {
+  overflow: auto;
+}
+
+.overflow_hidden {
+  overflow: hidden;
+}
+
+.overflow_visible {
+  overflow: visible;
+}
+
+.overflow_scroll {
+  overflow: scroll;
+}
+
+.overflow_x_auto {
+  overflow-x: auto;
+}
+
+.overflow_x_hidden {
+  overflow-x: hidden;
+}
+
+.overflow_x_visible {
+  overflow-x: visible;
+}
+
+.overflow_x_scroll {
+  overflow-x: scroll;
+}
+
+.overflow_y_auto {
+  overflow-y: auto;
+}
+
+.overflow_y_hidden {
+  overflow-y: hidden;
+}
+
+.overflow_y_visible {
+  overflow-y: visible;
+}
+
+.overflow_y_scroll {
+  overflow-y: scroll;
+}
+
+@media screen and (width <= 575px) {
+  .overflow_sp_auto {
+    overflow: auto;
+  }
+
+  .overflow_sp_hidden {
+    overflow: hidden;
+  }
+
+  .overflow_sp_visible {
+    overflow: visible;
+  }
+
+  .overflow_sp_scroll {
+    overflow: scroll;
+  }
+
+  .overflow_x_sp_auto {
+    overflow-x: auto;
+  }
+
+  .overflow_x_sp_hidden {
+    overflow-x: hidden;
+  }
+
+  .overflow_x_sp_visible {
+    overflow-x: visible;
+  }
+
+  .overflow_x_sp_scroll {
+    overflow-x: scroll;
+  }
+
+  .overflow_y_sp_auto {
+    overflow-y: auto;
+  }
+
+  .overflow_y_sp_hidden {
+    overflow-y: hidden;
+  }
+
+  .overflow_y_sp_visible {
+    overflow-y: visible;
+  }
+
+  .overflow_y_sp_scroll {
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .overflow_tb_auto {
+    overflow: auto;
+  }
+
+  .overflow_tb_hidden {
+    overflow: hidden;
+  }
+
+  .overflow_tb_visible {
+    overflow: visible;
+  }
+
+  .overflow_tb_scroll {
+    overflow: scroll;
+  }
+
+  .overflow_x_tb_auto {
+    overflow-x: auto;
+  }
+
+  .overflow_x_tb_hidden {
+    overflow-x: hidden;
+  }
+
+  .overflow_x_tb_visible {
+    overflow-x: visible;
+  }
+
+  .overflow_x_tb_scroll {
+    overflow-x: scroll;
+  }
+
+  .overflow_y_tb_auto {
+    overflow-y: auto;
+  }
+
+  .overflow_y_tb_hidden {
+    overflow-y: hidden;
+  }
+
+  .overflow_y_tb_visible {
+    overflow-y: visible;
+  }
+
+  .overflow_y_tb_scroll {
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (width >= 993px) {
+  .overflow_pc_auto {
+    overflow: auto;
+  }
+
+  .overflow_pc_hidden {
+    overflow: hidden;
+  }
+
+  .overflow_pc_visible {
+    overflow: visible;
+  }
+
+  .overflow_pc_scroll {
+    overflow: scroll;
+  }
+
+  .overflow_x_pc_auto {
+    overflow-x: auto;
+  }
+
+  .overflow_x_pc_hidden {
+    overflow-x: hidden;
+  }
+
+  .overflow_x_pc_visible {
+    overflow-x: visible;
+  }
+
+  .overflow_x_pc_scroll {
+    overflow-x: scroll;
+  }
+
+  .overflow_y_pc_auto {
+    overflow-y: auto;
+  }
+
+  .overflow_y_pc_hidden {
+    overflow-y: hidden;
+  }
+
+  .overflow_y_pc_visible {
+    overflow-y: visible;
+  }
+
+  .overflow_y_pc_scroll {
+    overflow-y: scroll;
+  }
+}

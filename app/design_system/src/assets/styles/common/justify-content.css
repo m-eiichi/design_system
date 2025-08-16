@@ -1,0 +1,101 @@
+.justify_content_start {
+  justify-content: flex-start;
+}
+
+.justify_content_end {
+  justify-content: flex-end;
+}
+
+.justify_content_center {
+  justify-content: center;
+}
+
+.justify_content_between {
+  justify-content: space-between;
+}
+
+.justify_content_around {
+  justify-content: space-around;
+}
+
+.justify_content_evenly {
+  justify-content: space-evenly;
+}
+
+@media screen and (width <= 575px) {
+  .justify_content_sp_start {
+    justify-content: flex-start;
+  }
+
+  .justify_content_sp_end {
+    justify-content: flex-end;
+  }
+
+  .justify_content_sp_center {
+    justify-content: center;
+  }
+
+  .justify_content_sp_between {
+    justify-content: space-between;
+  }
+
+  .justify_content_sp_around {
+    justify-content: space-around;
+  }
+
+  .justify_content_sp_evenly {
+    justify-content: space-evenly;
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .justify_content_tb_start {
+    justify-content: flex-start;
+  }
+
+  .justify_content_tb_end {
+    justify-content: flex-end;
+  }
+
+  .justify_content_tb_center {
+    justify-content: center;
+  }
+
+  .justify_content_tb_between {
+    justify-content: space-between;
+  }
+
+  .justify_content_tb_around {
+    justify-content: space-around;
+  }
+
+  .justify_content_tb_evenly {
+    justify-content: space-evenly;
+  }
+}
+
+@media screen and (width >= 993px) {
+  .justify_content_pc_start {
+    justify-content: flex-start;
+  }
+
+  .justify_content_pc_end {
+    justify-content: flex-end;
+  }
+
+  .justify_content_pc_center {
+    justify-content: center;
+  }
+
+  .justify_content_pc_between {
+    justify-content: space-between;
+  }
+
+  .justify_content_pc_around {
+    justify-content: space-around;
+  }
+
+  .justify_content_pc_evenly {
+    justify-content: space-evenly;
+  }
+}

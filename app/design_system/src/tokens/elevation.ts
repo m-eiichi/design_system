@@ -1,0 +1,22 @@
+export const elevation = {
+    1: "rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px",
+    2: "rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px",
+    3: "rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px",
+    4: "rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px",
+    5: "rgb(0 0 0 / 20%) 0px 3px 5px -1px, rgb(0 0 0 / 14%) 0px 6px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 18px 0px",
+    6: "rgb(0 0 0 / 20%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px",
+    7: "rgb(0 0 0 / 20%) 0px 7px 8px -4px, rgb(0 0 0 / 14%) 0px 12px 17px 2px, rgb(0 0 0 / 12%) 0px 5px 22px 4px",
+    8: "rgb(0 0 0 / 20%) 0px 8px 10px -5px, rgb(0 0 0 / 14%) 0px 16px 24px 2px, rgb(0 0 0 / 12%) 0px 6px 30px 5px",
+    9: "rgb(0 0 0 / 20%) 0px 11px 15px -7px, rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px",
+    overlay: {
+        1: "linear-gradient(rgb(255 255 255 / 5.1%), rgb(255 255 255 / 5.1%))",
+        2: "linear-gradient(rgb(255 255 255 / 6.9%), rgb(255 255 255 / 6.9%))",
+        3: "linear-gradient(rgb(255 255 255 / 8.2%), rgb(255 255 255 / 8.2%))",
+        4: "linear-gradient(rgb(255 255 255 / 9.2%), rgb(255 255 255 / 9.2%))",
+        5: "linear-gradient(rgb(255 255 255 / 10.8%), rgb(255 255 255 / 10.8%))",
+        6: "linear-gradient(rgb(255 255 255 / 11.9%), rgb(255 255 255 / 11.9%))",
+        7: "linear-gradient(rgb(255 255 255 / 13.5%), rgb(255 255 255 / 13.5%))",   
+        8: "linear-gradient(rgb(255 255 255 / 14.7%), rgb(255 255 255 / 14.7%))",
+        9: "linear-gradient(rgb(255 255 255 / 16.5%), rgb(255 255 255 / 16.5%))",
+    },
+}

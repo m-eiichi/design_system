@@ -1,0 +1,21 @@
+{
+    "name": "design system",
+    "dockerComposeFile": ["./docker-compose.yml"],
+    "service": "front-end",
+    "workspaceFolder": "/usr/src/app/design_system",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "donjayamanne.githistory",
+                "esbenp.prettier-vscode",
+                "stylelint.vscode-stylelint",
+                "dbaeumer.vscode-eslint",
+                "vunguyentuan.vscode-css-variables",
+                "Gruntfuggly.todo-tree",
+                "bradlc.vscode-tailwindcss"
+            ]
+        }
+    }
+}
+  

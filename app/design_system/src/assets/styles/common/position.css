@@ -1,0 +1,85 @@
+.position_static {
+  position: static;
+}
+
+.position_fixed {
+  position: fixed;
+}
+
+.position_absolute {
+  position: absolute;
+}
+
+.position_relative {
+  position: relative;
+}
+
+.position_sticky {
+  position: sticky;
+}
+
+@media screen and (width <= 575px) {
+  .position_sp_static {
+    position: static;
+  }
+
+  .position_sp_fixed {
+    position: fixed;
+  }
+
+  .position_sp_absolute {
+    position: absolute;
+  }
+
+  .position_sp_relative {
+    position: relative;
+  }
+
+  .position_sp_sticky {
+    position: sticky;
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .position_tb_static {
+    position: static;
+  }
+
+  .position_tb_fixed {
+    position: fixed;
+  }
+
+  .position_tb_absolute {
+    position: absolute;
+  }
+
+  .position_tb_relative {
+    position: relative;
+  }
+
+  .position_tb_sticky {
+    position: sticky;
+  }
+}
+
+@media screen and (width >= 993px) {
+  .position_pc_static {
+    position: static;
+  }
+
+  .position_pc_fixed {
+    position: fixed;
+  }
+
+  .position_pc_absolute {
+    position: absolute;
+  }
+
+  .position_pc_relative {
+    position: relative;
+  }
+
+  .position_pc_sticky {
+    position: sticky;
+  }
+}

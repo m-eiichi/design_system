@@ -1,0 +1,62 @@
+%input_base_font {
+  font-size: var(--font-size-16);
+  font-weight: var(--weight-normal);
+  line-height: var(--line-height-150);
+  color: var(--color-base-text);
+  letter-spacing: var(--letter-spacing-2);
+}
+
+%input_tile_sub_font {
+  font-size: var(--font-size-12);
+  font-weight: var(--weight-normal);
+  line-height: var(--line-height-170);
+  color: var(--color-description-text);
+  letter-spacing: var(--letter-spacing-2);
+}
+
+%base {
+  background-color: var(--color-bg-primary);
+  outline: solid var(--color-border-field);
+  @extend %input_base_font;
+
+  &.l {
+    padding: var(--size-f-02);
+    border-radius: var(--radius-m);
+  }
+
+  &.m {
+    padding: 12px var(--size-f-02);
+    border-radius: var(--radius-m);
+  }
+
+  &.s {
+    padding: 6px var(--size-f-01);
+    border-radius: var(--radius-s);
+  }
+
+  &.full_width {
+    width: 100%;
+  }
+
+  &:focus {
+    outline: solid var(--color-border-focused);
+    outline-offset: -1px;
+  }
+
+  &.error {
+    outline: solid var(--color-border-alert);
+    outline-offset: -1px;
+
+    &:focus {
+      outline: solid var(--color-border-focused);
+      outline-offset: -1px;
+    }
+  }
+
+  &.disabled {
+    color: var(--color-disabled-text);
+    background-color: var(--color-bg-tertiary);
+    border: solid var(--color-border-disabled);
+    outline: none;
+  }
+}

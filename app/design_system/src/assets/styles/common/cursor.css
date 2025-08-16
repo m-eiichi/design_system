@@ -1,0 +1,53 @@
+.cursor_pointer {
+  cursor: pointer;
+}
+
+.cursor_default {
+  cursor: default;
+}
+
+.cursor_notAllowed {
+  cursor: not-allowed;
+}
+
+@media screen and (width <= 575px) {
+  .cursor_sp_pointer {
+    cursor: pointer;
+  }
+
+  .cursor_sp_default {
+    cursor: default;
+  }
+
+  .cursor_sp_notAllowed {
+    cursor: not-allowed;
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .cursor_tb_pointer {
+    cursor: pointer;
+  }
+
+  .cursor_tb_default {
+    cursor: default;
+  }
+
+  .cursor_tb_notAllowed {
+    cursor: not-allowed;
+  }
+}
+
+@media screen and (width >= 993px) {
+  .cursor_pc_pointer {
+    cursor: pointer;
+  }
+
+  .cursor_pc_default {
+    cursor: default;
+  }
+
+  .cursor_pc_notAllowed {
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,69 @@
+.text_align_left {
+  text-align: left;
+}
+
+.text_align_center {
+  text-align: center;
+}
+
+.text_align_right {
+  text-align: right;
+}
+
+.text_align_justify {
+  text-align: justify;
+}
+
+@media screen and (width <= 575px) {
+  .text_align_sp_left {
+    text-align: left;
+  }
+
+  .text_align_sp_center {
+    text-align: center;
+  }
+
+  .text_align_sp_right {
+    text-align: right;
+  }
+
+  .text_align_sp_justify {
+    text-align: justify;
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .text_align_tb_left {
+    text-align: left;
+  }
+
+  .text_align_tb_center {
+    text-align: center;
+  }
+
+  .text_align_tb_right {
+    text-align: right;
+  }
+
+  .text_align_tb_justify {
+    text-align: justify;
+  }
+}
+
+@media screen and (width >= 993px) {
+  .text_align_pc_left {
+    text-align: left;
+  }
+
+  .text_align_pc_center {
+    text-align: center;
+  }
+
+  .text_align_pc_right {
+    text-align: right;
+  }
+
+  .text_align_pc_justify {
+    text-align: justify;
+  }
+}

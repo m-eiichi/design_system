@@ -1,0 +1,85 @@
+.align_items_start {
+  align-items: flex-start;
+}
+
+.align_items_end {
+  align-items: flex-end;
+}
+
+.align_items_center {
+  align-items: center;
+}
+
+.align_items_baseline {
+  align-items: baseline;
+}
+
+.align_items_stretch {
+  align-items: stretch;
+}
+
+@media screen and (width <= 575px) {
+  .align_items_sp_start {
+    align-items: flex-start;
+  }
+
+  .align_items_sp_end {
+    align-items: flex-end;
+  }
+
+  .align_items_sp_center {
+    align-items: center;
+  }
+
+  .align_items_sp_baseline {
+    align-items: baseline;
+  }
+
+  .align_items_sp_stretch {
+    align-items: stretch;
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .align_items_tb_start {
+    align-items: flex-start;
+  }
+
+  .align_items_tb_end {
+    align-items: flex-end;
+  }
+
+  .align_items_tb_center {
+    align-items: center;
+  }
+
+  .align_items_tb_baseline {
+    align-items: baseline;
+  }
+
+  .align_items_tb_stretch {
+    align-items: stretch;
+  }
+}
+
+@media screen and (width >= 993px) {
+  .align_items_pc_start {
+    align-items: flex-start;
+  }
+
+  .align_items_pc_end {
+    align-items: flex-end;
+  }
+
+  .align_items_pc_center {
+    align-items: center;
+  }
+
+  .align_items_pc_baseline {
+    align-items: baseline;
+  }
+
+  .align_items_pc_stretch {
+    align-items: stretch;
+  }
+}

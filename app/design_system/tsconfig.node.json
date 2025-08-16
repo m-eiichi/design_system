@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./", // プロジェクトルート基準
+    "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"] // "@/..." → "src/..." にマッピング
+    }
+  },
+  "include": ["vite.config.ts", "src/tokens/", "scripts", "src/utils/"]
+}

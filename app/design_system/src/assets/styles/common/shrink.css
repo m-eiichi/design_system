@@ -1,0 +1,37 @@
+.shrink_1 {
+  flex-shrink: 1;
+}
+
+.shrink_0 {
+  flex-shrink: 0;
+}
+
+@media screen and (width <= 575px) {
+  .shrink_sp_1 {
+    flex-shrink: 1;
+  }
+
+  .shrink_sp_0 {
+    flex-shrink: 0;
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .shrink_tb_1 {
+    flex-shrink: 1;
+  }
+
+  .shrink_tb_0 {
+    flex-shrink: 0;
+  }
+}
+
+@media screen and (width >= 993px) {
+  .shrink_pc_1 {
+    flex-shrink: 1;
+  }
+
+  .shrink_pc_0 {
+    flex-shrink: 0;
+  }
+}

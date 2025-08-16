@@ -1,0 +1,13 @@
+/* モバイル、タブレット、デスクトップのビューポートを定義するカスタムメディアクエリ */
+
+@custom-media --viewport-mobile screen and var(--viewport-mobile);
+
+@custom-media --viewport-tablet screen and var(--viewport-tablet);
+
+@custom-media --viewport-desktop screen and var(--viewport-desktop);
+
+@custom-media --viewport-over-tablet screen and var(--viewport-over-tablet);
+
+@custom-media --viewport-over-desktop screen and var(--viewport-over-desktop);
+
+@custom-media --viewport-l-desktop screen and var(--viewport-l-desktop);
