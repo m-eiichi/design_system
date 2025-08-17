@@ -28,6 +28,10 @@
 
 @import "src/assets/styles/common/cursor.css";
 
+@import "src/assets/styles/common/elevation.css";
+
+@import "src/assets/styles/common/border.css";
+
 .core_component {
   box-sizing: border-box;
 }

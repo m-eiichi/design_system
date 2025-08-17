@@ -6,6 +6,8 @@ import {
   bgColorPlugin,
   textColorPlugin,
   fontPlugin,
+  elevationPlugin,
+  borderPlugin,
 } from "./scripts/css-token-plugin";
 import {
   baseColorTypesTokenPlugin,
@@ -22,6 +24,7 @@ import {
   letterSpacingTypeTokenPlugin,
   fontTypeTokenPlugin,
   // themeColorTypesTokenPlugin,
+  elevationTypeTokenPlugin,
 } from "./scripts/types-token-plugin";
 
 // https://vitejs.dev/config/
@@ -33,6 +36,8 @@ export default defineConfig({
     bgColorPlugin(),
     textColorPlugin(),
     fontPlugin(),
+    elevationPlugin(),
+    borderPlugin(),
     //type
     baseColorTypesTokenPlugin(),
     backgroundColorTypesTokenPlugin(),
@@ -47,6 +52,7 @@ export default defineConfig({
     letterSpacingTypeTokenPlugin(),
     fontTypeTokenPlugin(),
     borderTypeTokenPlugin(),
+    elevationTypeTokenPlugin(),
 
     // themeColorTypesTokenPlugin(),
   ],

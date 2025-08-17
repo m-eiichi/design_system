@@ -25,6 +25,7 @@ import {
   lineHeight,
   font,
 } from "../src/tokens/font";
+import { elevation } from "../src/tokens/elevation";
 import { border } from "../src/tokens/border";
 import { writeIfChanged } from "../src/utils/write-if-changed";
 
@@ -584,6 +585,42 @@ export const fontTypeTokenPlugin = (): Plugin => {
   };
 };
 
-// shadow-type.ts
+// elevation-type.ts
+export const elevationTypeTokenPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/elevation.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/types/elevation-type.ts",
+  );
+  const elevationValue = elevation;
+
+  return {
+    name: "generate-types-tokens",
+
+    buildStart() {
+      // ビルド開始時に一度生成
+      const types = generateTypes({
+        name: "Elevation",
+        token: elevationValue,
+      });
+      writeIfChanged(outputFilePath, types);
+
+      // tokens.ts を監視対象に追加
+      this.addWatchFile(tokenFilePath);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
+        const types = generateTypes({
+          name: "Elevation",
+          token: elevationValue,
+        });
+        writeIfChanged(outputFilePath, types);
+      }
+    },
+  };
+};
+
 // sizeing-type.ts
 // spacing-type.ts

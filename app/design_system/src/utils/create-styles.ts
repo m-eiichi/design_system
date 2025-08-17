@@ -1,8 +1,4 @@
-import { type ClassValue } from "clsx";
 import { toSnakeCase } from "./snake-case";
-
-// CSSモジュールの型定義
-type CSSModuleClasses = Record<string, string>;
 
 // 動的にCSSクラス名を生成する関数
 const generateClassName = (prefix: string, value: string): string => {

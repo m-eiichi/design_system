@@ -17,6 +17,11 @@ export const CoreComponent = React.forwardRef(
       justifyContent,
       alignItems,
       textAlign,
+      color,
+      elevation,
+      flex,
+      shrink,
+      font,
       ...rest
     }: CoreComponentProps<T>,
     ref: React.Ref<HTMLElementTagNameMap[T]>,
@@ -28,6 +33,11 @@ export const CoreComponent = React.forwardRef(
       justifyContent,
       alignItems,
       textAlign,
+      color,
+      elevation,
+      flex,
+      shrink,
+      font,
       ...rest,
     });
 

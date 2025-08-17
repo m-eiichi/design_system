@@ -7,11 +7,11 @@ import {
   letterSpacing,
   lineHeight,
 } from "./font";
+import { elevation } from "./elevation";
 import { baseSizePx, baseSizeRem, radius, space } from "./size";
 import { border } from "./border";
 import { height } from "./height";
 import { width } from "./width";
-import { elevation } from "./elevation";
 import { transition } from "./transition";
 
 // tokens.ts

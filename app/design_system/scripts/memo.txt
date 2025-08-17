@@ -11,12 +11,13 @@ grow
 〇variable.css
 〇background-color.css
 〇text-color.css
+〇elevation.css
 △font.css
+△border.css type以外の対応
+radius.css
 spacing.css
-border.css
-shadow.css
 sizeing.css
-spacing.css
+
 ---
 手動
 ▲display.css（media）
@@ -44,10 +45,13 @@ spacing.css
 〇button-color-type.ts
 〇chart-color-type.ts
 〇status-color-type.ts
+〇elevation-type.ts
+font-type.ts
+〇border-type.ts
+radius-type.ts
 △theme-color-type.ts
 gap.ts
-border-type.ts
-shadow-type.ts
+
 sizeing-type.ts
 spacing-type.ts
 ---

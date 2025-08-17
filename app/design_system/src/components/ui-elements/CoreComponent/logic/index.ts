@@ -191,5 +191,21 @@ export const createStyle = (
     ).map((className) => Styles[className]),
   );
 
+  // Elevation
+  classNames.push(
+    ...processProperty(
+      props.elevation as string | object | undefined,
+      "elevation",
+    ).map((className) => Styles[className]),
+  );
+
+  // Border
+  classNames.push(
+    ...processProperty(
+      props.border as string | object | undefined,
+      "border",
+    ).map((className) => Styles[className]),
+  );
+
   return { classNames, inlineStyles };
 };

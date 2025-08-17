@@ -1,0 +1,92 @@
+/* elevation.css */
+
+
+.elevation_1 { box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px; }
+.elevation_2 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px; }
+.elevation_3 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px; }
+.elevation_4 { box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px; }
+.elevation_5 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px, rgb(0 0 0 / 14%) 0px 6px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 18px 0px; }
+.elevation_6 { box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px; }
+.elevation_7 { box-shadow: rgb(0 0 0 / 20%) 0px 7px 8px -4px, rgb(0 0 0 / 14%) 0px 12px 17px 2px, rgb(0 0 0 / 12%) 0px 5px 22px 4px; }
+.elevation_8 { box-shadow: rgb(0 0 0 / 20%) 0px 8px 10px -5px, rgb(0 0 0 / 14%) 0px 16px 24px 2px, rgb(0 0 0 / 12%) 0px 6px 30px 5px; }
+.elevation_9 { box-shadow: rgb(0 0 0 / 20%) 0px 11px 15px -7px, rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px; }
+.elevation_overlay1 { box-shadow: linear-gradient(rgb(255 255 255 / 5.1%), rgb(255 255 255 / 5.1%)); }
+.elevation_overlay2 { box-shadow: linear-gradient(rgb(255 255 255 / 6.9%), rgb(255 255 255 / 6.9%)); }
+.elevation_overlay3 { box-shadow: linear-gradient(rgb(255 255 255 / 8.2%), rgb(255 255 255 / 8.2%)); }
+.elevation_overlay4 { box-shadow: linear-gradient(rgb(255 255 255 / 9.2%), rgb(255 255 255 / 9.2%)); }
+.elevation_overlay5 { box-shadow: linear-gradient(rgb(255 255 255 / 10.8%), rgb(255 255 255 / 10.8%)); }
+.elevation_overlay6 { box-shadow: linear-gradient(rgb(255 255 255 / 11.9%), rgb(255 255 255 / 11.9%)); }
+.elevation_overlay7 { box-shadow: linear-gradient(rgb(255 255 255 / 13.5%), rgb(255 255 255 / 13.5%)); }
+.elevation_overlay8 { box-shadow: linear-gradient(rgb(255 255 255 / 14.7%), rgb(255 255 255 / 14.7%)); }
+.elevation_overlay9 { box-shadow: linear-gradient(rgb(255 255 255 / 16.5%), rgb(255 255 255 / 16.5%)); }
+
+@media screen and (width <= 575px){
+
+
+
+.elevation_sp_1 { box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px; }
+.elevation_sp_2 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px; }
+.elevation_sp_3 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px; }
+.elevation_sp_4 { box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px; }
+.elevation_sp_5 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px, rgb(0 0 0 / 14%) 0px 6px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 18px 0px; }
+.elevation_sp_6 { box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px; }
+.elevation_sp_7 { box-shadow: rgb(0 0 0 / 20%) 0px 7px 8px -4px, rgb(0 0 0 / 14%) 0px 12px 17px 2px, rgb(0 0 0 / 12%) 0px 5px 22px 4px; }
+.elevation_sp_8 { box-shadow: rgb(0 0 0 / 20%) 0px 8px 10px -5px, rgb(0 0 0 / 14%) 0px 16px 24px 2px, rgb(0 0 0 / 12%) 0px 6px 30px 5px; }
+.elevation_sp_9 { box-shadow: rgb(0 0 0 / 20%) 0px 11px 15px -7px, rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px; }
+.elevation_sp_overlay1 { box-shadow: linear-gradient(rgb(255 255 255 / 5.1%), rgb(255 255 255 / 5.1%)); }
+.elevation_sp_overlay2 { box-shadow: linear-gradient(rgb(255 255 255 / 6.9%), rgb(255 255 255 / 6.9%)); }
+.elevation_sp_overlay3 { box-shadow: linear-gradient(rgb(255 255 255 / 8.2%), rgb(255 255 255 / 8.2%)); }
+.elevation_sp_overlay4 { box-shadow: linear-gradient(rgb(255 255 255 / 9.2%), rgb(255 255 255 / 9.2%)); }
+.elevation_sp_overlay5 { box-shadow: linear-gradient(rgb(255 255 255 / 10.8%), rgb(255 255 255 / 10.8%)); }
+.elevation_sp_overlay6 { box-shadow: linear-gradient(rgb(255 255 255 / 11.9%), rgb(255 255 255 / 11.9%)); }
+.elevation_sp_overlay7 { box-shadow: linear-gradient(rgb(255 255 255 / 13.5%), rgb(255 255 255 / 13.5%)); }
+.elevation_sp_overlay8 { box-shadow: linear-gradient(rgb(255 255 255 / 14.7%), rgb(255 255 255 / 14.7%)); }
+.elevation_sp_overlay9 { box-shadow: linear-gradient(rgb(255 255 255 / 16.5%), rgb(255 255 255 / 16.5%)); }
+
+}
+
+@media screen and (width >= 576px) and (width <= 992px){
+
+.elevation_sp_1 { box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px; }
+.elevation_sp_2 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px; }
+.elevation_sp_3 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px; }
+.elevation_sp_4 { box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px; }
+.elevation_sp_5 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px, rgb(0 0 0 / 14%) 0px 6px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 18px 0px; }
+.elevation_sp_6 { box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px; }
+.elevation_sp_7 { box-shadow: rgb(0 0 0 / 20%) 0px 7px 8px -4px, rgb(0 0 0 / 14%) 0px 12px 17px 2px, rgb(0 0 0 / 12%) 0px 5px 22px 4px; }
+.elevation_sp_8 { box-shadow: rgb(0 0 0 / 20%) 0px 8px 10px -5px, rgb(0 0 0 / 14%) 0px 16px 24px 2px, rgb(0 0 0 / 12%) 0px 6px 30px 5px; }
+.elevation_sp_9 { box-shadow: rgb(0 0 0 / 20%) 0px 11px 15px -7px, rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px; }
+.elevation_sp_overlay1 { box-shadow: linear-gradient(rgb(255 255 255 / 5.1%), rgb(255 255 255 / 5.1%)); }
+.elevation_sp_overlay2 { box-shadow: linear-gradient(rgb(255 255 255 / 6.9%), rgb(255 255 255 / 6.9%)); }
+.elevation_sp_overlay3 { box-shadow: linear-gradient(rgb(255 255 255 / 8.2%), rgb(255 255 255 / 8.2%)); }
+.elevation_sp_overlay4 { box-shadow: linear-gradient(rgb(255 255 255 / 9.2%), rgb(255 255 255 / 9.2%)); }
+.elevation_sp_overlay5 { box-shadow: linear-gradient(rgb(255 255 255 / 10.8%), rgb(255 255 255 / 10.8%)); }
+.elevation_sp_overlay6 { box-shadow: linear-gradient(rgb(255 255 255 / 11.9%), rgb(255 255 255 / 11.9%)); }
+.elevation_sp_overlay7 { box-shadow: linear-gradient(rgb(255 255 255 / 13.5%), rgb(255 255 255 / 13.5%)); }
+.elevation_sp_overlay8 { box-shadow: linear-gradient(rgb(255 255 255 / 14.7%), rgb(255 255 255 / 14.7%)); }
+.elevation_sp_overlay9 { box-shadow: linear-gradient(rgb(255 255 255 / 16.5%), rgb(255 255 255 / 16.5%)); }
+
+}
+
+@media screen and (width >= 993px) {
+
+.elevation_sp_1 { box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px; }
+.elevation_sp_2 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px; }
+.elevation_sp_3 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px; }
+.elevation_sp_4 { box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px; }
+.elevation_sp_5 { box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px, rgb(0 0 0 / 14%) 0px 6px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 18px 0px; }
+.elevation_sp_6 { box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px; }
+.elevation_sp_7 { box-shadow: rgb(0 0 0 / 20%) 0px 7px 8px -4px, rgb(0 0 0 / 14%) 0px 12px 17px 2px, rgb(0 0 0 / 12%) 0px 5px 22px 4px; }
+.elevation_sp_8 { box-shadow: rgb(0 0 0 / 20%) 0px 8px 10px -5px, rgb(0 0 0 / 14%) 0px 16px 24px 2px, rgb(0 0 0 / 12%) 0px 6px 30px 5px; }
+.elevation_sp_9 { box-shadow: rgb(0 0 0 / 20%) 0px 11px 15px -7px, rgb(0 0 0 / 14%) 0px 24px 38px 3px, rgb(0 0 0 / 12%) 0px 9px 46px 8px; }
+.elevation_sp_overlay1 { box-shadow: linear-gradient(rgb(255 255 255 / 5.1%), rgb(255 255 255 / 5.1%)); }
+.elevation_sp_overlay2 { box-shadow: linear-gradient(rgb(255 255 255 / 6.9%), rgb(255 255 255 / 6.9%)); }
+.elevation_sp_overlay3 { box-shadow: linear-gradient(rgb(255 255 255 / 8.2%), rgb(255 255 255 / 8.2%)); }
+.elevation_sp_overlay4 { box-shadow: linear-gradient(rgb(255 255 255 / 9.2%), rgb(255 255 255 / 9.2%)); }
+.elevation_sp_overlay5 { box-shadow: linear-gradient(rgb(255 255 255 / 10.8%), rgb(255 255 255 / 10.8%)); }
+.elevation_sp_overlay6 { box-shadow: linear-gradient(rgb(255 255 255 / 11.9%), rgb(255 255 255 / 11.9%)); }
+.elevation_sp_overlay7 { box-shadow: linear-gradient(rgb(255 255 255 / 13.5%), rgb(255 255 255 / 13.5%)); }
+.elevation_sp_overlay8 { box-shadow: linear-gradient(rgb(255 255 255 / 14.7%), rgb(255 255 255 / 14.7%)); }
+.elevation_sp_overlay9 { box-shadow: linear-gradient(rgb(255 255 255 / 16.5%), rgb(255 255 255 / 16.5%)); }
+
+}

@@ -23,13 +23,14 @@ export const Home: React.FC = () => {
         }}
         className="custom-class"
         // bg={{ sp: "black", tb: "information", pc: "success" }}
-        shadow="01"
         // overflowX={{ sp: "auto", tb: "hidden", pc: "scroll" }}
         p="1"
         m="2"
       >
         <CoreComponent
-          bg="#000000"
+          // bg="#000000"
+          border={"disabled"}
+          elevation={{ sp: "3", tb: "2", pc: "1" }}
           grow={"0"}
           textAlign={{ sp: "left", tb: "center", pc: "right" }}
           color={{ sp: "base", tb: "warning", pc: "alert" }}

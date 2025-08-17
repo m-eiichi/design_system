@@ -54,3 +54,5 @@ export * from "./text-align-type";
 
 // cursor
 export * from "./cursor-type";
+
+export * from "./elevation-type";

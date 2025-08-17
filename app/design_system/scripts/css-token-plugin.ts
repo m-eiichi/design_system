@@ -10,7 +10,9 @@ import { flattenTokensToKebabCase } from "../src/utils/flatten-tokens-to-kebab-c
 import { flattenTokensToSnakeCase } from "../src/utils/flatten-tokens-to-snake-case";
 import { tokens } from "../src/tokens/index";
 import { baseColor, background, status, text } from "../src/tokens/color";
+import { border } from "../src/tokens/border";
 import { font } from "../src/tokens/font";
+import { elevation } from "../src/tokens/elevation";
 import { width } from "../src/tokens/width";
 import { writeIfChanged } from "../src/utils/write-if-changed";
 
@@ -262,6 +264,134 @@ export const fontPlugin = (): Plugin => {
       if (id === tokenFilePath) {
         console.log(`🔄 font.ts changed → regenerate font.css`);
         const css = generateFontCss();
+        writeIfChanged(outputFilePath, css);
+      }
+    },
+  };
+};
+
+// elevation.css
+// エレベーションのトークンオブジェクトをフラット化し
+// CSS 変数として出力する
+const generateElevationCss = () => {
+  const flatTokens = flattenTokensToSnakeCase(elevation);
+
+  const elevationCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.elevation_${key} { box-shadow: ${val}; }`)
+    .join("\n");
+
+  const elevationCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
+    .join("\n");
+
+  const elevationCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
+    .join("\n");
+
+  const elevationCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
+    .join("\n");
+
+  return `/* elevation.css */
+\n\n${elevationCss}\n
+@media ${width.viewport.mobile}{\n
+\n\n${elevationCssSp}\n
+}\n
+@media ${width.viewport.tablet}{\n
+${elevationCssTb}\n
+}\n
+@media ${width.viewport.overDesktop} {\n
+${elevationCssPc}\n
+}`;
+};
+
+export const elevationPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/elevation.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/assets/styles/common/elevation.css",
+  );
+
+  return {
+    name: "generate-elevation-css",
+
+    buildStart() {
+      // ビルド開始時に一度生成
+      const css = generateElevationCss();
+      writeIfChanged(outputFilePath, css);
+
+      // elevation.ts を監視対象に追加
+      this.addWatchFile(tokenFilePath);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 elevation.ts changed → regenerate elevation.css`);
+        const css = generateElevationCss();
+        writeIfChanged(outputFilePath, css);
+      }
+    },
+  };
+};
+
+// border.css
+// ボーダーのトークンオブジェクトをフラット化し
+// CSS 変数として出力する
+const generateBorderCss = () => {
+  const flatTokens = flattenTokensToSnakeCase(border);
+
+  const borderCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_${key} { border: ${val}; }`)
+    .join("\n");
+
+  const borderCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_sp_${key} { border: ${val}; }`)
+    .join("\n");
+
+  const borderCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_sp_${key} { border: ${val}; }`)
+    .join("\n");
+
+  const borderCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_sp_${key} { border: ${val}; }`)
+    .join("\n");
+
+  return `/* border.css */
+\n\n${borderCss}\n
+@media ${width.viewport.mobile}{\n
+\n\n${borderCssSp}\n
+}\n
+@media ${width.viewport.tablet}{\n
+${borderCssTb}\n
+}\n
+@media ${width.viewport.overDesktop} {\n
+${borderCssPc}\n
+}`;
+};
+
+export const borderPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/border.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/assets/styles/common/border.css",
+  );
+
+  return {
+    name: "generate-border-css",
+
+    buildStart() {
+      // ビルド開始時に一度生成
+      const css = generateBorderCss();
+      writeIfChanged(outputFilePath, css);
+
+      // elevation.ts を監視対象に追加
+      this.addWatchFile(tokenFilePath);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 elevation.ts changed → regenerate border.css`);
+        const css = generateBorderCss();
         writeIfChanged(outputFilePath, css);
       }
     },

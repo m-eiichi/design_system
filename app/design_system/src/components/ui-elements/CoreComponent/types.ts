@@ -22,7 +22,7 @@ import {
   CursorType,
   ResponsiveSpacing,
   SizingValue,
-  ShadowValue,
+  ElevationType,
 } from "@/types";
 
 // 対応するタグを限定（型爆発防止）
@@ -141,15 +141,17 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   font?: ResponsiveValue<FontType>;
 
   // Borders
-  border?: BorderValue & BorderType;
-  borderTop?: BorderValue & BorderType;
-  borderRight?: BorderValue & BorderType;
-  borderBottom?: BorderValue & BorderType;
-  borderLeft?: BorderValue & BorderType;
+  border?: ResponsiveValue<BorderValue | BorderType>;
+  borderTop?: ResponsiveValue<BorderValue | BorderType>;
+  borderRight?: ResponsiveValue<BorderValue | BorderType>;
+  borderBottom?: ResponsiveValue<BorderValue | BorderType>;
+  borderLeft?: ResponsiveValue<BorderValue | BorderType>;
+
+  // BorderRadius
   borderRadius?: any;
 
-  // Shadow
-  shadow?: ShadowValue;
+  // Elevation
+  elevation?: ResponsiveValue<ElevationType>;
 };
 
 // T のタグのネイティブ props から共通 props を除外
