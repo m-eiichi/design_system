@@ -28,12 +28,13 @@ export const Home: React.FC = () => {
         m="2"
       >
         <CoreComponent
-          // bg="#000000"
+          bg="#000000"
           border={"disabled"}
           elevation={{ sp: "3", tb: "2", pc: "1" }}
           grow={"0"}
           textAlign={{ sp: "left", tb: "center", pc: "right" }}
           color={{ sp: "base", tb: "warning", pc: "alert" }}
+          borderRadius={{ sp: "xs", tb: "xs", pc: "xl" }}
           onClick={() => {
             console.log("CoreComponent clicked");
           }}

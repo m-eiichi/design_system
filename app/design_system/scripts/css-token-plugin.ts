@@ -15,6 +15,7 @@ import { font } from "../src/tokens/font";
 import { elevation } from "../src/tokens/elevation";
 import { width } from "../src/tokens/width";
 import { writeIfChanged } from "../src/utils/write-if-changed";
+import { radius } from "../src/tokens/size";
 
 // トークンをケバブケースフラット化し、CSS 変数として出力する
 // 例: { color: { primary: { base: "#000" } } } → { --color-primary-base: "#000" }
@@ -392,6 +393,66 @@ export const borderPlugin = (): Plugin => {
       if (id === tokenFilePath) {
         console.log(`🔄 elevation.ts changed → regenerate border.css`);
         const css = generateBorderCss();
+        writeIfChanged(outputFilePath, css);
+      }
+    },
+  };
+};
+
+// radius.css
+// 角丸のトークンオブジェクトをフラット化し
+// CSS 変数として出力する
+const generateRadiusCss = () => {
+  const flatTokens = flattenTokensToSnakeCase(radius);
+
+  const borderRadiusCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_radius_${key} { border-radius: ${val}; }`)
+    .join("\n");
+
+  const borderRadiusCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_radius_sp_${key} { border-radius: ${val}; }`)
+    .join("\n");
+
+  const borderRadiusCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_radius_tb_${key} { border-radius: ${val}; }`)
+    .join("\n");
+
+  const borderRadiusCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_radius_pc_${key} { border-radius: ${val}; }`)
+    .join("\n");
+
+  return `/* radius.css */
+\n\n${borderRadiusCss}\n
+@media ${width.viewport.mobile}{\n
+\n\n${borderRadiusCssSp}\n
+}\n
+@media ${width.viewport.tablet}{\n
+${borderRadiusCssTb}\n
+}\n
+@media ${width.viewport.overDesktop} {\n
+${borderRadiusCssPc}\n
+}`;
+};
+
+export const radiusPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/assets/styles/common/radius.css",
+  );
+
+  return {
+    name: "generate-radius-css",
+
+    buildStart() {
+      const css = generateRadiusCss();
+      writeIfChanged(outputFilePath, css);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 size.ts changed → regenerate radius.css`);
+        const css = generateRadiusCss();
         writeIfChanged(outputFilePath, css);
       }
     },

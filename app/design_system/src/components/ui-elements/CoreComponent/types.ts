@@ -23,6 +23,7 @@ import {
   ResponsiveSpacing,
   SizingValue,
   ElevationType,
+  RadiusType,
 } from "@/types";
 
 // 対応するタグを限定（型爆発防止）
@@ -148,7 +149,7 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   borderLeft?: ResponsiveValue<BorderValue | BorderType>;
 
   // BorderRadius
-  borderRadius?: any;
+  borderRadius?: ResponsiveValue<RadiusType>;
 
   // Elevation
   elevation?: ResponsiveValue<ElevationType>;

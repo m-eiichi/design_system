@@ -14,6 +14,7 @@ export * from "./font-type";
 // border
 export * from "./border-value";
 export * from "./border-type";
+export * from "./radius-type";
 
 export * from "./shadow-value";
 export * from "./spacing-value";

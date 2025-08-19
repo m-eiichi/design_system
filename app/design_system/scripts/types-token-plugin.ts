@@ -18,6 +18,7 @@ import {
   status,
   // theme,
 } from "../src/tokens/color";
+import { radius } from "../src/tokens/size";
 import {
   fontSize,
   fontWeight,
@@ -79,6 +80,30 @@ export const baseColorTypesTokenPlugin = (): Plugin => {
   };
 };
 
+// radius-type.ts
+export const radiusTypesTokenPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
+  const outputFilePath = path.resolve(__dirname, "../src/types/radius-type.ts");
+  const radiusValue = radius;
+
+  return {
+    name: "generate-types-tokens",
+
+    buildStart() {
+      // ビルド開始時に一度生成
+      const types = generateTypes({
+        name: "Radius",
+        token: radiusValue,
+      });
+      writeIfChanged(outputFilePath, types);
+
+      // tokens.ts を監視対象に追加
+      this.addWatchFile(tokenFilePath);
+    },
+  };
+};
+
+// background-color-type.ts
 export const backgroundColorTypesTokenPlugin = (): Plugin => {
   const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
   const outputFilePath = path.resolve(

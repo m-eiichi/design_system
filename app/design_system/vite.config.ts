@@ -8,6 +8,7 @@ import {
   fontPlugin,
   elevationPlugin,
   borderPlugin,
+  radiusPlugin,
 } from "./scripts/css-token-plugin";
 import {
   baseColorTypesTokenPlugin,
@@ -25,6 +26,7 @@ import {
   fontTypeTokenPlugin,
   // themeColorTypesTokenPlugin,
   elevationTypeTokenPlugin,
+  radiusTypesTokenPlugin,
 } from "./scripts/types-token-plugin";
 
 // https://vitejs.dev/config/
@@ -38,6 +40,7 @@ export default defineConfig({
     fontPlugin(),
     elevationPlugin(),
     borderPlugin(),
+    radiusPlugin(),
     //type
     baseColorTypesTokenPlugin(),
     backgroundColorTypesTokenPlugin(),
@@ -53,7 +56,7 @@ export default defineConfig({
     fontTypeTokenPlugin(),
     borderTypeTokenPlugin(),
     elevationTypeTokenPlugin(),
-
+    radiusTypesTokenPlugin(),
     // themeColorTypesTokenPlugin(),
   ],
   resolve: {

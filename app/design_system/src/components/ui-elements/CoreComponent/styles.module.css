@@ -32,6 +32,8 @@
 
 @import "src/assets/styles/common/border.css";
 
+@import "src/assets/styles/common/radius.css";
+
 .core_component {
   box-sizing: border-box;
 }

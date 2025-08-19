@@ -207,5 +207,13 @@ export const createStyle = (
     ).map((className) => Styles[className]),
   );
 
+  // BorderRadius
+  classNames.push(
+    ...processProperty(
+      props.borderRadius as string | object | undefined,
+      "border_radius",
+    ).map((className) => Styles[className]),
+  );
+
   return { classNames, inlineStyles };
 };

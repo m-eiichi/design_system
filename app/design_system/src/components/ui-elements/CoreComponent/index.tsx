@@ -13,6 +13,8 @@ export const CoreComponent = React.forwardRef(
     {
       as,
       style,
+      display,
+      bg,
       flexDirection,
       justifyContent,
       alignItems,
@@ -22,6 +24,7 @@ export const CoreComponent = React.forwardRef(
       flex,
       shrink,
       font,
+      borderRadius,
       ...rest
     }: CoreComponentProps<T>,
     ref: React.Ref<HTMLElementTagNameMap[T]>,
@@ -29,6 +32,8 @@ export const CoreComponent = React.forwardRef(
     const Component = as || "div";
 
     const { classNames, inlineStyles } = createStyle({
+      display,
+      bg,
       flexDirection,
       justifyContent,
       alignItems,
@@ -38,7 +43,8 @@ export const CoreComponent = React.forwardRef(
       flex,
       shrink,
       font,
-      ...rest,
+      borderRadius,
+      // ...rest,
     });
 
     // rest は any にキャストして型爆発防止
