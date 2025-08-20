@@ -13,8 +13,8 @@ tokenからvariable.cssとtypeの作成
 △font.css
 △border.css type以外の対応
 〇radius.css
-padding.css
-margin.css
+〇padding.css
+〇margin.css
 sizeing.css
 
 ---
@@ -51,7 +51,7 @@ sizeing.css
 △theme-color-type.ts
 〇gap.ts
 〇sizeing-type.ts
-spacing-type.ts
+〇spacing-type.ts
 ---
 手動
 〇display.ts
@@ -95,13 +95,26 @@ grow確認
       font,
       grow,
       justifyContent,
+      m,
+      m_t,
+      m_r,
+      m_b,
+      m_l,
+      m_x,
+      m_y,
       overflow,
       overflowX,
       overflowY,
       position,
+      p,
+      p_t,
+      p_r,
+      p_b,
+      p_l,
+      p_x,
+      p_y,
       shrink,
       textAlign,
 
 残り
-gap
 grid

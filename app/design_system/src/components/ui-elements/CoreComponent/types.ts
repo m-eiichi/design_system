@@ -116,17 +116,9 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   // Text
   textAlign?: ResponsiveValue<TextAlignType>;
 
-  // 未完
-  // Font
-  font?: ResponsiveValue<FontType>;
-  // fontWeight?: ResponsiveValue<FontWeightType>;
-  // fontSize?: ResponsiveValue<FontSizeType>;
-  // lineHeight?: ResponsiveValue<LineHeightType>;
-  // letterSpacing?: ResponsiveValue<LetterSpacingType>;
-
   gap?: ResponsiveValue<GapType>;
 
-  // Spacing (using design system scale 1-20)
+  // Spacing
   p?: ResponsiveValue<SpacingType>;
   px?: ResponsiveValue<SpacingType>;
   py?: ResponsiveValue<SpacingType>;
@@ -141,6 +133,14 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   mr?: ResponsiveValue<SpacingType>;
   mb?: ResponsiveValue<SpacingType>;
   ml?: ResponsiveValue<SpacingType>;
+
+  // 未完
+  // Font
+  font?: ResponsiveValue<FontType>;
+  // fontWeight?: ResponsiveValue<FontWeightType>;
+  // fontSize?: ResponsiveValue<FontSizeType>;
+  // lineHeight?: ResponsiveValue<LineHeightType>;
+  // letterSpacing?: ResponsiveValue<LetterSpacingType>;
 
   // Sizing
   w?: SizingValue;

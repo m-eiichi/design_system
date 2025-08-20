@@ -550,22 +550,52 @@ const generateMarginCss = () => {
   });
 
   const marginCss = Object.entries(flatTokens)
-    .map(([key, val]) => `.m_${key} { margin: ${val}; }`)
+    .map(
+      ([key, val]) => `.m_${key} { margin: ${val}; } 
+.mt_${key} { margin-top: ${val}; }
+.mr_${key} { margin-right: ${val}; }  
+.mb_${key} { margin-bottom: ${val}; }
+.ml_${key} { margin-left: ${val}; }
+.mx_${key} { margin-left: ${val}; margin-right: ${val}; }
+.my_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
+    )
     .join("\n");
 
   const marginCssSp = Object.entries(flatTokens)
-
-    .map(([key, val]) => `.m_sp_${key} { margin: ${val}; }`)
+    .map(
+      ([key, val]) => `.m_sp_${key} { margin: ${val}; } 
+.mt_sp_${key} { margin-top: ${val}; }
+.mr_sp_${key} { margin-right: ${val}; }  
+.mb_sp_${key} { margin-bottom: ${val}; }
+.ml_sp_${key} { margin-left: ${val}; }
+.mx_sp_${key} { margin-left: ${val}; margin-right: ${val}; }
+.my_sp_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
+    )
     .join("\n");
 
   const marginCssTb = Object.entries(flatTokens)
-
-    .map(([key, val]) => `.m_tb_${key} { margin: ${val}; }`)
+    .map(
+      ([key, val]) => `.m_tb_${key} { margin: ${val}; } 
+.mt_tb_${key} { margin-top: ${val}; }
+.mr_tb_${key} { margin-right: ${val}; }  
+.mb_tb_${key} { margin-bottom: ${val}; }
+.ml_tb_${key} { margin-left: ${val}; }
+.mx_tb_${key} { margin-left: ${val}; margin-right: ${val}; }
+.my_tb_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
+    )
     .join("\n");
 
   const marginCssPc = Object.entries(flatTokens)
 
-    .map(([key, val]) => `.m_pc_${key} { margin: ${val}; }`)
+    .map(
+      ([key, val]) => `.m_pc_${key} { margin: ${val}; } 
+.mt_pc_${key} { margin-top: ${val}; }
+.mr_pc_${key} { margin-right: ${val}; }  
+.mb_pc_${key} { margin-bottom: ${val}; }
+.ml_pc_${key} { margin-left: ${val}; }
+.mx_pc_${key} { margin-left: ${val}; margin-right: ${val}; }
+.my_pc_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
+    )
     .join("\n");
 
   return `/* margin.css */
@@ -618,19 +648,52 @@ const generatePaddingCss = () => {
   });
 
   const paddingCss = Object.entries(flatTokens)
-    .map(([key, val]) => `.p_${key} { padding: ${val}; }`)
+    .map(
+      ([key, val]) =>
+        `.p_${key} { padding: ${val}; } 
+.pt_${key} { padding-top: ${val}; }
+.pr_${key} { padding-right: ${val}; }  
+.pb_${key} { padding-bottom: ${val}; }
+.pl_${key} { padding-left: ${val}; }
+.px_${key} { padding-left: ${val}; padding-right: ${val}; }
+.py_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
+    )
     .join("\n");
 
   const paddingCssSp = Object.entries(flatTokens)
-    .map(([key, val]) => `.p_sp_${key} { padding: ${val}; }`)
+    .map(
+      ([key, val]) => `.p_sp_${key} { padding: ${val}; } 
+.pt_sp_${key} { padding-top: ${val}; }
+.pr_sp_${key} { padding-right: ${val}; }  
+.pb_sp_${key} { padding-bottom: ${val}; }
+.pl_sp_${key} { padding-left: ${val}; }
+.px_sp_${key} { padding-left: ${val}; padding-right: ${val}; }
+.py_sp_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
+    )
     .join("\n");
 
   const paddingCssTb = Object.entries(flatTokens)
-    .map(([key, val]) => `.p_tb_${key} { padding: ${val}; }`)
+    .map(
+      ([key, val]) => `.p_tb_${key} { padding: ${val}; } 
+.pt_tb_${key} { padding-top: ${val}; }
+.pr_tb_${key} { padding-right: ${val}; }  
+.pb_tb_${key} { padding-bottom: ${val}; }
+.pl_tb_${key} { padding-left: ${val}; }
+.px_tb_${key} { padding-left: ${val}; padding-right: ${val}; }
+.py_tb_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
+    )
     .join("\n");
 
   const paddingCssPc = Object.entries(flatTokens)
-    .map(([key, val]) => `.p_pc_${key} { padding: ${val}; }`)
+    .map(
+      ([key, val]) => `.p_pc_${key} { padding: ${val}; } 
+.pt_pc_${key} { padding-top: ${val}; }
+.pr_pc_${key} { padding-right: ${val}; }  
+.pb_pc_${key} { padding-bottom: ${val}; }
+.pl_pc_${key} { padding-left: ${val}; }
+.px_pc_${key} { padding-left: ${val}; padding-right: ${val}; }
+.py_pc_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
+    )
     .join("\n");
 
   return `/* padding.css */
