@@ -34,6 +34,12 @@
 
 @import "src/assets/styles/common/radius.css";
 
+@import "src/assets/styles/common/gap.css";
+
+@import "src/assets/styles/common/margin.css";
+
+@import "src/assets/styles/common/padding.css";
+
 .core_component {
   box-sizing: border-box;
 }
@@ -165,52 +171,3 @@
 .rowSpanFull {
   grid-row: 1 / -1;
 } */
-
-/* Gap utilities */
-.gap0 {
-  gap: 0;
-}
-
-.gap1 {
-  gap: var(--base-size-4px);
-}
-
-.gap2 {
-  gap: var(--base-size-8px);
-}
-
-.gap3 {
-  gap: 12px;
-}
-
-.gap4 {
-  gap: var(--base-size-16px);
-}
-
-.gap5 {
-  gap: 20px;
-}
-
-.gap6 {
-  gap: var(--base-size-24px);
-}
-
-.gap8 {
-  gap: var(--base-size-32px);
-}
-
-.gap10 {
-  gap: var(--base-size-40px);
-}
-
-.gap12 {
-  gap: var(--base-size-48px);
-}
-
-.gap16 {
-  gap: var(--base-size-64px);
-}
-
-.gap20 {
-  gap: var(--base-size-80px);
-}

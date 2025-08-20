@@ -24,6 +24,8 @@ import {
   SizingValue,
   ElevationType,
   RadiusType,
+  GapType,
+  SpacingType,
 } from "@/types";
 
 // 対応するタグを限定（型爆発防止）
@@ -122,37 +124,23 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   // lineHeight?: ResponsiveValue<LineHeightType>;
   // letterSpacing?: ResponsiveValue<LetterSpacingType>;
 
-  gap?:
-    | "0"
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "8"
-    | "10"
-    | "12"
-    | "16"
-    | "20";
-
-  //ここまで
+  gap?: ResponsiveValue<GapType>;
 
   // Spacing (using design system scale 1-20)
-  p?: ResponsiveSpacing;
-  px?: ResponsiveSpacing;
-  py?: ResponsiveSpacing;
-  pt?: ResponsiveSpacing;
-  pr?: ResponsiveSpacing;
-  pb?: ResponsiveSpacing;
-  pl?: ResponsiveSpacing;
-  m?: ResponsiveSpacing;
-  mx?: ResponsiveSpacing;
-  my?: ResponsiveSpacing;
-  mt?: ResponsiveSpacing;
-  mr?: ResponsiveSpacing;
-  mb?: ResponsiveSpacing;
-  ml?: ResponsiveSpacing;
+  p?: ResponsiveValue<SpacingType>;
+  px?: ResponsiveValue<SpacingType>;
+  py?: ResponsiveValue<SpacingType>;
+  pt?: ResponsiveValue<SpacingType>;
+  pr?: ResponsiveValue<SpacingType>;
+  pb?: ResponsiveValue<SpacingType>;
+  pl?: ResponsiveValue<SpacingType>;
+  m?: ResponsiveValue<SpacingType>;
+  mx?: ResponsiveValue<SpacingType>;
+  my?: ResponsiveValue<SpacingType>;
+  mt?: ResponsiveValue<SpacingType>;
+  mr?: ResponsiveValue<SpacingType>;
+  mb?: ResponsiveValue<SpacingType>;
+  ml?: ResponsiveValue<SpacingType>;
 
   // Sizing
   w?: SizingValue;

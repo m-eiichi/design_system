@@ -494,11 +494,11 @@ const generateGapCss = () => {
     .join("\n");
 
   const gapCssTb = Object.entries(flatTokens)
-    .map(([key, val]) => `.gap_sp_${key} { gap: ${val}; }`)
+    .map(([key, val]) => `.gap_tb_${key} { gap: ${val}; }`)
     .join("\n");
 
   const gapCssPc = Object.entries(flatTokens)
-    .map(([key, val]) => `.gap_sp_${key} { gap: ${val}; }`)
+    .map(([key, val]) => `.gap_pc_${key} { gap: ${val}; }`)
     .join("\n");
 
   return `/* gap.css */
@@ -533,6 +533,139 @@ export const gapPlugin = (): Plugin => {
       if (id === tokenFilePath) {
         console.log(`🔄 gap.ts changed → regenerate gap.css`);
         const css = generateGapCss();
+        writeIfChanged(outputFilePath, css);
+      }
+    },
+  };
+};
+
+// margin.css
+// スペースのトークンオブジェクトをフラット化し、
+// CSS 変数として出力する
+const generateMarginCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...space,
+    ...baseSizePx,
+    rem: baseSizeRem,
+  });
+
+  const marginCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.m_${key} { margin: ${val}; }`)
+    .join("\n");
+
+  const marginCssSp = Object.entries(flatTokens)
+
+    .map(([key, val]) => `.m_sp_${key} { margin: ${val}; }`)
+    .join("\n");
+
+  const marginCssTb = Object.entries(flatTokens)
+
+    .map(([key, val]) => `.m_tb_${key} { margin: ${val}; }`)
+    .join("\n");
+
+  const marginCssPc = Object.entries(flatTokens)
+
+    .map(([key, val]) => `.m_pc_${key} { margin: ${val}; }`)
+    .join("\n");
+
+  return `/* margin.css */
+  \n\n${marginCss}\n
+  @media ${width.viewport.mobile}{\n
+  \n\n${marginCssSp}\n
+  }\n
+  @media ${width.viewport.tablet}{\n
+  ${marginCssTb}\n
+  }\n
+  @media ${width.viewport.overDesktop} {\n
+  ${marginCssPc}\n
+  }
+  `;
+};
+
+export const marginPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/margin.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/assets/styles/common/margin.css",
+  );
+
+  return {
+    name: "generate-spacing-css",
+
+    buildStart() {
+      const css = generateMarginCss();
+      writeIfChanged(outputFilePath, css);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 spacing.ts changed → regenerate spacing.css`);
+        const css = generateMarginCss();
+        writeIfChanged(outputFilePath, css);
+      }
+    },
+  };
+};
+
+// padding.css
+// パディングのトークンオブジェクトをフラット化し、
+// CSS 変数として出力する
+const generatePaddingCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...space,
+    ...baseSizePx,
+    rem: baseSizeRem,
+  });
+
+  const paddingCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.p_${key} { padding: ${val}; }`)
+    .join("\n");
+
+  const paddingCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.p_sp_${key} { padding: ${val}; }`)
+    .join("\n");
+
+  const paddingCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.p_tb_${key} { padding: ${val}; }`)
+    .join("\n");
+
+  const paddingCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.p_pc_${key} { padding: ${val}; }`)
+    .join("\n");
+
+  return `/* padding.css */
+  \n\n${paddingCss}\n
+  @media ${width.viewport.mobile}{\n
+  \n\n${paddingCssSp}\n
+  }\n
+  @media ${width.viewport.tablet}{\n
+  ${paddingCssTb}\n
+  }\n
+  @media ${width.viewport.overDesktop} {\n
+  ${paddingCssPc}\n
+  }
+  `;
+};
+
+export const paddingPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/padding.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/assets/styles/common/padding.css",
+  );
+
+  return {
+    name: "generate-padding-css",
+
+    buildStart() {
+      const css = generatePaddingCss();
+      writeIfChanged(outputFilePath, css);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 padding.ts changed → regenerate padding.css`);
+        const css = generatePaddingCss();
         writeIfChanged(outputFilePath, css);
       }
     },

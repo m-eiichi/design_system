@@ -14,6 +14,7 @@ export const Home: React.FC = () => {
         alignItems={{ sp: "start", tb: "center", pc: "end" }}
         justifyContent={{ sp: "between", tb: "center", pc: "end" }}
         flex={{ sp: "1", tb: "auto", pc: "initial" }}
+        gap={{ sp: "8", tb: "8", pc: "104" }}
         shrink={{ sp: true, tb: "0", pc: false }}
         font={{ sp: "buttonM", tb: "buttonM", pc: "h1L" }}
         onClick={() => {
@@ -25,8 +26,8 @@ export const Home: React.FC = () => {
         className="custom-class"
         // bg={{ sp: "black", tb: "information", pc: "success" }}
         // overflowX={{ sp: "auto", tb: "hidden", pc: "scroll" }}
-        p="1"
-        m="2"
+        p={{ sp: "2", tb: "2", pc: "104" }}
+        m={{ sp: "2", tb: "2", pc: "104" }}
       >
         <CoreComponent
           bg="#000000"
@@ -36,6 +37,8 @@ export const Home: React.FC = () => {
           textAlign={{ sp: "left", tb: "center", pc: "right" }}
           color={{ sp: "base", tb: "warning", pc: "alert" }}
           borderRadius={{ sp: "xs", tb: "xs", pc: "rem8" }}
+          p={{ sp: "2", tb: "2", pc: "104" }}
+          m={{ sp: "2", tb: "2", pc: "104" }}
           onClick={() => {
             console.log("CoreComponent clicked");
           }}

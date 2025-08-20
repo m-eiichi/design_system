@@ -57,3 +57,9 @@ export * from "./text-align-type";
 export * from "./cursor-type";
 
 export * from "./elevation-type";
+
+// gap
+export * from "./gap-type";
+
+// spacing
+export * from "./spacing-type";

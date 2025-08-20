@@ -615,5 +615,40 @@ export const elevationTypeTokenPlugin = (): Plugin => {
   };
 };
 
-// sizeing-type.ts
 // spacing-type.ts
+export const spacingTypeTokenPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/spacing.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/types/spacing-type.ts",
+  );
+  const spacingValue = { ...space, ...baseSizePx, rem: baseSizeRem };
+  return {
+    name: "generate-types-tokens",
+
+    buildStart() {
+      // ビルド開始時に一度生成
+      const types = generateTypes({
+        name: "Spacing",
+        token: spacingValue,
+      });
+      writeIfChanged(outputFilePath, types);
+
+      // tokens.ts を監視対象に追加
+      this.addWatchFile(tokenFilePath);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
+        const types = generateTypes({
+          name: "Spacing",
+          token: spacingValue,
+        });
+        writeIfChanged(outputFilePath, types);
+      }
+    },
+  };
+};
+
+// sizeing-type.ts

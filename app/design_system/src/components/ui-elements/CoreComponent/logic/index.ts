@@ -247,5 +247,50 @@ export const createStyle = (
     ).map((className) => Styles[className]),
   );
 
+  // Gap
+  classNames.push(
+    ...processProperty(props.gap as string | object | undefined, "gap").map(
+      (className) => Styles[className],
+    ),
+  );
+
+  // Margin
+  classNames.push(
+    ...processProperty(props.m as string | object | undefined, "m").map(
+      (className) => Styles[className],
+    ),
+  );
+
+  // MarginTop
+
+  // MarginRight
+
+  // MarginBottom
+
+  // MarginLeft
+
+  // MarginX
+
+  // MarginY
+
+  // Padding
+  classNames.push(
+    ...processProperty(props.p as string | object | undefined, "p").map(
+      (className) => Styles[className],
+    ),
+  );
+
+  // PaddingTop
+
+  // PaddingRight
+
+  // PaddingBottom
+
+  // PaddingLeft
+
+  // PaddingX
+
+  // PaddingY
+
   return { classNames, inlineStyles };
 };

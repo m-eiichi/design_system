@@ -1,4 +1,5 @@
 現在
+margin padding
 font-weight 途中
 
 tokenからvariable.cssとtypeの作成
@@ -12,7 +13,8 @@ tokenからvariable.cssとtypeの作成
 △font.css
 △border.css type以外の対応
 〇radius.css
-spacing.css
+padding.css
+margin.css
 sizeing.css
 
 ---
@@ -43,13 +45,12 @@ sizeing.css
 〇chart-color-type.ts
 〇status-color-type.ts
 〇elevation-type.ts
-font-type.ts
+▲font-type.ts
 〇border-type.ts
 〇radius-type.ts
 △theme-color-type.ts
-gap.ts
-
-sizeing-type.ts
+〇gap.ts
+〇sizeing-type.ts
 spacing-type.ts
 ---
 手動
