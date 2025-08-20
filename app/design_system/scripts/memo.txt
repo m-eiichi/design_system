@@ -3,9 +3,6 @@ font-weight 途中
 
 tokenからvariable.cssとtypeの作成
 
-動作確認
-grow
-
 
 -css
 〇variable.css
@@ -14,7 +11,7 @@ grow
 〇elevation.css
 △font.css
 △border.css type以外の対応
-radius.css
+〇radius.css
 spacing.css
 sizeing.css
 
@@ -48,7 +45,7 @@ sizeing.css
 〇elevation-type.ts
 font-type.ts
 〇border-type.ts
-radius-type.ts
+〇radius-type.ts
 △theme-color-type.ts
 gap.ts
 
@@ -73,10 +70,37 @@ spacing-type.ts
 
 
 課題
+border4方向未完
 bgのレスポンス時のインラインスタイル対応（定義されていないもの）
 border borderValueと組み合わせを出力
+grow確認
 
 手順
 手動：variable.cssの作成、tsの作成、cssの作成、logicの追加、createStyleに引数の追加、cssのimport
 確認箇所：variable.css、type.ts、common.css
 ⭐️font/font-weight/font-size/line-height/letter-spacing
+
+      alignItems,
+      bg,
+      border,
+      borderRadius,
+      color,
+      cursor,
+      display,
+      elevation,
+      flex,
+      flexDirection,
+      flexWrap,
+      font,
+      grow,
+      justifyContent,
+      overflow,
+      overflowX,
+      overflowY,
+      position,
+      shrink,
+      textAlign,
+
+残り
+gap
+grid

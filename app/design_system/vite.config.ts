@@ -9,6 +9,7 @@ import {
   elevationPlugin,
   borderPlugin,
   radiusPlugin,
+  gapPlugin,
 } from "./scripts/css-token-plugin";
 import {
   baseColorTypesTokenPlugin,
@@ -27,6 +28,7 @@ import {
   // themeColorTypesTokenPlugin,
   elevationTypeTokenPlugin,
   radiusTypesTokenPlugin,
+  gapTypeTokenPlugin,
 } from "./scripts/types-token-plugin";
 
 // https://vitejs.dev/config/
@@ -41,6 +43,7 @@ export default defineConfig({
     elevationPlugin(),
     borderPlugin(),
     radiusPlugin(),
+    gapPlugin(),
     //type
     baseColorTypesTokenPlugin(),
     backgroundColorTypesTokenPlugin(),
@@ -57,6 +60,7 @@ export default defineConfig({
     borderTypeTokenPlugin(),
     elevationTypeTokenPlugin(),
     radiusTypesTokenPlugin(),
+    gapTypeTokenPlugin(),
     // themeColorTypesTokenPlugin(),
   ],
   resolve: {

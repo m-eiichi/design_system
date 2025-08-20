@@ -9,6 +9,7 @@ import path from "path";
 import { flattenTokensToKebabCase } from "../src/utils/flatten-tokens-to-kebab-case";
 import { flattenTokensToSnakeCase } from "../src/utils/flatten-tokens-to-snake-case";
 import { tokens } from "../src/tokens/index";
+import { space, baseSizePx, baseSizeRem } from "../src/tokens/size";
 import { baseColor, background, status, text } from "../src/tokens/color";
 import { border } from "../src/tokens/border";
 import { font } from "../src/tokens/font";
@@ -100,7 +101,6 @@ ${bgColorTb}\n
 ${bgColorPc}\n
 }`;
 };
-
 // bg-color.css を生成するViteプラグイン
 export const bgColorPlugin = (): Plugin => {
   const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
@@ -131,7 +131,147 @@ export const bgColorPlugin = (): Plugin => {
   };
 };
 
-// text-color.css
+// border.css
+// ボーダーのトークンオブジェクトをフラット化し
+// CSS 変数として出力する
+const generateBorderCss = () => {
+  const flatTokens = flattenTokensToSnakeCase(border);
+
+  const borderCss = Object.entries(flatTokens)
+    .map(
+      ([key, val]) =>
+        `.border_${key} { border: ${val}; }\n.border_top_${key} { border-top: ${val}; }\n.border_right_${key} { border-right: ${val}; }\n.border_bottom_${key} { border-bottom: ${val}; }\n.border_left_${key} { border-left: ${val}; }`,
+    )
+    .join("\n");
+
+  const borderCssSp = Object.entries(flatTokens)
+    .map(
+      ([key, val]) =>
+        `.border_sp_${key} { border: ${val}; }\n.border_top_sp_${key} { border-top: ${val}; }\n.border_right_sp_${key} { border-right: ${val}; }\n.border_bottom_sp_${key} { border-bottom: ${val}; }\n.border_left_sp_${key} { border-left: ${val}; }`,
+    )
+    .join("\n");
+
+  const borderCssTb = Object.entries(flatTokens)
+    .map(
+      ([key, val]) =>
+        `.border_tb_${key} { border: ${val}; }\n.border_top_tb_${key} { border-top: ${val}; }\n.border_right_tb_${key} { border-right: ${val}; }\n.border_bottom_tb_${key} { border-bottom: ${val}; }\n.border_left_tb_${key} { border-left: ${val}; }`,
+    )
+    .join("\n");
+
+  const borderCssPc = Object.entries(flatTokens)
+    .map(
+      ([key, val]) =>
+        `.border_pc_${key} { border: ${val}; }\n.border_top_pc_${key} { border-top: ${val}; }\n.border_right_pc_${key} { border-right: ${val}; }\n.border_bottom_pc_${key} { border-bottom: ${val}; }\n.border_left_pc_${key} { border-left: ${val}; }`,
+    )
+    .join("\n");
+
+  return `/* border.css */
+\n\n${borderCss}\n
+@media ${width.viewport.mobile}{\n
+\n\n${borderCssSp}\n
+}\n
+@media ${width.viewport.tablet}{\n
+${borderCssTb}\n
+}\n
+@media ${width.viewport.overDesktop} {\n
+${borderCssPc}\n
+}`;
+};
+
+export const borderPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/border.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/assets/styles/common/border.css",
+  );
+
+  return {
+    name: "generate-border-css",
+
+    buildStart() {
+      // ビルド開始時に一度生成
+      const css = generateBorderCss();
+      writeIfChanged(outputFilePath, css);
+
+      // elevation.ts を監視対象に追加
+      this.addWatchFile(tokenFilePath);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 elevation.ts changed → regenerate border.css`);
+        const css = generateBorderCss();
+        writeIfChanged(outputFilePath, css);
+      }
+    },
+  };
+};
+
+// borderRadius(radius.css)
+// 角丸のトークンオブジェクトをフラット化し
+// CSS 変数として出力する
+const generateRadiusCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...radius,
+    ...baseSizePx,
+    rem: baseSizeRem,
+  });
+
+  const borderRadiusCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_radius_${key} { border-radius: ${val}; }`)
+    .join("\n");
+
+  const borderRadiusCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_radius_sp_${key} { border-radius: ${val}; }`)
+    .join("\n");
+
+  const borderRadiusCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_radius_tb_${key} { border-radius: ${val}; }`)
+    .join("\n");
+
+  const borderRadiusCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.border_radius_pc_${key} { border-radius: ${val}; }`)
+    .join("\n");
+
+  return `/* radius.css */
+\n\n${borderRadiusCss}\n
+@media ${width.viewport.mobile}{\n
+\n\n${borderRadiusCssSp}\n
+}\n
+@media ${width.viewport.tablet}{\n
+${borderRadiusCssTb}\n
+}\n
+@media ${width.viewport.overDesktop} {\n
+${borderRadiusCssPc}\n
+}`;
+};
+
+export const radiusPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/assets/styles/common/radius.css",
+  );
+
+  return {
+    name: "generate-radius-css",
+
+    buildStart() {
+      const css = generateRadiusCss();
+      writeIfChanged(outputFilePath, css);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 size.ts changed → regenerate radius.css`);
+        const css = generateRadiusCss();
+        writeIfChanged(outputFilePath, css);
+      }
+    },
+  };
+};
+
+// Color(text-color.css)
 // 文字色のトークンオブジェクトをフラット化し、CSS 変数として出力する
 const generateTextColorCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
@@ -196,6 +336,70 @@ export const textColorPlugin = (): Plugin => {
       if (id === tokenFilePath) {
         console.log(`🔄 colors.ts changed → regenerate text-color.css`);
         const css = generateTextColorCss();
+        writeIfChanged(outputFilePath, css);
+      }
+    },
+  };
+};
+
+// elevation.css
+// エレベーションのトークンオブジェクトをフラット化し
+// CSS 変数として出力する
+const generateElevationCss = () => {
+  const flatTokens = flattenTokensToSnakeCase(elevation);
+
+  const elevationCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.elevation_${key} { box-shadow: ${val}; }`)
+    .join("\n");
+
+  const elevationCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
+    .join("\n");
+
+  const elevationCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
+    .join("\n");
+
+  const elevationCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
+    .join("\n");
+
+  return `/* elevation.css */
+\n\n${elevationCss}\n
+@media ${width.viewport.mobile}{\n
+\n\n${elevationCssSp}\n
+}\n
+@media ${width.viewport.tablet}{\n
+${elevationCssTb}\n
+}\n
+@media ${width.viewport.overDesktop} {\n
+${elevationCssPc}\n
+}`;
+};
+
+export const elevationPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/elevation.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/assets/styles/common/elevation.css",
+  );
+
+  return {
+    name: "generate-elevation-css",
+
+    buildStart() {
+      // ビルド開始時に一度生成
+      const css = generateElevationCss();
+      writeIfChanged(outputFilePath, css);
+
+      // elevation.ts を監視対象に追加
+      this.addWatchFile(tokenFilePath);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 elevation.ts changed → regenerate elevation.css`);
+        const css = generateElevationCss();
         writeIfChanged(outputFilePath, css);
       }
     },
@@ -271,188 +475,64 @@ export const fontPlugin = (): Plugin => {
   };
 };
 
-// elevation.css
-// エレベーションのトークンオブジェクトをフラット化し
+// gap.css
+// ギャップのトークンオブジェクトをフラット化し、
 // CSS 変数として出力する
-const generateElevationCss = () => {
-  const flatTokens = flattenTokensToSnakeCase(elevation);
+const generateGapCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...space,
+    ...baseSizePx,
+    rem: baseSizeRem,
+  });
 
-  const elevationCss = Object.entries(flatTokens)
-    .map(([key, val]) => `.elevation_${key} { box-shadow: ${val}; }`)
+  const gapCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.gap_${key} { gap: ${val}; }`)
     .join("\n");
 
-  const elevationCssSp = Object.entries(flatTokens)
-    .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
+  const gapCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.gap_sp_${key} { gap: ${val}; }`)
     .join("\n");
 
-  const elevationCssTb = Object.entries(flatTokens)
-    .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
+  const gapCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.gap_sp_${key} { gap: ${val}; }`)
     .join("\n");
 
-  const elevationCssPc = Object.entries(flatTokens)
-    .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
+  const gapCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.gap_sp_${key} { gap: ${val}; }`)
     .join("\n");
 
-  return `/* elevation.css */
-\n\n${elevationCss}\n
+  return `/* gap.css */
+\n\n${gapCss}\n
 @media ${width.viewport.mobile}{\n
-\n\n${elevationCssSp}\n
+\n\n${gapCssSp}\n
 }\n
 @media ${width.viewport.tablet}{\n
-${elevationCssTb}\n
+${gapCssTb}\n
 }\n
 @media ${width.viewport.overDesktop} {\n
-${elevationCssPc}\n
+${gapCssPc}\n
 }`;
 };
 
-export const elevationPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/elevation.ts");
+export const gapPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/gap.ts");
   const outputFilePath = path.resolve(
     __dirname,
-    "../src/assets/styles/common/elevation.css",
+    "../src/assets/styles/common/gap.css",
   );
 
   return {
-    name: "generate-elevation-css",
+    name: "generate-gap-css",
 
     buildStart() {
-      // ビルド開始時に一度生成
-      const css = generateElevationCss();
-      writeIfChanged(outputFilePath, css);
-
-      // elevation.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 elevation.ts changed → regenerate elevation.css`);
-        const css = generateElevationCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// border.css
-// ボーダーのトークンオブジェクトをフラット化し
-// CSS 変数として出力する
-const generateBorderCss = () => {
-  const flatTokens = flattenTokensToSnakeCase(border);
-
-  const borderCss = Object.entries(flatTokens)
-    .map(([key, val]) => `.border_${key} { border: ${val}; }`)
-    .join("\n");
-
-  const borderCssSp = Object.entries(flatTokens)
-    .map(([key, val]) => `.border_sp_${key} { border: ${val}; }`)
-    .join("\n");
-
-  const borderCssTb = Object.entries(flatTokens)
-    .map(([key, val]) => `.border_sp_${key} { border: ${val}; }`)
-    .join("\n");
-
-  const borderCssPc = Object.entries(flatTokens)
-    .map(([key, val]) => `.border_sp_${key} { border: ${val}; }`)
-    .join("\n");
-
-  return `/* border.css */
-\n\n${borderCss}\n
-@media ${width.viewport.mobile}{\n
-\n\n${borderCssSp}\n
-}\n
-@media ${width.viewport.tablet}{\n
-${borderCssTb}\n
-}\n
-@media ${width.viewport.overDesktop} {\n
-${borderCssPc}\n
-}`;
-};
-
-export const borderPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/border.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/border.css",
-  );
-
-  return {
-    name: "generate-border-css",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const css = generateBorderCss();
-      writeIfChanged(outputFilePath, css);
-
-      // elevation.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 elevation.ts changed → regenerate border.css`);
-        const css = generateBorderCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// radius.css
-// 角丸のトークンオブジェクトをフラット化し
-// CSS 変数として出力する
-const generateRadiusCss = () => {
-  const flatTokens = flattenTokensToSnakeCase(radius);
-
-  const borderRadiusCss = Object.entries(flatTokens)
-    .map(([key, val]) => `.border_radius_${key} { border-radius: ${val}; }`)
-    .join("\n");
-
-  const borderRadiusCssSp = Object.entries(flatTokens)
-    .map(([key, val]) => `.border_radius_sp_${key} { border-radius: ${val}; }`)
-    .join("\n");
-
-  const borderRadiusCssTb = Object.entries(flatTokens)
-    .map(([key, val]) => `.border_radius_tb_${key} { border-radius: ${val}; }`)
-    .join("\n");
-
-  const borderRadiusCssPc = Object.entries(flatTokens)
-    .map(([key, val]) => `.border_radius_pc_${key} { border-radius: ${val}; }`)
-    .join("\n");
-
-  return `/* radius.css */
-\n\n${borderRadiusCss}\n
-@media ${width.viewport.mobile}{\n
-\n\n${borderRadiusCssSp}\n
-}\n
-@media ${width.viewport.tablet}{\n
-${borderRadiusCssTb}\n
-}\n
-@media ${width.viewport.overDesktop} {\n
-${borderRadiusCssPc}\n
-}`;
-};
-
-export const radiusPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/radius.css",
-  );
-
-  return {
-    name: "generate-radius-css",
-
-    buildStart() {
-      const css = generateRadiusCss();
+      const css = generateGapCss();
       writeIfChanged(outputFilePath, css);
     },
 
     watchChange(id) {
       if (id === tokenFilePath) {
-        console.log(`🔄 size.ts changed → regenerate radius.css`);
-        const css = generateRadiusCss();
+        console.log(`🔄 gap.ts changed → regenerate gap.css`);
+        const css = generateGapCss();
         writeIfChanged(outputFilePath, css);
       }
     },

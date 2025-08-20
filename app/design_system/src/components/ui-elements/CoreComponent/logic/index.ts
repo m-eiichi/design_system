@@ -207,6 +207,38 @@ export const createStyle = (
     ).map((className) => Styles[className]),
   );
 
+  // BorderTop
+  classNames.push(
+    ...processProperty(
+      props.borderTop as string | object | undefined,
+      "border_top",
+    ).map((className) => Styles[className]),
+  );
+
+  // BorderRight
+  classNames.push(
+    ...processProperty(
+      props.borderRight as string | object | undefined,
+      "border_right",
+    ).map((className) => Styles[className]),
+  );
+
+  // BorderBottom
+  classNames.push(
+    ...processProperty(
+      props.borderBottom as string | object | undefined,
+      "border_bottom",
+    ).map((className) => Styles[className]),
+  );
+
+  // BorderLeft
+  classNames.push(
+    ...processProperty(
+      props.borderLeft as string | object | undefined,
+      "border_left",
+    ).map((className) => Styles[className]),
+  );
+
   // BorderRadius
   classNames.push(
     ...processProperty(

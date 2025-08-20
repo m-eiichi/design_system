@@ -28,15 +28,32 @@ import {
 
 // 対応するタグを限定（型爆発防止）
 export type CoreComponentElement =
-  | "div"
+  // テキスト系
+  | "p"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
   | "span"
-  | "button"
-  | "a"
+
+  // コンテナ・セクション系
+  | "div"
   | "section"
   | "article"
+  | "main"
+  | "nav"
+  | "aside"
+  | "ul"
+  | "ol"
+  | "li"
   | "header"
-  | "p"
-  | "footer";
+  | "footer"
+
+  // インタラクティブ系
+  | "button"
+  | "a";
 
 export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   as?: T;
@@ -44,39 +61,67 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   className?: string;
   style?: React.CSSProperties;
 
-  // Layout
+  // Align
+  alignItems?: ResponsiveValue<AlignItemsType>;
+
+  // Background
+  bg?: ResponsiveValue<
+    BaseColorType | BackgroundColorType | StatusColorType | ColorValue
+  >;
+
+  // Border
+  border?: ResponsiveValue<BorderValue | BorderType>;
+  borderTop?: ResponsiveValue<BorderValue | BorderType>;
+  borderRight?: ResponsiveValue<BorderValue | BorderType>;
+  borderBottom?: ResponsiveValue<BorderValue | BorderType>;
+  borderLeft?: ResponsiveValue<BorderValue | BorderType>;
+  borderRadius?: ResponsiveValue<RadiusType>;
+
+  // Color
+  color?: ResponsiveValue<
+    BaseColorType | TextColorType | StatusColorType | ColorValue
+  >;
+
+  // Cursor
+  cursor?: ResponsiveValue<CursorType>;
+
+  // Display
   display?: ResponsiveValue<DisplayType>;
 
-  // Flexbox
+  // Elevation
+  elevation?: ResponsiveValue<ElevationType>;
+
+  // Flex
+  flex?: ResponsiveValue<FlexType>;
   flexDirection?: ResponsiveValue<FlexDirectionType>;
   flexWrap?: ResponsiveValue<FlexWrapType>;
-  alignItems?: ResponsiveValue<AlignItemsType>;
-  justifyContent?: ResponsiveValue<JustifyContentType>;
-  flex?: ResponsiveValue<FlexType>;
+
+  // Grow / Shrink
   grow?: ResponsiveValue<GrowType>;
   shrink?: ResponsiveValue<ShrinkType>;
 
-  // Grid
-  gridTemplateColumns?: "1" | "2" | "3" | "4" | "5" | "6" | "12";
-  gridColumn?:
-    | "span-1"
-    | "span-2"
-    | "span-3"
-    | "span-4"
-    | "span-5"
-    | "span-6"
-    | "span-full";
-  gridTemplateRows?: "1" | "2" | "3" | "4" | "5" | "6";
-  gridRow?:
-    | "span-1"
-    | "span-2"
-    | "span-3"
-    | "span-4"
-    | "span-5"
-    | "span-6"
-    | "span-full";
+  // Justify
+  justifyContent?: ResponsiveValue<JustifyContentType>;
 
-  // Gap
+  // Overflow
+  overflow?: ResponsiveValue<OverflowType>;
+  overflowX?: ResponsiveValue<OverflowType>;
+  overflowY?: ResponsiveValue<OverflowType>;
+
+  // Position
+  position?: ResponsiveValue<PositionType>;
+
+  // Text
+  textAlign?: ResponsiveValue<TextAlignType>;
+
+  // 未完
+  // Font
+  font?: ResponsiveValue<FontType>;
+  // fontWeight?: ResponsiveValue<FontWeightType>;
+  // fontSize?: ResponsiveValue<FontSizeType>;
+  // lineHeight?: ResponsiveValue<LineHeightType>;
+  // letterSpacing?: ResponsiveValue<LetterSpacingType>;
+
   gap?:
     | "0"
     | "1"
@@ -91,19 +136,6 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
     | "16"
     | "20";
 
-  // Position
-  position?: ResponsiveValue<PositionType>;
-
-  // Overflow
-  overflow?: ResponsiveValue<OverflowType>;
-  overflowX?: ResponsiveValue<OverflowType>;
-  overflowY?: ResponsiveValue<OverflowType>;
-
-  // Text
-  textAlign?: ResponsiveValue<TextAlignType>;
-
-  // Cursor
-  cursor?: ResponsiveValue<CursorType>;
   //ここまで
 
   // Spacing (using design system scale 1-20)
@@ -130,29 +162,25 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   maxW?: SizingValue;
   maxH?: SizingValue;
 
-  // Colors (using design system values)
-  bg?: ResponsiveValue<
-    BaseColorType | BackgroundColorType | StatusColorType | ColorValue
-  >;
-  color?: ResponsiveValue<
-    BaseColorType | TextColorType | StatusColorType | ColorValue
-  >;
-
-  // Font
-  font?: ResponsiveValue<FontType>;
-
-  // Borders
-  border?: ResponsiveValue<BorderValue | BorderType>;
-  borderTop?: ResponsiveValue<BorderValue | BorderType>;
-  borderRight?: ResponsiveValue<BorderValue | BorderType>;
-  borderBottom?: ResponsiveValue<BorderValue | BorderType>;
-  borderLeft?: ResponsiveValue<BorderValue | BorderType>;
-
-  // BorderRadius
-  borderRadius?: ResponsiveValue<RadiusType>;
-
-  // Elevation
-  elevation?: ResponsiveValue<ElevationType>;
+  // Grid
+  gridTemplateColumns?: "1" | "2" | "3" | "4" | "5" | "6" | "12";
+  gridColumn?:
+    | "span-1"
+    | "span-2"
+    | "span-3"
+    | "span-4"
+    | "span-5"
+    | "span-6"
+    | "span-full";
+  gridTemplateRows?: "1" | "2" | "3" | "4" | "5" | "6";
+  gridRow?:
+    | "span-1"
+    | "span-2"
+    | "span-3"
+    | "span-4"
+    | "span-5"
+    | "span-6"
+    | "span-full";
 };
 
 // T のタグのネイティブ props から共通 props を除外

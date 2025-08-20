@@ -7,7 +7,7 @@
 import { Plugin } from "vite";
 import path from "path";
 import { flattenTokensKeyToCamelCase } from "../src/utils/flatten-tokens-key-to-camel-case";
-
+import { baseSizePx, baseSizeRem } from "../src/tokens/size";
 import {
   baseColor,
   background,
@@ -18,7 +18,7 @@ import {
   status,
   // theme,
 } from "../src/tokens/color";
-import { radius } from "../src/tokens/size";
+import { space, radius } from "../src/tokens/size";
 import {
   fontSize,
   fontWeight,
@@ -45,6 +45,8 @@ const generateTypes = ({ name, token }: generateTypesProps) => {
 };
 
 // プラグインを定義
+// カラー系の型定義
+// base-color-type.ts
 export const baseColorTypesTokenPlugin = (): Plugin => {
   const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
   const outputFilePath = path.resolve(
@@ -76,29 +78,6 @@ export const baseColorTypesTokenPlugin = (): Plugin => {
         });
         writeIfChanged(outputFilePath, types);
       }
-    },
-  };
-};
-
-// radius-type.ts
-export const radiusTypesTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
-  const outputFilePath = path.resolve(__dirname, "../src/types/radius-type.ts");
-  const radiusValue = radius;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "Radius",
-        token: radiusValue,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
     },
   };
 };
@@ -323,43 +302,40 @@ export const statusColorTypesTokenPlugin = (): Plugin => {
   };
 };
 
-// theme-color-type.ts
-// export const themeColorTypesTokenPlugin = (): Plugin => {
-//   const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-//   const outputFilePath = path.resolve(
-//     __dirname,
-//     "../src/types/theme-color-type.ts",
-//   );
-//   // 現在は空のオブジェクトを使用
-//   const themeColor = theme;
+// フォント系の型定義
+// font-type.ts
+export const fontTypeTokenPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/font.ts");
+  const outputFilePath = path.resolve(__dirname, "../src/types/font-type.ts");
+  const fontValue = font;
 
-//   return {
-//     name: "generate-types-tokens",
+  return {
+    name: "generate-types-tokens",
 
-//     buildStart() {
-//       // ビルド開始時に一度生成
-//       const types = generateTypes({
-//         name: "themeColor",
-//         token: themeColor,
-//       });
-//       writeIfChanged(outputFilePath, types);
+    buildStart() {
+      // ビルド開始時に一度生成
+      const types = generateTypes({
+        name: "Font",
+        token: fontValue,
+      });
+      writeIfChanged(outputFilePath, types);
 
-//       // tokens.ts を監視対象に追加
-//       this.addWatchFile(tokenFilePath);
-//     },
+      // tokens.ts を監視対象に追加
+      this.addWatchFile(tokenFilePath);
+    },
 
-//     watchChange(id) {
-//       if (id === tokenFilePath) {
-//         console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-//         const types = generateTypes({
-//           name: "themeColor",
-//           token: themeColor,
-//         });
-//         writeIfChanged(outputFilePath, types);
-//       }
-//     },
-//   };
-// };
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
+        const types = generateTypes({
+          name: "Font",
+          token: fontValue,
+        });
+        writeIfChanged(outputFilePath, types);
+      }
+    },
+  };
+};
 
 // font-size-type.ts
 export const fontSizeTypeTokenPlugin = (): Plugin => {
@@ -509,6 +485,7 @@ export const letterSpacingTypeTokenPlugin = (): Plugin => {
   };
 };
 
+// ボーダー系の型定義
 // border-type.ts
 export const borderTypeTokenPlugin = (): Plugin => {
   const tokenFilePath = path.resolve(__dirname, "../src/tokens/border.ts");
@@ -543,11 +520,35 @@ export const borderTypeTokenPlugin = (): Plugin => {
   };
 };
 
+// サイズ系の型定義
+// radius-type.ts
+export const radiusTypesTokenPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
+  const outputFilePath = path.resolve(__dirname, "../src/types/radius-type.ts");
+  const radiusValue = { ...radius, ...baseSizePx, rem: baseSizeRem };
+
+  return {
+    name: "generate-types-tokens",
+
+    buildStart() {
+      // ビルド開始時に一度生成
+      const types = generateTypes({
+        name: "Radius",
+        token: radiusValue,
+      });
+      writeIfChanged(outputFilePath, types);
+
+      // tokens.ts を監視対象に追加
+      this.addWatchFile(tokenFilePath);
+    },
+  };
+};
+
 // gap-type.ts
 export const gapTypeTokenPlugin = (): Plugin => {
   const tokenFilePath = path.resolve(__dirname, "../src/tokens/gap.ts");
   const outputFilePath = path.resolve(__dirname, "../src/types/gap-type.ts");
-  const gapValue = border;
+  const gapValue = { ...space, ...baseSizePx, rem: baseSizeRem };
   return {
     name: "generate-types-tokens",
 
@@ -576,40 +577,7 @@ export const gapTypeTokenPlugin = (): Plugin => {
   };
 };
 
-// font-type.ts
-export const fontTypeTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/font.ts");
-  const outputFilePath = path.resolve(__dirname, "../src/types/font-type.ts");
-  const fontValue = font;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "Font",
-        token: fontValue,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "Font",
-          token: fontValue,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
+// エレメント系の型定義
 // elevation-type.ts
 export const elevationTypeTokenPlugin = (): Plugin => {
   const tokenFilePath = path.resolve(__dirname, "../src/tokens/elevation.ts");

@@ -8,6 +8,7 @@ export const Home: React.FC = () => {
       <h1>ホームページへようこそ</h1>
       <p>こちらはホームコンポーネントのベースです。</p>
       <CoreComponent
+        borderTop={"disabled"}
         display="flex"
         flexDirection={{ sp: "row", tb: "col", pc: "colReverse" }}
         alignItems={{ sp: "start", tb: "center", pc: "end" }}
@@ -29,12 +30,12 @@ export const Home: React.FC = () => {
       >
         <CoreComponent
           bg="#000000"
-          border={"disabled"}
+          borderTop={"disabled"}
           elevation={{ sp: "3", tb: "2", pc: "1" }}
           grow={"0"}
           textAlign={{ sp: "left", tb: "center", pc: "right" }}
           color={{ sp: "base", tb: "warning", pc: "alert" }}
-          borderRadius={{ sp: "xs", tb: "xs", pc: "xl" }}
+          borderRadius={{ sp: "xs", tb: "xs", pc: "rem8" }}
           onClick={() => {
             console.log("CoreComponent clicked");
           }}
