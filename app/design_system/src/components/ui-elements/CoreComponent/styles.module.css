@@ -1,44 +1,46 @@
-@import "src/assets/styles/common/bg-color.css";
+@import "../../../../src/assets/styles/common/bg-color.css";
 
-@import "src/assets/styles/common/text-color.css";
+@import "../../../../src/assets/styles/common/text-color.css";
 
-@import "src/assets/styles/common/font.css";
+@import "../../../../src/assets/styles/common/font.css";
 
-@import "src/assets/styles/common/display.css";
+@import "../../../../src/assets/styles/common/display.css";
 
-@import "src/assets/styles/common/flex-direction.css";
+@import "../../../../src/assets/styles/common/flex-direction.css";
 
-@import "src/assets/styles/common/flex-wrap.css";
+@import "../../../../src/assets/styles/common/flex-wrap.css";
 
-@import "src/assets/styles/common/align-items.css";
+@import "../../../../src/assets/styles/common/align-items.css";
 
-@import "src/assets/styles/common/justify-content.css";
+@import "../../../../src/assets/styles/common/justify-content.css";
 
-@import "src/assets/styles/common/flex.css";
+@import "../../../../src/assets/styles/common/flex.css";
 
-@import "src/assets/styles/common/grow.css";
+@import "../../../../src/assets/styles/common/grow.css";
 
-@import "src/assets/styles/common/shrink.css";
+@import "../../../../src/assets/styles/common/shrink.css";
 
-@import "src/assets/styles/common/position.css";
+@import "../../../../src/assets/styles/common/position.css";
 
-@import "src/assets/styles/common/overflow.css";
+@import "../../../../src/assets/styles/common/overflow.css";
 
-@import "src/assets/styles/common/text-align.css";
+@import "../../../../src/assets/styles/common/text-align.css";
 
-@import "src/assets/styles/common/cursor.css";
+@import "../../../../src/assets/styles/common/cursor.css";
 
-@import "src/assets/styles/common/elevation.css";
+@import "../../../../src/assets/styles/common/elevation.css";
 
-@import "src/assets/styles/common/border.css";
+@import "../../../../src/assets/styles/common/border.css";
 
-@import "src/assets/styles/common/radius.css";
+@import "../../../../src/assets/styles/common/radius.css";
 
-@import "src/assets/styles/common/gap.css";
+@import "../../../../src/assets/styles/common/gap.css";
 
-@import "src/assets/styles/common/margin.css";
+@import "../../../../src/assets/styles/common/margin.css";
 
-@import "src/assets/styles/common/padding.css";
+@import "../../../../src/assets/styles/common/padding.css";
+
+@import "../../../../src/assets/styles/common/width.css";
 
 .core_component {
   box-sizing: border-box;

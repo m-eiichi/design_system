@@ -20,12 +20,12 @@ import {
   OverflowType,
   TextAlignType,
   CursorType,
-  ResponsiveSpacing,
-  SizingValue,
+  SizeType,
   ElevationType,
   RadiusType,
   GapType,
   SpacingType,
+  SizeValue,
 } from "@/types";
 
 // 対応するタグを限定（型爆発防止）
@@ -143,12 +143,12 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   // letterSpacing?: ResponsiveValue<LetterSpacingType>;
 
   // Sizing
-  w?: SizingValue;
-  h?: SizingValue;
-  minW?: SizingValue;
-  minH?: SizingValue;
-  maxW?: SizingValue;
-  maxH?: SizingValue;
+  w?: ResponsiveValue<SizeType | SizeValue>;
+  h?: ResponsiveValue<SizeType | SizeValue>;
+  minW?: ResponsiveValue<SizeType | SizeValue>;
+  minH?: ResponsiveValue<SizeType | SizeValue>;
+  maxW?: ResponsiveValue<SizeType | SizeValue>;
+  maxH?: ResponsiveValue<SizeType | SizeValue>;
 
   // Grid
   gridTemplateColumns?: "1" | "2" | "3" | "4" | "5" | "6" | "12";

@@ -478,6 +478,69 @@ export const fontPlugin = (): Plugin => {
 // gap.css
 // ギャップのトークンオブジェクトをフラット化し、
 // CSS 変数として出力する
+const generateWidthCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...baseSizePx,
+    rem: baseSizeRem,
+  });
+
+  const widthCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.w_${key} { width: ${val}; }`)
+    .join("\n");
+
+  const widthCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.w_sp_${key} { width: ${val}; }`)
+    .join("\n");
+
+  const widthCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.w_tb_${key} { width: ${val}; }`)
+    .join("\n");
+
+  const widthCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.w_pc_${key} { width: ${val}; }`)
+    .join("\n");
+
+  return `/* gap.css */
+\n\n${widthCss}\n
+@media ${width.viewport.mobile}{\n
+\n\n${widthCssSp}\n
+}\n
+@media ${width.viewport.tablet}{\n
+${widthCssTb}\n
+}\n
+@media ${width.viewport.overDesktop} {\n
+${widthCssPc}\n
+}`;
+};
+
+export const widthPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
+  const outputFilePath = path.resolve(
+    __dirname,
+    "../src/assets/styles/common/size.css",
+  );
+
+  return {
+    name: "generate-size-css",
+
+    buildStart() {
+      const css = generateWidthCss();
+      writeIfChanged(outputFilePath, css);
+    },
+
+    watchChange(id) {
+      if (id === tokenFilePath) {
+        console.log(`🔄 size.ts changed → regenerate width.css`);
+        const css = generateWidthCss();
+        writeIfChanged(outputFilePath, css);
+      }
+    },
+  };
+};
+
+// gap.css
+// ギャップのトークンオブジェクトをフラット化し、
+// CSS 変数として出力する
 const generateGapCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
     ...space,

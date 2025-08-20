@@ -292,5 +292,12 @@ export const createStyle = (
 
   // PaddingY
 
+  // Width
+  classNames.push(
+    ...processProperty(props.w as string | object | undefined, "w").map(
+      (className) => Styles[className],
+    ),
+  );
+
   return { classNames, inlineStyles };
 };

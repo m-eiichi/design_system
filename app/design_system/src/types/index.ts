@@ -16,9 +16,7 @@ export * from "./border-value";
 export * from "./border-type";
 export * from "./radius-type";
 
-export * from "./shadow-value";
-export * from "./spacing-value";
-export * from "./sizing-value";
+export * from "./sizie-value";
 
 // display
 export * from "./display-type";
@@ -63,3 +61,7 @@ export * from "./gap-type";
 
 // spacing
 export * from "./spacing-type";
+
+// size
+export * from "./size-type";
+export * from "./sizie-value";

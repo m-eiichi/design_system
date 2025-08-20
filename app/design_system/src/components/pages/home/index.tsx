@@ -52,6 +52,7 @@ export const Home: React.FC = () => {
         <CoreComponent
           bg="success"
           cursor={{ sp: "pointer", tb: "default", pc: "notAllowed" }}
+          w="100px"
         >
           ccc
         </CoreComponent>

@@ -521,6 +521,29 @@ export const borderTypeTokenPlugin = (): Plugin => {
 };
 
 // サイズ系の型定義
+// sizeing-type.ts
+export const sizeTypesTokenPlugin = (): Plugin => {
+  const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
+  const outputFilePath = path.resolve(__dirname, "../src/types/size-type.ts");
+  const sizeType = { ...baseSizePx, rem: baseSizeRem };
+
+  return {
+    name: "generate-types-tokens",
+
+    buildStart() {
+      // ビルド開始時に一度生成
+      const types = generateTypes({
+        name: "Size",
+        token: sizeType,
+      });
+      writeIfChanged(outputFilePath, types);
+
+      // tokens.ts を監視対象に追加
+      this.addWatchFile(tokenFilePath);
+    },
+  };
+};
+
 // radius-type.ts
 export const radiusTypesTokenPlugin = (): Plugin => {
   const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
@@ -650,5 +673,3 @@ export const spacingTypeTokenPlugin = (): Plugin => {
     },
   };
 };
-
-// sizeing-type.ts
