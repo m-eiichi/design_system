@@ -1,8 +1,6 @@
 // Vite プラグインとして CSS トークンを生成する
 // このプラグインは、ビルド時に一度だけ CSS トークンを生成し、
-// `src/assets/styles/variable.css` に書き込みます。
-// また、`src/tokens/index.ts` の変更を監視し、
-// 変更があった場合に再生成します。
+// 各トークンファイルの変更を監視し、変更があった場合に再生成します。
 
 import { Plugin } from "vite";
 import path from "path";
@@ -18,51 +16,24 @@ import { width } from "../src/tokens/width";
 import { writeIfChanged } from "../src/utils/write-if-changed";
 import { radius } from "../src/tokens/size";
 
-// トークンをケバブケースフラット化し、CSS 変数として出力する
-// 例: { color: { primary: { base: "#000" } } } → { --color-primary-base: "#000" }
-const generateCss = () => {
-  const flatTokens = flattenTokensToKebabCase(tokens);
+// CSS生成の設定
+type CssConfig = {
+  name: string;
+  generateFunction: () => string;
+  outputPath: string;
+  watchPath: string;
+};
 
+// トークンをケバブケースフラット化し、CSS 変数として出力する
+const generateVariableCss = () => {
+  const flatTokens = flattenTokensToKebabCase(tokens);
   const customProperty = Object.entries(flatTokens)
     .map(([key, val]) => `  --${key}: ${val};`)
     .join("\n");
-
   return `:root {\n${customProperty}\n}`;
 };
 
-// variable.cssを生成するViteプラグイン
-export const cssTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/index.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/variable.css",
-  );
-
-  return {
-    name: "generate-css-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const css = generateCss();
-      writeIfChanged(outputFilePath, css);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    // tokens.ts が変更された場合に再生成
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const css = generateCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// bg-color.css
-// 背景色のトークンオブジェクトをフラット化し、CSS 変数として出力する
+// 背景色のCSSを生成
 const generateBgColorCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
     ...baseColor,
@@ -70,22 +41,15 @@ const generateBgColorCss = () => {
     ...status,
   });
   const bgColor = Object.entries(flatTokens)
-
     .map(([key, val]) => `.bg_${key} { background-color: ${val}; }`)
     .join("\n");
-
   const bgColorSp = Object.entries(flatTokens)
-
     .map(([key, val]) => `.bg_sp_${key} { background-color: ${val}; }`)
     .join("\n");
-
   const bgColorTb = Object.entries(flatTokens)
-
     .map(([key, val]) => `.bg_tb_${key} { background-color: ${val}; }`)
     .join("\n");
-
   const bgColorPc = Object.entries(flatTokens)
-
     .map(([key, val]) => `.bg_pc_${key} { background-color: ${val}; }`)
     .join("\n");
 
@@ -101,63 +65,28 @@ ${bgColorTb}\n
 ${bgColorPc}\n
 }`;
 };
-// bg-color.css を生成するViteプラグイン
-export const bgColorPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/bg-color.css",
-  );
 
-  return {
-    name: "generate-bg-color-css",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const css = generateBgColorCss();
-      writeIfChanged(outputFilePath, css);
-
-      // colors.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 colors.ts changed → regenerate bg-color.css`);
-        const css = generateBgColorCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// border.css
-// ボーダーのトークンオブジェクトをフラット化し
-// CSS 変数として出力する
+// ボーダーのCSSを生成
 const generateBorderCss = () => {
   const flatTokens = flattenTokensToSnakeCase(border);
-
   const borderCss = Object.entries(flatTokens)
     .map(
       ([key, val]) =>
         `.border_${key} { border: ${val}; }\n.border_top_${key} { border-top: ${val}; }\n.border_right_${key} { border-right: ${val}; }\n.border_bottom_${key} { border-bottom: ${val}; }\n.border_left_${key} { border-left: ${val}; }`,
     )
     .join("\n");
-
   const borderCssSp = Object.entries(flatTokens)
     .map(
       ([key, val]) =>
         `.border_sp_${key} { border: ${val}; }\n.border_top_sp_${key} { border-top: ${val}; }\n.border_right_sp_${key} { border-right: ${val}; }\n.border_bottom_sp_${key} { border-bottom: ${val}; }\n.border_left_sp_${key} { border-left: ${val}; }`,
     )
     .join("\n");
-
   const borderCssTb = Object.entries(flatTokens)
     .map(
       ([key, val]) =>
         `.border_tb_${key} { border: ${val}; }\n.border_top_tb_${key} { border-top: ${val}; }\n.border_right_tb_${key} { border-right: ${val}; }\n.border_bottom_tb_${key} { border-bottom: ${val}; }\n.border_left_tb_${key} { border-left: ${val}; }`,
     )
     .join("\n");
-
   const borderCssPc = Object.entries(flatTokens)
     .map(
       ([key, val]) =>
@@ -178,57 +107,22 @@ ${borderCssPc}\n
 }`;
 };
 
-export const borderPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/border.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/border.css",
-  );
-
-  return {
-    name: "generate-border-css",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const css = generateBorderCss();
-      writeIfChanged(outputFilePath, css);
-
-      // elevation.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 elevation.ts changed → regenerate border.css`);
-        const css = generateBorderCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// borderRadius(radius.css)
-// 角丸のトークンオブジェクトをフラット化し
-// CSS 変数として出力する
+// 角丸のCSSを生成
 const generateRadiusCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
     ...radius,
     ...baseSizePx,
     rem: baseSizeRem,
   });
-
   const borderRadiusCss = Object.entries(flatTokens)
     .map(([key, val]) => `.border_radius_${key} { border-radius: ${val}; }`)
     .join("\n");
-
   const borderRadiusCssSp = Object.entries(flatTokens)
     .map(([key, val]) => `.border_radius_sp_${key} { border-radius: ${val}; }`)
     .join("\n");
-
   const borderRadiusCssTb = Object.entries(flatTokens)
     .map(([key, val]) => `.border_radius_tb_${key} { border-radius: ${val}; }`)
     .join("\n");
-
   const borderRadiusCssPc = Object.entries(flatTokens)
     .map(([key, val]) => `.border_radius_pc_${key} { border-radius: ${val}; }`)
     .join("\n");
@@ -246,33 +140,7 @@ ${borderRadiusCssPc}\n
 }`;
 };
 
-export const radiusPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/radius.css",
-  );
-
-  return {
-    name: "generate-radius-css",
-
-    buildStart() {
-      const css = generateRadiusCss();
-      writeIfChanged(outputFilePath, css);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 size.ts changed → regenerate radius.css`);
-        const css = generateRadiusCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// Color(text-color.css)
-// 文字色のトークンオブジェクトをフラット化し、CSS 変数として出力する
+// 文字色のCSSを生成
 const generateTextColorCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
     ...baseColor,
@@ -280,22 +148,15 @@ const generateTextColorCss = () => {
     ...status,
   });
   const textColor = Object.entries(flatTokens)
-
     .map(([key, val]) => `.color_${key} { color: ${val}; }`)
     .join("\n");
-
   const textColorSp = Object.entries(flatTokens)
-
     .map(([key, val]) => `.color_sp_${key} { color: ${val}; }`)
     .join("\n");
-
   const textColorTb = Object.entries(flatTokens)
-
     .map(([key, val]) => `.color_tb_${key} { color: ${val}; }`)
     .join("\n");
-
   const textColorPc = Object.entries(flatTokens)
-
     .map(([key, val]) => `.color_pc_${key} { color: ${val}; }`)
     .join("\n");
 
@@ -312,54 +173,18 @@ ${textColorPc}\n
 }`;
 };
 
-// text-color.css を生成するViteプラグイン
-export const textColorPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/text-color.css",
-  );
-
-  return {
-    name: "generate-text-color-css",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const css = generateTextColorCss();
-      writeIfChanged(outputFilePath, css);
-
-      // colors.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 colors.ts changed → regenerate text-color.css`);
-        const css = generateTextColorCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// elevation.css
-// エレベーションのトークンオブジェクトをフラット化し
-// CSS 変数として出力する
+// エレベーションのCSSを生成
 const generateElevationCss = () => {
   const flatTokens = flattenTokensToSnakeCase(elevation);
-
   const elevationCss = Object.entries(flatTokens)
     .map(([key, val]) => `.elevation_${key} { box-shadow: ${val}; }`)
     .join("\n");
-
   const elevationCssSp = Object.entries(flatTokens)
     .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
     .join("\n");
-
   const elevationCssTb = Object.entries(flatTokens)
     .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
     .join("\n");
-
   const elevationCssPc = Object.entries(flatTokens)
     .map(([key, val]) => `.elevation_sp_${key} { box-shadow: ${val}; }`)
     .join("\n");
@@ -377,62 +202,23 @@ ${elevationCssPc}\n
 }`;
 };
 
-export const elevationPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/elevation.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/elevation.css",
-  );
-
-  return {
-    name: "generate-elevation-css",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const css = generateElevationCss();
-      writeIfChanged(outputFilePath, css);
-
-      // elevation.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 elevation.ts changed → regenerate elevation.css`);
-        const css = generateElevationCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// font.css
-// フォントのトークンオブジェクトをフラット化し、
-// CSS 変数として出力する
+// フォントのCSSを生成
 const generateFontCss = () => {
   const flatTokens = flattenTokensToSnakeCase({ ...font });
-
   const fontCss = Object.entries(flatTokens)
-
     .map(([key, val]) => `.font_${key} { font: ${val}; }`)
     .join("\n");
-
   const fontCssSp = Object.entries(flatTokens)
-
     .map(([key, val]) => `.font_sp_${key} { font: ${val}; }`)
     .join("\n");
-
   const fontCssTb = Object.entries(flatTokens)
-
     .map(([key, val]) => `.font_tb_${key} { font: ${val}; }`)
     .join("\n");
-
   const fontCssPc = Object.entries(flatTokens)
-
     .map(([key, val]) => `.font_pc_${key} { font: ${val}; }`)
     .join("\n");
 
-  return `/* bg-color.css */
+  return `/* font.css */
 \n\n${fontCss}\n
 @media ${width.viewport.mobile}{\n
 \n\n${fontCssSp}\n
@@ -445,62 +231,26 @@ ${fontCssPc}\n
 }`;
 };
 
-// font.css を生成するViteプラグイン
-export const fontPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/font.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/font.css",
-  );
-
-  return {
-    name: "generate-font-css",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const css = generateFontCss();
-      writeIfChanged(outputFilePath, css);
-
-      // font.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 font.ts changed → regenerate font.css`);
-        const css = generateFontCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// gap.css
-// ギャップのトークンオブジェクトをフラット化し、
-// CSS 変数として出力する
+// 幅のCSSを生成
 const generateWidthCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
     ...baseSizePx,
     rem: baseSizeRem,
   });
-
   const widthCss = Object.entries(flatTokens)
     .map(([key, val]) => `.w_${key} { width: ${val}; }`)
     .join("\n");
-
   const widthCssSp = Object.entries(flatTokens)
     .map(([key, val]) => `.w_sp_${key} { width: ${val}; }`)
     .join("\n");
-
   const widthCssTb = Object.entries(flatTokens)
     .map(([key, val]) => `.w_tb_${key} { width: ${val}; }`)
     .join("\n");
-
   const widthCssPc = Object.entries(flatTokens)
     .map(([key, val]) => `.w_pc_${key} { width: ${val}; }`)
     .join("\n");
 
-  return `/* gap.css */
+  return `/* width.css */
 \n\n${widthCss}\n
 @media ${width.viewport.mobile}{\n
 \n\n${widthCssSp}\n
@@ -513,53 +263,22 @@ ${widthCssPc}\n
 }`;
 };
 
-export const widthPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/size.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/size.css",
-  );
-
-  return {
-    name: "generate-size-css",
-
-    buildStart() {
-      const css = generateWidthCss();
-      writeIfChanged(outputFilePath, css);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 size.ts changed → regenerate width.css`);
-        const css = generateWidthCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// gap.css
-// ギャップのトークンオブジェクトをフラット化し、
-// CSS 変数として出力する
+// ギャップのCSSを生成
 const generateGapCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
     ...space,
     ...baseSizePx,
     rem: baseSizeRem,
   });
-
   const gapCss = Object.entries(flatTokens)
     .map(([key, val]) => `.gap_${key} { gap: ${val}; }`)
     .join("\n");
-
   const gapCssSp = Object.entries(flatTokens)
     .map(([key, val]) => `.gap_sp_${key} { gap: ${val}; }`)
     .join("\n");
-
   const gapCssTb = Object.entries(flatTokens)
     .map(([key, val]) => `.gap_tb_${key} { gap: ${val}; }`)
     .join("\n");
-
   const gapCssPc = Object.entries(flatTokens)
     .map(([key, val]) => `.gap_pc_${key} { gap: ${val}; }`)
     .join("\n");
@@ -577,41 +296,13 @@ ${gapCssPc}\n
 }`;
 };
 
-export const gapPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/gap.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/gap.css",
-  );
-
-  return {
-    name: "generate-gap-css",
-
-    buildStart() {
-      const css = generateGapCss();
-      writeIfChanged(outputFilePath, css);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 gap.ts changed → regenerate gap.css`);
-        const css = generateGapCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// margin.css
-// スペースのトークンオブジェクトをフラット化し、
-// CSS 変数として出力する
+// マージンのCSSを生成
 const generateMarginCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
     ...space,
     ...baseSizePx,
     rem: baseSizeRem,
   });
-
   const marginCss = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.m_${key} { margin: ${val}; } 
@@ -623,7 +314,6 @@ const generateMarginCss = () => {
 .my_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
     )
     .join("\n");
-
   const marginCssSp = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.m_sp_${key} { margin: ${val}; } 
@@ -635,7 +325,6 @@ const generateMarginCss = () => {
 .my_sp_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
     )
     .join("\n");
-
   const marginCssTb = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.m_tb_${key} { margin: ${val}; } 
@@ -647,9 +336,7 @@ const generateMarginCss = () => {
 .my_tb_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
     )
     .join("\n");
-
   const marginCssPc = Object.entries(flatTokens)
-
     .map(
       ([key, val]) => `.m_pc_${key} { margin: ${val}; } 
 .mt_pc_${key} { margin-top: ${val}; }
@@ -675,41 +362,13 @@ const generateMarginCss = () => {
   `;
 };
 
-export const marginPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/margin.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/margin.css",
-  );
-
-  return {
-    name: "generate-spacing-css",
-
-    buildStart() {
-      const css = generateMarginCss();
-      writeIfChanged(outputFilePath, css);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 spacing.ts changed → regenerate spacing.css`);
-        const css = generateMarginCss();
-        writeIfChanged(outputFilePath, css);
-      }
-    },
-  };
-};
-
-// padding.css
-// パディングのトークンオブジェクトをフラット化し、
-// CSS 変数として出力する
+// パディングのCSSを生成
 const generatePaddingCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
     ...space,
     ...baseSizePx,
     rem: baseSizeRem,
   });
-
   const paddingCss = Object.entries(flatTokens)
     .map(
       ([key, val]) =>
@@ -722,7 +381,6 @@ const generatePaddingCss = () => {
 .py_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
     )
     .join("\n");
-
   const paddingCssSp = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.p_sp_${key} { padding: ${val}; } 
@@ -734,7 +392,6 @@ const generatePaddingCss = () => {
 .py_sp_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
     )
     .join("\n");
-
   const paddingCssTb = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.p_tb_${key} { padding: ${val}; } 
@@ -746,7 +403,6 @@ const generatePaddingCss = () => {
 .py_tb_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
     )
     .join("\n");
-
   const paddingCssPc = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.p_pc_${key} { padding: ${val}; } 
@@ -773,27 +429,117 @@ const generatePaddingCss = () => {
   `;
 };
 
-export const paddingPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/padding.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/assets/styles/common/padding.css",
-  );
+// 全てのCSS設定を定義
+const cssConfigs: CssConfig[] = [
+  {
+    name: "variable",
+    generateFunction: generateVariableCss,
+    outputPath: "../src/assets/styles/variable.css",
+    watchPath: "../src/tokens/index.ts",
+  },
+  {
+    name: "bg-color",
+    generateFunction: generateBgColorCss,
+    outputPath: "../src/assets/styles/common/bg-color.css",
+    watchPath: "../src/tokens/colors.ts",
+  },
+  {
+    name: "border",
+    generateFunction: generateBorderCss,
+    outputPath: "../src/assets/styles/common/border.css",
+    watchPath: "../src/tokens/border.ts",
+  },
+  {
+    name: "radius",
+    generateFunction: generateRadiusCss,
+    outputPath: "../src/assets/styles/common/radius.css",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "text-color",
+    generateFunction: generateTextColorCss,
+    outputPath: "../src/assets/styles/common/text-color.css",
+    watchPath: "../src/tokens/colors.ts",
+  },
+  {
+    name: "elevation",
+    generateFunction: generateElevationCss,
+    outputPath: "../src/assets/styles/common/elevation.css",
+    watchPath: "../src/tokens/elevation.ts",
+  },
+  {
+    name: "font",
+    generateFunction: generateFontCss,
+    outputPath: "../src/assets/styles/common/font.css",
+    watchPath: "../src/tokens/font.ts",
+  },
+  {
+    name: "width",
+    generateFunction: generateWidthCss,
+    outputPath: "../src/assets/styles/common/size.css",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "gap",
+    generateFunction: generateGapCss,
+    outputPath: "../src/assets/styles/common/gap.css",
+    watchPath: "../src/tokens/gap.ts",
+  },
+  {
+    name: "margin",
+    generateFunction: generateMarginCss,
+    outputPath: "../src/assets/styles/common/margin.css",
+    watchPath: "../src/tokens/margin.ts",
+  },
+  {
+    name: "padding",
+    generateFunction: generatePaddingCss,
+    outputPath: "../src/assets/styles/common/padding.css",
+    watchPath: "../src/tokens/padding.ts",
+  },
+];
+
+// 統合プラグイン
+export const cssTokenPlugin = (): Plugin => {
+  // 監視対象のファイルパスを重複除去して取得
+  const watchPaths = cssConfigs
+    .map((config) => config.watchPath)
+    .filter((path, index, array) => array.indexOf(path) === index);
 
   return {
-    name: "generate-padding-css",
+    name: "generate-css-tokens",
 
     buildStart() {
-      const css = generatePaddingCss();
-      writeIfChanged(outputFilePath, css);
+      // ビルド開始時に全てのCSSファイルを生成
+      cssConfigs.forEach((config) => {
+        const outputFilePath = path.resolve(__dirname, config.outputPath);
+        const css = config.generateFunction();
+        writeIfChanged(outputFilePath, css);
+      });
+
+      // 監視対象のファイルを追加
+      watchPaths.forEach((watchPath) => {
+        const tokenFilePath = path.resolve(__dirname, watchPath);
+        this.addWatchFile(tokenFilePath);
+      });
     },
 
     watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 padding.ts changed → regenerate padding.css`);
-        const css = generatePaddingCss();
+      // 変更されたファイルに対応する設定を取得
+      const changedConfigs = cssConfigs.filter((config) => {
+        const tokenFilePath = path.resolve(__dirname, config.watchPath);
+        return id === tokenFilePath;
+      });
+
+      // 対応するCSSファイルを再生成
+      changedConfigs.forEach((config) => {
+        console.log(
+          `🔄 ${config.watchPath} changed → regenerate ${config.name}.css`,
+        );
+        const outputFilePath = path.resolve(__dirname, config.outputPath);
+        const css = config.generateFunction();
         writeIfChanged(outputFilePath, css);
-      }
+      });
     },
   };
 };
