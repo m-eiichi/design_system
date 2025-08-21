@@ -1,5 +1,4 @@
 
-  export type ChartColorType =
-  | "primary" | "primaryLight" | "secondary" | "secondaryDark"
+export type ChartColorType =
+| "primary" | "primaryLight" | "secondary" | "secondaryDark"
 
-  

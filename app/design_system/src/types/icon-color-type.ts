@@ -1,5 +1,4 @@
 
-  export type IconColorType =
-  | "label" | "active" | "alert" | "disabled" | "labelDark" | "activeDark" | "alertDark" | "disabledDark"
+export type IconColorType =
+| "label" | "active" | "alert" | "disabled" | "labelDark" | "activeDark" | "alertDark" | "disabledDark"
 
-  

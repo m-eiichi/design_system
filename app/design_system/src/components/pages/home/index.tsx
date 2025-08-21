@@ -1,5 +1,4 @@
 import React from "react";
-// import { type ReactElement } from "@/components/";
 import { CoreComponent } from "@/components/ui-elements/CoreComponent";
 
 export const Home: React.FC = () => {

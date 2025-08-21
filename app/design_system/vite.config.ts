@@ -14,28 +14,7 @@ import {
   paddingPlugin,
   widthPlugin,
 } from "./scripts/css-token-plugin";
-import {
-  baseColorTypesTokenPlugin,
-  backgroundColorTypesTokenPlugin,
-  textColorTypesTokenPlugin,
-  iconColorTypesTokenPlugin,
-  buttonColorTypesTokenPlugin,
-  chartColorTypesTokenPlugin,
-  borderTypeTokenPlugin,
-  statusColorTypesTokenPlugin,
-  fontSizeTypeTokenPlugin,
-  fontWeightTypeTokenPlugin,
-  lineHeightTypeTokenPlugin,
-  letterSpacingTypeTokenPlugin,
-  fontTypeTokenPlugin,
-  // themeColorTypesTokenPlugin,
-  elevationTypeTokenPlugin,
-  radiusTypesTokenPlugin,
-  gapTypeTokenPlugin,
-  spacingTypeTokenPlugin,
-  sizeTypesTokenPlugin,
-} from "./scripts/types-token-plugin";
-import { s } from "node_modules/vite/dist/node/types.d-aGj9QkWt";
+import { typesTokenPlugin } from "./scripts/types-token-plugin";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -53,26 +32,8 @@ export default defineConfig({
     marginPlugin(),
     paddingPlugin(),
     widthPlugin(),
-    //type
-    baseColorTypesTokenPlugin(),
-    backgroundColorTypesTokenPlugin(),
-    textColorTypesTokenPlugin(),
-    iconColorTypesTokenPlugin(),
-    buttonColorTypesTokenPlugin(),
-    chartColorTypesTokenPlugin(),
-    statusColorTypesTokenPlugin(),
-    fontSizeTypeTokenPlugin(),
-    fontWeightTypeTokenPlugin(),
-    lineHeightTypeTokenPlugin(),
-    letterSpacingTypeTokenPlugin(),
-    fontTypeTokenPlugin(),
-    borderTypeTokenPlugin(),
-    elevationTypeTokenPlugin(),
-    radiusTypesTokenPlugin(),
-    gapTypeTokenPlugin(),
-    spacingTypeTokenPlugin(),
-    sizeTypesTokenPlugin(),
-    // themeColorTypesTokenPlugin(),
+    // Type definitions
+    typesTokenPlugin(),
   ],
   resolve: {
     alias: {

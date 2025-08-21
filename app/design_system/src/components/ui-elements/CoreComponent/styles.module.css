@@ -40,7 +40,7 @@
 
 @import "../../../../src/assets/styles/common/padding.css";
 
-@import "../../../../src/assets/styles/common/width.css";
+/* @import "../../../../src/assets/styles/common/width.css"; */
 
 .core_component {
   box-sizing: border-box;

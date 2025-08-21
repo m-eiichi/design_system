@@ -1,5 +1,4 @@
 
-  export type BackgroundColorType =
-  | "primary" | "secondary" | "tertiary" | "primaryDark" | "secondaryDark" | "tertiaryDark"
+export type BackgroundColorType =
+| "primary" | "secondary" | "tertiary" | "primaryDark" | "secondaryDark" | "tertiaryDark"
 
-  

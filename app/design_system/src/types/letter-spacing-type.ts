@@ -1,5 +1,4 @@
 
-  export type LetterSpacingType =
-  | "tighter" | "tight" | "normal" | "wide" | "wider" | "widest"
+export type LetterSpacingType =
+| "tighter" | "tight" | "normal" | "wide" | "wider" | "widest"
 
-  
