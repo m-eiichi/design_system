@@ -1,0 +1,56 @@
+/* font.css */
+
+
+.font_weight_thin { font-weight: 100; }
+.font_weight_extralight { font-weight: 200; }
+.font_weight_light { font-weight: 300; }
+.font_weight_normal { font-weight: 400; }
+.font_weight_medium { font-weight: 500; }
+.font_weight_semibold { font-weight: 600; }
+.font_weight_bold { font-weight: 700; }
+.font_weight_extrabold { font-weight: 800; }
+.font_weight_black { font-weight: 900; }
+
+@media screen and (width <= 575px){
+
+
+
+.font_weight_sp_thin { font-weight: 100; }
+.font_weight_sp_extralight { font-weight: 200; }
+.font_weight_sp_light { font-weight: 300; }
+.font_weight_sp_normal { font-weight: 400; }
+.font_weight_sp_medium { font-weight: 500; }
+.font_weight_sp_semibold { font-weight: 600; }
+.font_weight_sp_bold { font-weight: 700; }
+.font_weight_sp_extrabold { font-weight: 800; }
+.font_weight_sp_black { font-weight: 900; }
+
+}
+
+@media screen and (width >= 576px) and (width <= 992px){
+
+.font_weight_tb_thin { font-weight: 100; }
+.font_weight_tb_extralight { font-weight: 200; }
+.font_weight_tb_light { font-weight: 300; }
+.font_weight_tb_normal { font-weight: 400; }
+.font_weight_tb_medium { font-weight: 500; }
+.font_weight_tb_semibold { font-weight: 600; }
+.font_weight_tb_bold { font-weight: 700; }
+.font_weight_tb_extrabold { font-weight: 800; }
+.font_weight_tb_black { font-weight: 900; }
+
+}
+
+@media screen and (width >= 993px) {
+
+.font_weight_pc_thin { font-weight: 100; }
+.font_weight_pc_extralight { font-weight: 200; }
+.font_weight_pc_light { font-weight: 300; }
+.font_weight_pc_normal { font-weight: 400; }
+.font_weight_pc_medium { font-weight: 500; }
+.font_weight_pc_semibold { font-weight: 600; }
+.font_weight_pc_bold { font-weight: 700; }
+.font_weight_pc_extrabold { font-weight: 800; }
+.font_weight_pc_black { font-weight: 900; }
+
+}

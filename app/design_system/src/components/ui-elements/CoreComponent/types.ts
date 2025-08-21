@@ -6,6 +6,10 @@ import {
   TextColorType,
   StatusColorType,
   FontType,
+  FontWeightType,
+  FontSizeType,
+  LineHeightType,
+  LetterSpacingType,
   BorderValue,
   BorderType,
   DisplayType,
@@ -137,10 +141,10 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   // 未完
   // Font
   font?: ResponsiveValue<FontType>;
-  // fontWeight?: ResponsiveValue<FontWeightType>;
-  // fontSize?: ResponsiveValue<FontSizeType>;
-  // lineHeight?: ResponsiveValue<LineHeightType>;
-  // letterSpacing?: ResponsiveValue<LetterSpacingType>;
+  fontWeight?: ResponsiveValue<FontWeightType>;
+  fontSize?: ResponsiveValue<FontSizeType>;
+  lineHeight?: ResponsiveValue<LineHeightType>;
+  letterSpacing?: ResponsiveValue<LetterSpacingType>;
 
   // Sizing
   w?: ResponsiveValue<SizeType | SizeValue>;

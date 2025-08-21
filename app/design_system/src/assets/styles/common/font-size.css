@@ -1,0 +1,84 @@
+/* font.css */
+
+
+.font_size_12 { font-size: 0.75rem; }
+.font_size_14 { font-size: 0.875rem; }
+.font_size_16 { font-size: 1rem; }
+.font_size_17 { font-size: 1.0625rem; }
+.font_size_18 { font-size: 1.125rem; }
+.font_size_20 { font-size: 1.25rem; }
+.font_size_22 { font-size: 1.375rem; }
+.font_size_24 { font-size: 1.5rem; }
+.font_size_26 { font-size: 1.625rem; }
+.font_size_28 { font-size: 1.75rem; }
+.font_size_32 { font-size: 2rem; }
+.font_size_36 { font-size: 2.25rem; }
+.font_size_44 { font-size: 2.75rem; }
+.font_size_48 { font-size: 3rem; }
+.font_size_56 { font-size: 3.5rem; }
+.font_size_64 { font-size: 4rem; }
+
+@media screen and (width <= 575px){
+
+
+
+.font_size_sp_12 { font-size: 0.75rem; }
+.font_size_sp_14 { font-size: 0.875rem; }
+.font_size_sp_16 { font-size: 1rem; }
+.font_size_sp_17 { font-size: 1.0625rem; }
+.font_size_sp_18 { font-size: 1.125rem; }
+.font_size_sp_20 { font-size: 1.25rem; }
+.font_size_sp_22 { font-size: 1.375rem; }
+.font_size_sp_24 { font-size: 1.5rem; }
+.font_size_sp_26 { font-size: 1.625rem; }
+.font_size_sp_28 { font-size: 1.75rem; }
+.font_size_sp_32 { font-size: 2rem; }
+.font_size_sp_36 { font-size: 2.25rem; }
+.font_size_sp_44 { font-size: 2.75rem; }
+.font_size_sp_48 { font-size: 3rem; }
+.font_size_sp_56 { font-size: 3.5rem; }
+.font_size_sp_64 { font-size: 4rem; }
+
+}
+
+@media screen and (width >= 576px) and (width <= 992px){
+
+.font_size_tb_12 { font-size: 0.75rem; }
+.font_size_tb_14 { font-size: 0.875rem; }
+.font_size_tb_16 { font-size: 1rem; }
+.font_size_tb_17 { font-size: 1.0625rem; }
+.font_size_tb_18 { font-size: 1.125rem; }
+.font_size_tb_20 { font-size: 1.25rem; }
+.font_size_tb_22 { font-size: 1.375rem; }
+.font_size_tb_24 { font-size: 1.5rem; }
+.font_size_tb_26 { font-size: 1.625rem; }
+.font_size_tb_28 { font-size: 1.75rem; }
+.font_size_tb_32 { font-size: 2rem; }
+.font_size_tb_36 { font-size: 2.25rem; }
+.font_size_tb_44 { font-size: 2.75rem; }
+.font_size_tb_48 { font-size: 3rem; }
+.font_size_tb_56 { font-size: 3.5rem; }
+.font_size_tb_64 { font-size: 4rem; }
+
+}
+
+@media screen and (width >= 993px) {
+
+.font_size_pc_12 { font-size: 0.75rem; }
+.font_size_pc_14 { font-size: 0.875rem; }
+.font_size_pc_16 { font-size: 1rem; }
+.font_size_pc_17 { font-size: 1.0625rem; }
+.font_size_pc_18 { font-size: 1.125rem; }
+.font_size_pc_20 { font-size: 1.25rem; }
+.font_size_pc_22 { font-size: 1.375rem; }
+.font_size_pc_24 { font-size: 1.5rem; }
+.font_size_pc_26 { font-size: 1.625rem; }
+.font_size_pc_28 { font-size: 1.75rem; }
+.font_size_pc_32 { font-size: 2rem; }
+.font_size_pc_36 { font-size: 2.25rem; }
+.font_size_pc_44 { font-size: 2.75rem; }
+.font_size_pc_48 { font-size: 3rem; }
+.font_size_pc_56 { font-size: 3.5rem; }
+.font_size_pc_64 { font-size: 4rem; }
+
+}

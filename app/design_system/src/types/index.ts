@@ -65,3 +65,8 @@ export * from "./spacing-type";
 // size
 export * from "./size-type";
 export * from "./sizie-value";
+export * from "./font-size-type";
+// export * from "./font-type";
+export * from "./font-weight-type";
+export * from "./letter-spacing-type";
+export * from "./line-height-type";

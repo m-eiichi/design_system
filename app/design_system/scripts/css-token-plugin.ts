@@ -10,7 +10,7 @@ import { tokens } from "../src/tokens/index";
 import { space, baseSizePx, baseSizeRem } from "../src/tokens/size";
 import { baseColor, background, status, text } from "../src/tokens/color";
 import { border } from "../src/tokens/border";
-import { font } from "../src/tokens/font";
+import { font, fontWeight, fontSize } from "../src/tokens/font";
 import { elevation } from "../src/tokens/elevation";
 import { width } from "../src/tokens/width";
 import { writeIfChanged } from "../src/utils/write-if-changed";
@@ -228,6 +228,64 @@ ${fontCssTb}\n
 }\n
 @media ${width.viewport.overDesktop} {\n
 ${fontCssPc}\n
+}`;
+};
+
+// フォントの太さのCSSを生成
+const generateFontWeightCss = () => {
+  const flatTokens = flattenTokensToSnakeCase(fontWeight);
+  const fontWeightCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.font_weight_${key} { font-weight: ${val}; }`)
+    .join("\n");
+  const fontWeightCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.font_weight_sp_${key} { font-weight: ${val}; }`)
+    .join("\n");
+  const fontWeightCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.font_weight_tb_${key} { font-weight: ${val}; }`)
+    .join("\n");
+  const fontWeightCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.font_weight_pc_${key} { font-weight: ${val}; }`)
+    .join("\n");
+
+  return `/* font.css */
+\n\n${fontWeightCss}\n
+@media ${width.viewport.mobile}{\n
+\n\n${fontWeightCssSp}\n
+}\n
+@media ${width.viewport.tablet}{\n
+${fontWeightCssTb}\n
+}\n
+@media ${width.viewport.overDesktop} {\n
+${fontWeightCssPc}\n
+}`;
+};
+
+// フォントの太さのCSSを生成
+const generateFontSizeCss = () => {
+  const flatTokens = flattenTokensToSnakeCase(fontSize);
+  const fontSizeCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.font_size_${key} { font-size: ${val}; }`)
+    .join("\n");
+  const fontSizeCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.font_size_sp_${key} { font-size: ${val}; }`)
+    .join("\n");
+  const fontSizeCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.font_size_tb_${key} { font-size: ${val}; }`)
+    .join("\n");
+  const fontSizeCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.font_size_pc_${key} { font-size: ${val}; }`)
+    .join("\n");
+
+  return `/* font.css */
+\n\n${fontSizeCss}\n
+@media ${width.viewport.mobile}{\n
+\n\n${fontSizeCssSp}\n
+}\n
+@media ${width.viewport.tablet}{\n
+${fontSizeCssTb}\n
+}\n
+@media ${width.viewport.overDesktop} {\n
+${fontSizeCssPc}\n
 }`;
 };
 
@@ -472,6 +530,18 @@ const cssConfigs: CssConfig[] = [
     generateFunction: generateFontCss,
     outputPath: "../src/assets/styles/common/font.css",
     watchPath: "../src/tokens/font.ts",
+  },
+  {
+    name: "fontWeight",
+    generateFunction: generateFontWeightCss,
+    outputPath: "../src/assets/styles/common/font-weight.css",
+    watchPath: "../src/tokens/fontWeight.ts",
+  },
+  {
+    name: "fontSize",
+    generateFunction: generateFontSizeCss,
+    outputPath: "../src/assets/styles/common/font-size.css",
+    watchPath: "../src/tokens/fontSize.ts",
   },
   {
     name: "width",
