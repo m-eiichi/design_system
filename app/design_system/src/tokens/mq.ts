@@ -5,7 +5,7 @@ const breakpoint = {
   lDesktop: 1240,
 };
 
-export const width = {
+export const mq = {
   ...Object.fromEntries(
     Object.entries(breakpoint).map(([key, value]) => [key, `${value}px`]),
   ),

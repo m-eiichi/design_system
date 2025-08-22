@@ -12,7 +12,7 @@ import { baseColor, background, status, text } from "../src/tokens/color";
 import { border } from "../src/tokens/border";
 import { font, fontWeight, fontSize } from "../src/tokens/font";
 import { elevation } from "../src/tokens/elevation";
-import { width } from "../src/tokens/width";
+import { mq } from "../src/tokens/mq";
 import { writeIfChanged } from "../src/utils/write-if-changed";
 import { radius } from "../src/tokens/size";
 
@@ -55,13 +55,13 @@ const generateBgColorCss = () => {
 
   return `/* bg-color.css */
 \n\n${bgColor}\n
-@media ${width.viewport.mobile}{\n
+@media ${mq.viewport.mobile}{\n
 \n\n${bgColorSp}\n
 }\n
-@media ${width.viewport.tablet}{\n
+@media ${mq.viewport.tablet}{\n
 ${bgColorTb}\n
 }\n
-@media ${width.viewport.overDesktop} {\n
+@media ${mq.viewport.overDesktop} {\n
 ${bgColorPc}\n
 }`;
 };
@@ -96,13 +96,13 @@ const generateBorderCss = () => {
 
   return `/* border.css */
 \n\n${borderCss}\n
-@media ${width.viewport.mobile}{\n
+@media ${mq.viewport.mobile}{\n
 \n\n${borderCssSp}\n
 }\n
-@media ${width.viewport.tablet}{\n
+@media ${mq.viewport.tablet}{\n
 ${borderCssTb}\n
 }\n
-@media ${width.viewport.overDesktop} {\n
+@media ${mq.viewport.overDesktop} {\n
 ${borderCssPc}\n
 }`;
 };
@@ -129,13 +129,13 @@ const generateRadiusCss = () => {
 
   return `/* radius.css */
 \n\n${borderRadiusCss}\n
-@media ${width.viewport.mobile}{\n
+@media ${mq.viewport.mobile}{\n
 \n\n${borderRadiusCssSp}\n
 }\n
-@media ${width.viewport.tablet}{\n
+@media ${mq.viewport.tablet}{\n
 ${borderRadiusCssTb}\n
 }\n
-@media ${width.viewport.overDesktop} {\n
+@media ${mq.viewport.overDesktop} {\n
 ${borderRadiusCssPc}\n
 }`;
 };
@@ -162,13 +162,13 @@ const generateTextColorCss = () => {
 
   return `/* color.css */
 \n\n${textColor}\n
-@media ${width.viewport.mobile}{\n
+@media ${mq.viewport.mobile}{\n
 \n\n${textColorSp}\n
 }\n
-@media ${width.viewport.tablet}{\n
+@media ${mq.viewport.tablet}{\n
 ${textColorTb}\n
 }\n
-@media ${width.viewport.overDesktop} {\n
+@media ${mq.viewport.overDesktop} {\n
 ${textColorPc}\n
 }`;
 };
@@ -191,13 +191,13 @@ const generateElevationCss = () => {
 
   return `/* elevation.css */
 \n\n${elevationCss}\n
-@media ${width.viewport.mobile}{\n
+@media ${mq.viewport.mobile}{\n
 \n\n${elevationCssSp}\n
 }\n
-@media ${width.viewport.tablet}{\n
+@media ${mq.viewport.tablet}{\n
 ${elevationCssTb}\n
 }\n
-@media ${width.viewport.overDesktop} {\n
+@media ${mq.viewport.overDesktop} {\n
 ${elevationCssPc}\n
 }`;
 };
@@ -220,13 +220,13 @@ const generateFontCss = () => {
 
   return `/* font.css */
 \n\n${fontCss}\n
-@media ${width.viewport.mobile}{\n
+@media ${mq.viewport.mobile}{\n
 \n\n${fontCssSp}\n
 }\n
-@media ${width.viewport.tablet}{\n
+@media ${mq.viewport.tablet}{\n
 ${fontCssTb}\n
 }\n
-@media ${width.viewport.overDesktop} {\n
+@media ${mq.viewport.overDesktop} {\n
 ${fontCssPc}\n
 }`;
 };
@@ -249,13 +249,13 @@ const generateFontWeightCss = () => {
 
   return `/* font.css */
 \n\n${fontWeightCss}\n
-@media ${width.viewport.mobile}{\n
+@media ${mq.viewport.mobile}{\n
 \n\n${fontWeightCssSp}\n
 }\n
-@media ${width.viewport.tablet}{\n
+@media ${mq.viewport.tablet}{\n
 ${fontWeightCssTb}\n
 }\n
-@media ${width.viewport.overDesktop} {\n
+@media ${mq.viewport.overDesktop} {\n
 ${fontWeightCssPc}\n
 }`;
 };
@@ -278,13 +278,13 @@ const generateFontSizeCss = () => {
 
   return `/* font.css */
 \n\n${fontSizeCss}\n
-@media ${width.viewport.mobile}{\n
+@media ${mq.viewport.mobile}{\n
 \n\n${fontSizeCssSp}\n
 }\n
-@media ${width.viewport.tablet}{\n
+@media ${mq.viewport.tablet}{\n
 ${fontSizeCssTb}\n
 }\n
-@media ${width.viewport.overDesktop} {\n
+@media ${mq.viewport.overDesktop} {\n
 ${fontSizeCssPc}\n
 }`;
 };
@@ -310,13 +310,13 @@ const generateWidthCss = () => {
 
   return `/* width.css */
 \n\n${widthCss}\n
-@media ${width.viewport.mobile}{\n
+@media ${mq.viewport.mobile}{\n
 \n\n${widthCssSp}\n
 }\n
-@media ${width.viewport.tablet}{\n
+@media ${mq.viewport.tablet}{\n
 ${widthCssTb}\n
 }\n
-@media ${width.viewport.overDesktop} {\n
+@media ${mq.viewport.overDesktop} {\n
 ${widthCssPc}\n
 }`;
 };
@@ -343,13 +343,13 @@ const generateGapCss = () => {
 
   return `/* gap.css */
 \n\n${gapCss}\n
-@media ${width.viewport.mobile}{\n
+@media ${mq.viewport.mobile}{\n
 \n\n${gapCssSp}\n
 }\n
-@media ${width.viewport.tablet}{\n
+@media ${mq.viewport.tablet}{\n
 ${gapCssTb}\n
 }\n
-@media ${width.viewport.overDesktop} {\n
+@media ${mq.viewport.overDesktop} {\n
 ${gapCssPc}\n
 }`;
 };
@@ -364,57 +364,57 @@ const generateMarginCss = () => {
   const marginCss = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.m_${key} { margin: ${val}; } 
+.mx_${key} { margin-left: ${val}; margin-right: ${val}; }
+.my_${key} { margin-top: ${val}; margin-bottom: ${val}; }
 .mt_${key} { margin-top: ${val}; }
 .mr_${key} { margin-right: ${val}; }  
 .mb_${key} { margin-bottom: ${val}; }
-.ml_${key} { margin-left: ${val}; }
-.mx_${key} { margin-left: ${val}; margin-right: ${val}; }
-.my_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
+.ml_${key} { margin-left: ${val}; }`,
     )
     .join("\n");
   const marginCssSp = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.m_sp_${key} { margin: ${val}; } 
+.mx_sp_${key} { margin-left: ${val}; margin-right: ${val}; }
+.my_sp_${key} { margin-top: ${val}; margin-bottom: ${val}; }
 .mt_sp_${key} { margin-top: ${val}; }
 .mr_sp_${key} { margin-right: ${val}; }  
 .mb_sp_${key} { margin-bottom: ${val}; }
-.ml_sp_${key} { margin-left: ${val}; }
-.mx_sp_${key} { margin-left: ${val}; margin-right: ${val}; }
-.my_sp_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
+.ml_sp_${key} { margin-left: ${val}; }`,
     )
     .join("\n");
   const marginCssTb = Object.entries(flatTokens)
     .map(
-      ([key, val]) => `.m_tb_${key} { margin: ${val}; } 
+      ([key, val]) => `.m_tb_${key} { margin: ${val}; }
+.mx_tb_${key} { margin-left: ${val}; margin-right: ${val}; }
+.my_tb_${key} { margin-top: ${val}; margin-bottom: ${val}; } 
 .mt_tb_${key} { margin-top: ${val}; }
 .mr_tb_${key} { margin-right: ${val}; }  
 .mb_tb_${key} { margin-bottom: ${val}; }
-.ml_tb_${key} { margin-left: ${val}; }
-.mx_tb_${key} { margin-left: ${val}; margin-right: ${val}; }
-.my_tb_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
+.ml_tb_${key} { margin-left: ${val}; }`,
     )
     .join("\n");
   const marginCssPc = Object.entries(flatTokens)
     .map(
-      ([key, val]) => `.m_pc_${key} { margin: ${val}; } 
+      ([key, val]) => `.m_pc_${key} { margin: ${val}; }
+.mx_pc_${key} { margin-left: ${val}; margin-right: ${val}; }
+.my_pc_${key} { margin-top: ${val}; margin-bottom: ${val}; } 
 .mt_pc_${key} { margin-top: ${val}; }
 .mr_pc_${key} { margin-right: ${val}; }  
 .mb_pc_${key} { margin-bottom: ${val}; }
-.ml_pc_${key} { margin-left: ${val}; }
-.mx_pc_${key} { margin-left: ${val}; margin-right: ${val}; }
-.my_pc_${key} { margin-top: ${val}; margin-bottom: ${val}; }`,
+.ml_pc_${key} { margin-left: ${val}; }`,
     )
     .join("\n");
 
   return `/* margin.css */
   \n\n${marginCss}\n
-  @media ${width.viewport.mobile}{\n
+  @media ${mq.viewport.mobile}{\n
   \n\n${marginCssSp}\n
   }\n
-  @media ${width.viewport.tablet}{\n
+  @media ${mq.viewport.tablet}{\n
   ${marginCssTb}\n
   }\n
-  @media ${width.viewport.overDesktop} {\n
+  @media ${mq.viewport.overDesktop} {\n
   ${marginCssPc}\n
   }
   `;
@@ -431,57 +431,57 @@ const generatePaddingCss = () => {
     .map(
       ([key, val]) =>
         `.p_${key} { padding: ${val}; } 
+.px_${key} { padding-left: ${val}; padding-right: ${val}; }
+.py_${key} { padding-top: ${val}; padding-bottom: ${val}; }
 .pt_${key} { padding-top: ${val}; }
 .pr_${key} { padding-right: ${val}; }  
 .pb_${key} { padding-bottom: ${val}; }
-.pl_${key} { padding-left: ${val}; }
-.px_${key} { padding-left: ${val}; padding-right: ${val}; }
-.py_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
+.pl_${key} { padding-left: ${val}; }`,
     )
     .join("\n");
   const paddingCssSp = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.p_sp_${key} { padding: ${val}; } 
+.px_sp_${key} { padding-left: ${val}; padding-right: ${val}; }
+.py_sp_${key} { padding-top: ${val}; padding-bottom: ${val}; }
 .pt_sp_${key} { padding-top: ${val}; }
 .pr_sp_${key} { padding-right: ${val}; }  
 .pb_sp_${key} { padding-bottom: ${val}; }
-.pl_sp_${key} { padding-left: ${val}; }
-.px_sp_${key} { padding-left: ${val}; padding-right: ${val}; }
-.py_sp_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
+.pl_sp_${key} { padding-left: ${val}; }`,
     )
     .join("\n");
   const paddingCssTb = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.p_tb_${key} { padding: ${val}; } 
+.px_tb_${key} { padding-left: ${val}; padding-right: ${val}; }
+.py_tb_${key} { padding-top: ${val}; padding-bottom: ${val}; }
 .pt_tb_${key} { padding-top: ${val}; }
 .pr_tb_${key} { padding-right: ${val}; }  
 .pb_tb_${key} { padding-bottom: ${val}; }
-.pl_tb_${key} { padding-left: ${val}; }
-.px_tb_${key} { padding-left: ${val}; padding-right: ${val}; }
-.py_tb_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
+.pl_tb_${key} { padding-left: ${val}; }`,
     )
     .join("\n");
   const paddingCssPc = Object.entries(flatTokens)
     .map(
       ([key, val]) => `.p_pc_${key} { padding: ${val}; } 
+.px_pc_${key} { padding-left: ${val}; padding-right: ${val}; }
+.py_pc_${key} { padding-top: ${val}; padding-bottom: ${val}; }
 .pt_pc_${key} { padding-top: ${val}; }
 .pr_pc_${key} { padding-right: ${val}; }  
 .pb_pc_${key} { padding-bottom: ${val}; }
-.pl_pc_${key} { padding-left: ${val}; }
-.px_pc_${key} { padding-left: ${val}; padding-right: ${val}; }
-.py_pc_${key} { padding-top: ${val}; padding-bottom: ${val}; }`,
+.pl_pc_${key} { padding-left: ${val}; }`,
     )
     .join("\n");
 
   return `/* padding.css */
   \n\n${paddingCss}\n
-  @media ${width.viewport.mobile}{\n
+  @media ${mq.viewport.mobile}{\n
   \n\n${paddingCssSp}\n
   }\n
-  @media ${width.viewport.tablet}{\n
+  @media ${mq.viewport.tablet}{\n
   ${paddingCssTb}\n
   }\n
-  @media ${width.viewport.overDesktop} {\n
+  @media ${mq.viewport.overDesktop} {\n
   ${paddingCssPc}\n
   }
   `;

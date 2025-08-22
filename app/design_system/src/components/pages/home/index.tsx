@@ -29,6 +29,7 @@ export const Home: React.FC = () => {
         m={{ sp: "2", tb: "2", pc: "104" }}
       >
         <CoreComponent
+          w={{ sp: "100px", tb: "100px", pc: "1000px" }}
           bg="#000000"
           borderTop={"disabled"}
           elevation={{ sp: "3", tb: "2", pc: "1" }}

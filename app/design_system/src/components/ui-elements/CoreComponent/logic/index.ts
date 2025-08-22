@@ -2,10 +2,16 @@ import { type ClassValue } from "clsx";
 
 import Styles from "../styles.module.css";
 
-import { processProperty, processColorProperty } from "@/utils/create-styles";
+import {
+  processProperty,
+  processColorProperty,
+  processWidthHeightProperty,
+} from "@/utils/create-styles";
 import { flattenObject } from "@/utils/flatten-object";
 import { toSnakeCase } from "@/utils/snake-case";
 import { baseColor, background, status, text } from "@/tokens/color";
+import { baseSizePx, baseSizeRem } from "@/tokens/size";
+
 import { GrowType, ShrinkType } from "@/types";
 
 // 背景色のトークンオブジェクトをフラット化し、キーをキャメルケースに変換してオブジェクトとして返す
@@ -13,6 +19,19 @@ export const flattenedBackgroundColorMap = flattenObject({
   ...baseColor,
   ...background,
   ...status,
+});
+
+// テキスト色のトークンオブジェクトをフラット化し、キーをキャメルケースに変換してオブジェクトとして返す
+const flattenedTextColorMap = flattenObject({
+  ...baseColor,
+  ...text,
+  ...status,
+});
+
+// 幅のトークンオブジェクトをフラット化し、キーをキャメルケースに変換してオブジェクトとして返す
+export const flattenedWidthHeightMap = flattenObject({
+  ...baseSizePx,
+  ...baseSizeRem,
 });
 
 // classNamesとinlineStylesを作成する
@@ -153,11 +172,6 @@ export const createStyle = (
   );
 
   // Background
-  const flattenedBackgroundColorMap = flattenObject({
-    ...baseColor,
-    ...background,
-    ...status,
-  });
   classNames.push(
     ...processColorProperty(
       props.bg as string | object | undefined,
@@ -168,16 +182,21 @@ export const createStyle = (
   );
 
   // TextColor
-  const flattenedTextColorMap = flattenObject({
-    ...baseColor,
-    ...text,
-    ...status,
-  });
   classNames.push(
     ...processColorProperty(
       props.color as string | object | undefined,
       "color",
       flattenedTextColorMap,
+      inlineStyles,
+    ).map((className) => Styles[className]),
+  );
+
+  // Width
+  classNames.push(
+    ...processWidthHeightProperty(
+      props.w as string | object | undefined,
+      "w",
+      flattenedWidthHeightMap,
       inlineStyles,
     ).map((className) => Styles[className]),
   );
@@ -262,16 +281,41 @@ export const createStyle = (
   );
 
   // MarginTop
+  classNames.push(
+    ...processProperty(props.mt as string | object | undefined, "mt").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // MarginRight
+  classNames.push(
+    ...processProperty(props.mr as string | object | undefined, "mr").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // MarginBottom
 
   // MarginLeft
+  classNames.push(
+    ...processProperty(props.ml as string | object | undefined, "ml").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // MarginX
+  classNames.push(
+    ...processProperty(props.mx as string | object | undefined, "mx").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // MarginY
+  classNames.push(
+    ...processProperty(props.my as string | object | undefined, "my").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // Padding
   classNames.push(
@@ -281,16 +325,46 @@ export const createStyle = (
   );
 
   // PaddingTop
+  classNames.push(
+    ...processProperty(props.pt as string | object | undefined, "pt").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // PaddingRight
+  classNames.push(
+    ...processProperty(props.pr as string | object | undefined, "pr").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // PaddingBottom
+  classNames.push(
+    ...processProperty(props.pb as string | object | undefined, "pb").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // PaddingLeft
+  classNames.push(
+    ...processProperty(props.pl as string | object | undefined, "pl").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // PaddingX
+  classNames.push(
+    ...processProperty(props.px as string | object | undefined, "px").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // PaddingY
+  classNames.push(
+    ...processProperty(props.py as string | object | undefined, "py").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // Width
   classNames.push(

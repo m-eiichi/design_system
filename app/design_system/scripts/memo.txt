@@ -118,3 +118,19 @@ grow確認
 
 残り
 grid
+
+
+======
+cursor
+CoreComponentの現在の課題
+
+3. CSSファイルの未生成
+styles.module.cssでwidth.cssがコメントアウトされている
+
+4. 重複したflattenedBackgroundColorMap
+logic/index.tsでflattenedBackgroundColorMapが2回定義されている（行13と行158）
+
+5. 未使用のプロパティ
+index.tsxで定義されているがlogic/index.tsで処理されていないプロパティ：
+h, minW, minH, maxW, maxH
+

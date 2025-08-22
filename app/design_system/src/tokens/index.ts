@@ -11,8 +11,8 @@ import { elevation } from "./elevation";
 import { baseSizePx, baseSizeRem, radius, space } from "./size";
 import { border } from "./border";
 import { height } from "./height";
-import { width } from "./width";
 import { transition } from "./transition";
+import { mq } from "./mq";
 
 // tokens.ts
 export const tokens = {
@@ -46,12 +46,12 @@ export const tokens = {
   // === height ===
   ...height,
 
-  // === width ===
-  ...width,
-
   // === elevation ===
   elevation: elevation,
 
   // === transition ===
   transition: transition,
+
+  // === mq ===
+  ...mq,
 };

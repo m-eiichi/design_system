@@ -352,16 +352,6 @@
   --border-disabled-dark: #666 1px solid;
   --border-disabled-dark-bold: #666 2px solid;
   --height-min-button: 44px;
-  --mobile: 575px;
-  --tablet: 576px;
-  --desktop: 993px;
-  --l-desktop: 1240px;
-  --viewport-mobile: screen and (width <= 575px);
-  --viewport-tablet: screen and (width >= 576px) and (width <= 992px);
-  --viewport-desktop: screen and (min-width: 993) and (max-width: 1239px);
-  --viewport-over-tablet: screen and (min-width: 576px);
-  --viewport-over-desktop: screen and (width >= 993px);
-  --viewport-l-desktop: screen and (min-width: 1240px);
   --elevation1: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
   --elevation2: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
   --elevation3: rgb(0 0 0 / 20%) 0px 3px 3px -2px, rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px;
@@ -381,4 +371,14 @@
   --elevation-overlay8: linear-gradient(rgb(255 255 255 / 14.7%), rgb(255 255 255 / 14.7%));
   --elevation-overlay9: linear-gradient(rgb(255 255 255 / 16.5%), rgb(255 255 255 / 16.5%));
   --transition-delay-default: 0.25s cubic-bezier(0.37, 0, 0.63, 1);
+  --mobile: 575px;
+  --tablet: 576px;
+  --desktop: 993px;
+  --l-desktop: 1240px;
+  --viewport-mobile: screen and (width <= 575px);
+  --viewport-tablet: screen and (width >= 576px) and (width <= 992px);
+  --viewport-desktop: screen and (min-width: 993) and (max-width: 1239px);
+  --viewport-over-tablet: screen and (min-width: 576px);
+  --viewport-over-desktop: screen and (width >= 993px);
+  --viewport-l-desktop: screen and (min-width: 1240px);
 }
