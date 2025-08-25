@@ -321,6 +321,166 @@ ${widthCssPc}\n
 }`;
 };
 
+// 高さのCSSを生成
+const generateHeightCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...baseSizePx,
+    rem: baseSizeRem,
+  });
+  const heightCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.h_${key} { height: ${val}; }`)
+    .join("\n");
+  const heightCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.h_sp_${key} { height: ${val}; }`)
+    .join("\n");
+  const heightCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.h_tb_${key} { height: ${val}; }`)
+    .join("\n");
+  const heightCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.h_pc_${key} { height: ${val}; }`)
+    .join("\n");
+
+  return `/* height.css */
+\n\n${heightCss}\n
+@media ${mq.viewport.mobile}{\n
+\n\n${heightCssSp}\n
+}\n
+@media ${mq.viewport.tablet}{\n
+${heightCssTb}\n
+}\n
+@media ${mq.viewport.overDesktop} {\n
+${heightCssPc}\n
+}`;
+};
+
+// 最小幅のCSSを生成
+const generateMinWidthCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...baseSizePx,
+    rem: baseSizeRem,
+  });
+  const minWidthCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.min_w_${key} { min-width: ${val}; }`)
+    .join("\n");
+  const minWidthCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.min_w_sp_${key} { min-width: ${val}; }`)
+    .join("\n");
+  const minWidthCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.min_w_tb_${key} { min-width: ${val}; }`)
+    .join("\n");
+  const minWidthCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.min_w_pc_${key} { min-width: ${val}; }`)
+    .join("\n");
+
+  return `/* min-width.css */
+\n\n${minWidthCss}\n
+@media ${mq.viewport.mobile}{\n
+\n\n${minWidthCssSp}\n
+}\n
+@media ${mq.viewport.tablet}{\n
+${minWidthCssTb}\n
+}\n
+@media ${mq.viewport.overDesktop} {\n
+${minWidthCssPc}\n
+}`;
+};
+
+// 最大幅のCSSを生成
+const generateMaxWidthCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...baseSizePx,
+    rem: baseSizeRem,
+  });
+  const maxWidthCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.max_w_${key} { max-width: ${val}; }`)
+    .join("\n");
+  const maxWidthCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.max_w_sp_${key} { max-width: ${val}; }`)
+    .join("\n");
+  const maxWidthCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.max_w_tb_${key} { max-width: ${val}; }`)
+    .join("\n");
+  const maxWidthCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.max_w_pc_${key} { max-width: ${val}; }`)
+    .join("\n");
+
+  return `/* max-width.css */
+\n\n${maxWidthCss}\n
+@media ${mq.viewport.mobile}{\n
+\n\n${maxWidthCssSp}\n
+}\n
+@media ${mq.viewport.tablet}{\n
+${maxWidthCssTb}\n
+}\n
+@media ${mq.viewport.overDesktop} {\n
+${maxWidthCssPc}\n
+}`;
+};
+
+// 最大高さのCSSを生成
+const generateMaxHeightCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...baseSizePx,
+    rem: baseSizeRem,
+  });
+  const maxHeightCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.max_h_${key} { max-height: ${val}; }`)
+    .join("\n");
+  const maxHeightCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.max_h_sp_${key} { max-height: ${val}; }`)
+    .join("\n");
+  const maxHeightCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.max_h_tb_${key} { max-height: ${val}; }`)
+    .join("\n");
+  const maxHeightCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.max_h_pc_${key} { max-height: ${val}; }`)
+    .join("\n");
+
+  return `/* max-height.css */
+\n\n${maxHeightCss}\n
+@media ${mq.viewport.mobile}{\n
+\n\n${maxHeightCssSp}\n
+}\n
+@media ${mq.viewport.tablet}{\n
+${maxHeightCssTb}\n
+}\n
+@media ${mq.viewport.overDesktop} {\n
+${maxHeightCssPc}\n
+}`;
+};
+
+// 最小幅のCSSを生成
+const generateMinHeightCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...baseSizePx,
+    rem: baseSizeRem,
+  });
+  const minHeightCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.min_h_${key} { min-height: ${val}; }`)
+    .join("\n");
+  const minHeightCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.min_h_sp_${key} { min-height: ${val}; }`)
+    .join("\n");
+  const minHeightCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.min_h_tb_${key} { min-height: ${val}; }`)
+    .join("\n");
+  const minHeightCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.min_h_pc_${key} { min-height: ${val}; }`)
+    .join("\n");
+
+  return `/* min-height.css */
+\n\n${minHeightCss}\n
+@media ${mq.viewport.mobile}{\n
+\n\n${minHeightCssSp}\n
+}\n
+@media ${mq.viewport.tablet}{\n
+${minHeightCssTb}\n
+}\n
+@media ${mq.viewport.overDesktop} {\n
+${minHeightCssPc}\n
+}`;
+};
+
 // ギャップのCSSを生成
 const generateGapCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
@@ -566,6 +726,43 @@ const cssConfigs: CssConfig[] = [
     generateFunction: generatePaddingCss,
     outputPath: "../src/assets/styles/common/padding.css",
     watchPath: "../src/tokens/padding.ts",
+  },
+  {
+    name: "width",
+    generateFunction: generateWidthCss,
+    outputPath: "../src/assets/styles/common/width.css",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "height",
+    generateFunction: generateHeightCss,
+    outputPath: "../src/assets/styles/common/height.css",
+    watchPath: "../src/tokens/size.ts",
+  },
+
+  {
+    name: "min-width",
+    generateFunction: generateMinWidthCss,
+    outputPath: "../src/assets/styles/common/min-width.css",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "max-width",
+    generateFunction: generateMaxWidthCss,
+    outputPath: "../src/assets/styles/common/max-width.css",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "min-height",
+    generateFunction: generateMinHeightCss,
+    outputPath: "../src/assets/styles/common/min-height.css",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "max-height",
+    generateFunction: generateMaxHeightCss,
+    outputPath: "../src/assets/styles/common/max-height.css",
+    watchPath: "../src/tokens/size.ts",
   },
 ];
 

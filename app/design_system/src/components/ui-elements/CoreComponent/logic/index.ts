@@ -201,6 +201,53 @@ export const createStyle = (
     ).map((className) => Styles[className]),
   );
 
+  // Height
+  classNames.push(
+    ...processWidthHeightProperty(
+      props.h as string | object | undefined,
+      "h",
+      flattenedWidthHeightMap,
+      inlineStyles,
+    ).map((className) => Styles[className]),
+  );
+
+  // MinWidth
+  classNames.push(
+    ...processWidthHeightProperty(
+      props.minW as string | object | undefined,
+      "min_w",
+      flattenedWidthHeightMap,
+      inlineStyles,
+    ).map((className) => Styles[className]),
+  );
+  // MaxWidth
+  classNames.push(
+    ...processWidthHeightProperty(
+      props.maxW as string | object | undefined,
+      "max_w",
+      flattenedWidthHeightMap,
+      inlineStyles,
+    ).map((className) => Styles[className]),
+  );
+  // MinHeight
+  classNames.push(
+    ...processWidthHeightProperty(
+      props.minH as string | object | undefined,
+      "min_h",
+      flattenedWidthHeightMap,
+      inlineStyles,
+    ).map((className) => Styles[className]),
+  );
+  // MaxHeight
+  classNames.push(
+    ...processWidthHeightProperty(
+      props.maxH as string | object | undefined,
+      "max_h",
+      flattenedWidthHeightMap,
+      inlineStyles,
+    ).map((className) => Styles[className]),
+  );
+
   // Font
   classNames.push(
     ...processProperty(
@@ -295,6 +342,11 @@ export const createStyle = (
   );
 
   // MarginBottom
+  classNames.push(
+    ...processProperty(props.mb as string | object | undefined, "mb").map(
+      (className) => Styles[className],
+    ),
+  );
 
   // MarginLeft
   classNames.push(

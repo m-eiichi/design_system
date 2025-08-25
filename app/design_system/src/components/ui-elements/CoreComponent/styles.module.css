@@ -42,7 +42,17 @@
 
 @import "../../../../src/assets/styles/common/padding.css";
 
-/* @import "../../../../src/assets/styles/common/width.css"; */
+@import "../../../../src/assets/styles/common/width.css";
+
+@import "../../../../src/assets/styles/common/height.css";
+
+@import "../../../../src/assets/styles/common/min-width.css";
+
+@import "../../../../src/assets/styles/common/max-width.css";
+
+@import "../../../../src/assets/styles/common/min-height.css";
+
+@import "../../../../src/assets/styles/common/max-height.css";
 
 .core_component {
   box-sizing: border-box;

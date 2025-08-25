@@ -51,8 +51,21 @@ export const Home: React.FC = () => {
         <CoreComponent bg="information">bbb</CoreComponent>
         <CoreComponent
           bg="success"
+          pl={{ sp: "2", tb: "2", pc: "104" }}
+          pr={{ sp: "2", tb: "2", pc: "104" }}
+          pt={{ sp: "2", tb: "2", pc: "104" }}
+          pb={{ sp: "2", tb: "2", pc: "104" }}
+          ml={{ sp: "2", tb: "2", pc: "104" }}
+          mr={{ sp: "2", tb: "2", pc: "104" }}
+          mt={{ sp: "2", tb: "2", pc: "104" }}
+          mb={{ sp: "2", tb: "2", pc: "104" }}
           cursor={{ sp: "pointer", tb: "default", pc: "notAllowed" }}
           w="100px"
+          h="100px"
+          minW="100px"
+          maxW="100px"
+          minH="100px"
+          maxH="100px"
         >
           ccc
         </CoreComponent>
