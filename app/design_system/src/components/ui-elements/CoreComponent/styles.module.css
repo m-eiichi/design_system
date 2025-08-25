@@ -58,24 +58,6 @@
   box-sizing: border-box;
 }
 
-/* Flexbox utilities */
-
-/* .flex1 {
-  flex: 1 1 0%;
-}
-
-.flexAuto {
-  flex: 1 1 auto;
-}
-
-.flexInitial {
-  flex: 0 1 auto;
-}
-
-.flexNone {
-  flex: none;
-} */
-
 /* Grid utilities */
 
 /* .gridCols1 {
