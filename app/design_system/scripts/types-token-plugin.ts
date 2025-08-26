@@ -147,7 +147,7 @@ const tokenConfigs: TokenConfig[] = [
   {
     name: "Gap",
     token: { ...space, ...baseSizePx, rem: baseSizeRem },
-    outputPath: "../src/types/gap-type.ts",
+    outputPath: "../src/types/flex-grid/gap-type.ts",
     watchPath: "../src/tokens/gap.ts",
   },
   {

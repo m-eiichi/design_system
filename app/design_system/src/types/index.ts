@@ -14,6 +14,14 @@ export * from "./font/font-weight-type";
 export * from "./font/letter-spacing-type";
 export * from "./font/line-height-type";
 export * from "./font/font-size-type";
+// text-align
+export * from "./text-align-type";
+
+// spacing
+export * from "./spacing-type";
+// size
+export * from "./size-type";
+export * from "./size-value";
 
 // border
 export * from "./border-value";
@@ -23,32 +31,26 @@ export * from "./radius-type";
 // display
 export * from "./display-type";
 
+// flex-grid
 // flex
-export * from "./flex/flex-direction-type"; // flex-direction
-export * from "./flex/flex-wrap-type"; // flex-wrap
-
-// flex
-export * from "./flex/flex-type";
-export * from "./flex/flex-direction-type"; // flex-direction
-export * from "./flex/flex-wrap-type"; // flex-wrap
-
+export * from "./flex-grid/flex/flex-type";
+export * from "./flex-grid/flex/flex-direction-type"; // flex-direction
+export * from "./flex-grid/flex/flex-wrap-type"; // flex-wrap
 // grid
-export * from "./grid/grid-template-columns-type"; // grid-template-columns
-export * from "./grid/grid-column-type"; // grid-column
-export * from "./grid/grid-template-rows-type"; // grid-template-rows
-export * from "./grid/grid-row-type"; // grid-row
-
+export * from "./flex-grid/grid/grid-template-columns-type"; // grid-template-columns
+export * from "./flex-grid/grid/grid-column-type"; // grid-column
+export * from "./flex-grid/grid/grid-template-rows-type"; // grid-template-rows
+export * from "./flex-grid/grid/grid-row-type"; // grid-row
 // align-items
-export * from "./align-items-type";
-
+export * from "./flex-grid/align-items-type";
 // justify-content
-export * from "./justify-content-type";
-
+export * from "./flex-grid/justify-content-type";
 // grow
-export * from "./flex/grow-type";
-
+export * from "./flex-grid/grow-type";
 // shrink
-export * from "./flex/shrink-type";
+export * from "./flex-grid/shrink-type";
+// gap
+export * from "./flex-grid/gap-type";
 
 // position
 export * from "./position-type";
@@ -56,20 +58,8 @@ export * from "./position-type";
 // overflow
 export * from "./overflow-type";
 
-// text-align
-export * from "./text-align-type";
-
 // cursor
 export * from "./cursor-type";
 
+// elevation
 export * from "./elevation-type";
-
-// gap
-export * from "./gap-type";
-
-// spacing
-export * from "./spacing-type";
-
-// size
-export * from "./size-type";
-export * from "./size-value";

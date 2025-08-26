@@ -67,6 +67,8 @@ export const Home: React.FC = () => {
           minH="100px"
           maxH="100px"
           fontWeight={{ sp: "bold", tb: "bold", pc: "thin" }}
+          lineHeight={{ sp: "100", tb: "100", pc: "100" }}
+          letterSpacing={{ sp: "tighter", tb: "tight", pc: "wide" }}
         >
           ccc
         </CoreComponent>

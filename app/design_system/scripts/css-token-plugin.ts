@@ -685,6 +685,44 @@ const generateLineHeightCss = () => {
   `;
 };
 
+// 文字間隔のCSSを生成
+const generateLetterSpacingCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...letterSpacing,
+  });
+  const letterSpacingCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.letter_spacing_${key} { letter-spacing: ${val}; }`)
+    .join("\n");
+  const letterSpacingCssSp = Object.entries(flatTokens)
+    .map(
+      ([key, val]) => `.letter_spacing_sp_${key} { letter-spacing: ${val}; }`,
+    )
+    .join("\n");
+  const letterSpacingCssTb = Object.entries(flatTokens)
+    .map(
+      ([key, val]) => `.letter_spacing_tb_${key} { letter-spacing: ${val}; }`,
+    )
+    .join("\n");
+  const letterSpacingCssPc = Object.entries(flatTokens)
+    .map(
+      ([key, val]) => `.letter_spacing_pc_${key} { letter-spacing: ${val}; }`,
+    )
+    .join("\n");
+
+  return `/* letter-spacing.css */
+  \n\n${letterSpacingCss}\n
+  @media ${mq.viewport.mobile}{\n
+  \n\n${letterSpacingCssSp}\n
+  }\n
+  @media ${mq.viewport.tablet}{\n
+  ${letterSpacingCssTb}\n
+  }\n
+  @media ${mq.viewport.overDesktop} {\n
+  ${letterSpacingCssPc}\n
+  }
+  `;
+};
+
 // 全てのCSS設定を定義
 const cssConfigs: CssConfig[] = [
   {
@@ -719,19 +757,25 @@ const cssConfigs: CssConfig[] = [
     name: "fontWeight",
     generateFunction: generateFontWeightCss,
     outputPath: "../src/assets/styles/common/font/font-weight.css",
-    watchPath: "../src/tokens/fontWeight.ts",
+    watchPath: "../src/tokens/font.ts",
   },
   {
     name: "fontSize",
     generateFunction: generateFontSizeCss,
     outputPath: "../src/assets/styles/common/font/font-size.css",
-    watchPath: "../src/tokens/fontSize.ts",
+    watchPath: "../src/tokens/font.ts",
   },
   {
     name: "lineHeight",
     generateFunction: generateLineHeightCss,
     outputPath: "../src/assets/styles/common/font/line-height.css",
-    watchPath: "../src/tokens/lineHeight.ts",
+    watchPath: "../src/tokens/font.ts",
+  },
+  {
+    name: "letterSpacing",
+    generateFunction: generateLetterSpacingCss,
+    outputPath: "../src/assets/styles/common/font/letter-spacing.css",
+    watchPath: "../src/tokens/font.ts",
   },
 
   {

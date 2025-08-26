@@ -1,26 +1,42 @@
-@import "../../../../src/assets/styles/common/bg-color.css";
+@import "../../../../src/assets/styles/common/color/bg-color.css";
 
-@import "../../../../src/assets/styles/common/text-color.css";
+@import "../../../../src/assets/styles/common/color/text-color.css";
 
-@import "../../../../src/assets/styles/common/font.css";
+@import "../../../../src/assets/styles/common/font/font.css";
 
-@import "../../../../src/assets/styles/common/font-weight.css";
+@import "../../../../src/assets/styles/common/font/font-weight.css";
+
+@import "../../../../src/assets/styles/common/font/font-size.css";
+
+@import "../../../../src/assets/styles/common/font/line-height.css";
+
+@import "../../../../src/assets/styles/common/font/letter-spacing.css";
 
 @import "../../../../src/assets/styles/common/display.css";
 
-@import "../../../../src/assets/styles/common/flex-direction.css";
+@import "../../../../src/assets/styles/common/flex-grid/flex/flex-direction.css";
 
-@import "../../../../src/assets/styles/common/flex-wrap.css";
+@import "../../../../src/assets/styles/common/flex-grid/flex/flex-wrap.css";
 
-@import "../../../../src/assets/styles/common/align-items.css";
+@import "../../../../src/assets/styles/common/flex-grid/align-items.css";
 
-@import "../../../../src/assets/styles/common/justify-content.css";
+@import "../../../../src/assets/styles/common/flex-grid/justify-content.css";
 
-@import "../../../../src/assets/styles/common/flex.css";
+@import "../../../../src/assets/styles/common/flex-grid/flex/flex.css";
 
-@import "../../../../src/assets/styles/common/grow.css";
+@import "../../../../src/assets/styles/common/flex-grid/grid/grid-template-columns.css";
 
-@import "../../../../src/assets/styles/common/shrink.css";
+@import "../../../../src/assets/styles/common/flex-grid/grid/grid-template-rows.css";
+
+@import "../../../../src/assets/styles/common/flex-grid/grid/grid-row.css";
+
+@import "../../../../src/assets/styles/common/flex-grid/grid/grid-column.css";
+
+@import "../../../../src/assets/styles/common/flex-grid/grow.css";
+
+@import "../../../../src/assets/styles/common/flex-grid/shrink.css";
+
+@import "../../../../src/assets/styles/common/flex-grid/gap.css";
 
 @import "../../../../src/assets/styles/common/position.css";
 
@@ -36,31 +52,21 @@
 
 @import "../../../../src/assets/styles/common/radius.css";
 
-@import "../../../../src/assets/styles/common/gap.css";
-
 @import "../../../../src/assets/styles/common/margin.css";
 
 @import "../../../../src/assets/styles/common/padding.css";
 
-@import "../../../../src/assets/styles/common/width.css";
+@import "../../../../src/assets/styles/common/width/width.css";
 
-@import "../../../../src/assets/styles/common/height.css";
+@import "../../../../src/assets/styles/common/width/min-width.css";
 
-@import "../../../../src/assets/styles/common/min-width.css";
+@import "../../../../src/assets/styles/common/width/max-width.css";
 
-@import "../../../../src/assets/styles/common/max-width.css";
+@import "../../../../src/assets/styles/common/height/height.css";
 
-@import "../../../../src/assets/styles/common/min-height.css";
+@import "../../../../src/assets/styles/common/height/min-height.css";
 
-@import "../../../../src/assets/styles/common/max-height.css";
-
-@import "../../../../src/assets/styles/common/grid-cols.css";
-
-@import "../../../../src/assets/styles/common/grid-rows.css";
-
-@import "../../../../src/assets/styles/common/row-span.css";
-
-@import "../../../../src/assets/styles/common/col-span.css";
+@import "../../../../src/assets/styles/common/height/max-height.css";
 
 .core_component {
   box-sizing: border-box;

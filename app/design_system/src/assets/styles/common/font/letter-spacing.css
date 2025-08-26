@@ -1,0 +1,45 @@
+/* letter-spacing.css */
+  
+
+.letter_spacing_tighter { letter-spacing: -0.05em; }
+.letter_spacing_tight { letter-spacing: -0.025em; }
+.letter_spacing_normal { letter-spacing: 0; }
+.letter_spacing_wide { letter-spacing: 0.05em; }
+.letter_spacing_wider { letter-spacing: 0.1em; }
+.letter_spacing_widest { letter-spacing: 0.2em; }
+
+  @media screen and (width <= 575px){
+
+  
+
+.letter_spacing_sp_tighter { letter-spacing: -0.05em; }
+.letter_spacing_sp_tight { letter-spacing: -0.025em; }
+.letter_spacing_sp_normal { letter-spacing: 0; }
+.letter_spacing_sp_wide { letter-spacing: 0.05em; }
+.letter_spacing_sp_wider { letter-spacing: 0.1em; }
+.letter_spacing_sp_widest { letter-spacing: 0.2em; }
+
+  }
+
+  @media screen and (width >= 576px) and (width <= 992px){
+
+  .letter_spacing_tb_tighter { letter-spacing: -0.05em; }
+.letter_spacing_tb_tight { letter-spacing: -0.025em; }
+.letter_spacing_tb_normal { letter-spacing: 0; }
+.letter_spacing_tb_wide { letter-spacing: 0.05em; }
+.letter_spacing_tb_wider { letter-spacing: 0.1em; }
+.letter_spacing_tb_widest { letter-spacing: 0.2em; }
+
+  }
+
+  @media screen and (width >= 993px) {
+
+  .letter_spacing_pc_tighter { letter-spacing: -0.05em; }
+.letter_spacing_pc_tight { letter-spacing: -0.025em; }
+.letter_spacing_pc_normal { letter-spacing: 0; }
+.letter_spacing_pc_wide { letter-spacing: 0.05em; }
+.letter_spacing_pc_wider { letter-spacing: 0.1em; }
+.letter_spacing_pc_widest { letter-spacing: 0.2em; }
+
+  }
+  
