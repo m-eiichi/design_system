@@ -94,6 +94,44 @@ export const createStyle = (
     ),
   );
 
+  // Grid
+
+  // GridColumns
+  classNames.push(
+    ...processProperty(
+      props.gridTemplateColumns as string | object | undefined,
+      "grid_template_columns",
+    ).map((className) => Styles[className]),
+  );
+
+  // GridRows
+  classNames.push(
+    ...processProperty(
+      props.gridTemplateRows as string | object | undefined,
+      "grid_template_rows",
+    ).map((className) => Styles[className]),
+  );
+
+  // RowSpan
+  classNames.push(
+    ...processProperty(
+      props.gridRow as string | object | undefined,
+      "grid_row",
+    ).map((className) => Styles[className]),
+  );
+
+  // ColSpan
+  classNames.push(
+    ...processProperty(
+      props.gridColumn as string | object | undefined,
+      "grid_column",
+    ).map((className) => Styles[className]),
+  );
+
+  // GridGap
+
+  // Grid
+
   // Grow
   if (props.grow !== undefined) {
     if (typeof props.grow === "string" || typeof props.grow === "boolean") {
@@ -220,6 +258,7 @@ export const createStyle = (
       inlineStyles,
     ).map((className) => Styles[className]),
   );
+
   // MaxWidth
   classNames.push(
     ...processWidthHeightProperty(
@@ -229,6 +268,7 @@ export const createStyle = (
       inlineStyles,
     ).map((className) => Styles[className]),
   );
+
   // MinHeight
   classNames.push(
     ...processWidthHeightProperty(
@@ -238,6 +278,7 @@ export const createStyle = (
       inlineStyles,
     ).map((className) => Styles[className]),
   );
+
   // MaxHeight
   classNames.push(
     ...processWidthHeightProperty(
@@ -418,11 +459,36 @@ export const createStyle = (
     ),
   );
 
-  // Width
+  // FontWeight
   classNames.push(
-    ...processProperty(props.w as string | object | undefined, "w").map(
-      (className) => Styles[className],
-    ),
+    ...processProperty(
+      props.fontWeight as string | object | undefined,
+      "font_weight",
+    ).map((className) => Styles[className]),
+  );
+
+  // FontSize
+  classNames.push(
+    ...processProperty(
+      props.fontSize as string | object | undefined,
+      "font_size",
+    ).map((className) => Styles[className]),
+  );
+
+  // LineHeight
+  classNames.push(
+    ...processProperty(
+      props.lineHeight as string | object | undefined,
+      "line_height",
+    ).map((className) => Styles[className]),
+  );
+
+  // LetterSpacing
+  classNames.push(
+    ...processProperty(
+      props.letterSpacing as string | object | undefined,
+      "letter_spacing",
+    ).map((className) => Styles[className]),
   );
 
   return { classNames, inlineStyles };

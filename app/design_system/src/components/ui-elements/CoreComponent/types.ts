@@ -30,6 +30,10 @@ import {
   GapType,
   SpacingType,
   SizeValue,
+  GridTemplateColumnsType,
+  GridColumnType,
+  GridTemplateRowsType,
+  GridRowType,
 } from "@/types";
 
 // 対応するタグを限定（型爆発防止）
@@ -67,9 +71,6 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   className?: string;
   style?: React.CSSProperties;
 
-  // Align
-  alignItems?: ResponsiveValue<AlignItemsType>;
-
   // Background
   bg?: ResponsiveValue<
     BaseColorType | BackgroundColorType | StatusColorType | ColorValue
@@ -102,12 +103,21 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   flexDirection?: ResponsiveValue<FlexDirectionType>;
   flexWrap?: ResponsiveValue<FlexWrapType>;
 
+  // Grid
+  gridTemplateColumns?: ResponsiveValue<GridTemplateColumnsType>;
+  gridColumn?: ResponsiveValue<GridColumnType>;
+  gridTemplateRows?: ResponsiveValue<GridTemplateRowsType>;
+  gridRow?: ResponsiveValue<GridRowType>;
+
   // Grow / Shrink
   grow?: ResponsiveValue<GrowType>;
   shrink?: ResponsiveValue<ShrinkType>;
 
   // Justify
   justifyContent?: ResponsiveValue<JustifyContentType>;
+
+  // Align
+  alignItems?: ResponsiveValue<AlignItemsType>;
 
   // Overflow
   overflow?: ResponsiveValue<OverflowType>;
@@ -138,7 +148,6 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   mb?: ResponsiveValue<SpacingType>;
   ml?: ResponsiveValue<SpacingType>;
 
-  // 未完
   // Font
   font?: ResponsiveValue<FontType>;
   fontWeight?: ResponsiveValue<FontWeightType>;
@@ -153,26 +162,6 @@ export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
   minH?: ResponsiveValue<SizeType | SizeValue>;
   maxW?: ResponsiveValue<SizeType | SizeValue>;
   maxH?: ResponsiveValue<SizeType | SizeValue>;
-
-  // Grid
-  gridTemplateColumns?: "1" | "2" | "3" | "4" | "5" | "6" | "12";
-  gridColumn?:
-    | "span-1"
-    | "span-2"
-    | "span-3"
-    | "span-4"
-    | "span-5"
-    | "span-6"
-    | "span-full";
-  gridTemplateRows?: "1" | "2" | "3" | "4" | "5" | "6";
-  gridRow?:
-    | "span-1"
-    | "span-2"
-    | "span-3"
-    | "span-4"
-    | "span-5"
-    | "span-6"
-    | "span-full";
 };
 
 // T のタグのネイティブ props から共通 props を除外

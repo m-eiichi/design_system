@@ -10,7 +10,13 @@ import { tokens } from "../src/tokens/index";
 import { space, baseSizePx, baseSizeRem } from "../src/tokens/size";
 import { baseColor, background, status, text } from "../src/tokens/color";
 import { border } from "../src/tokens/border";
-import { font, fontWeight, fontSize } from "../src/tokens/font";
+import {
+  font,
+  fontWeight,
+  fontSize,
+  lineHeight,
+  letterSpacing,
+} from "../src/tokens/font";
 import { elevation } from "../src/tokens/elevation";
 import { mq } from "../src/tokens/mq";
 import { writeIfChanged } from "../src/utils/write-if-changed";
@@ -647,6 +653,38 @@ const generatePaddingCss = () => {
   `;
 };
 
+// 行高のCSSを生成
+const generateLineHeightCss = () => {
+  const flatTokens = flattenTokensToSnakeCase({
+    ...lineHeight,
+  });
+  const lineHeightCss = Object.entries(flatTokens)
+    .map(([key, val]) => `.line_height_${key} { line-height: ${val}; }`)
+    .join("\n");
+  const lineHeightCssSp = Object.entries(flatTokens)
+    .map(([key, val]) => `.line_height_sp_${key} { line-height: ${val}; }`)
+    .join("\n");
+  const lineHeightCssTb = Object.entries(flatTokens)
+    .map(([key, val]) => `.line_height_tb_${key} { line-height: ${val}; }`)
+    .join("\n");
+  const lineHeightCssPc = Object.entries(flatTokens)
+    .map(([key, val]) => `.line_height_pc_${key} { line-height: ${val}; }`)
+    .join("\n");
+
+  return `/* line-height.css */
+  \n\n${lineHeightCss}\n
+  @media ${mq.viewport.mobile}{\n
+  \n\n${lineHeightCssSp}\n
+  }\n
+  @media ${mq.viewport.tablet}{\n
+  ${lineHeightCssTb}\n
+  }\n
+  @media ${mq.viewport.overDesktop} {\n
+  ${lineHeightCssPc}\n
+  }
+  `;
+};
+
 // 全てのCSS設定を定義
 const cssConfigs: CssConfig[] = [
   {
@@ -655,12 +693,47 @@ const cssConfigs: CssConfig[] = [
     outputPath: "../src/assets/styles/variable.css",
     watchPath: "../src/tokens/index.ts",
   },
+
+  // Color
   {
     name: "bg-color",
     generateFunction: generateBgColorCss,
-    outputPath: "../src/assets/styles/common/bg-color.css",
+    outputPath: "../src/assets/styles/common/color/bg-color.css",
     watchPath: "../src/tokens/colors.ts",
   },
+  {
+    name: "text-color",
+    generateFunction: generateTextColorCss,
+    outputPath: "../src/assets/styles/common/color/text-color.css",
+    watchPath: "../src/tokens/colors.ts",
+  },
+
+  // Font
+  {
+    name: "font",
+    generateFunction: generateFontCss,
+    outputPath: "../src/assets/styles/common/font/font.css",
+    watchPath: "../src/tokens/font.ts",
+  },
+  {
+    name: "fontWeight",
+    generateFunction: generateFontWeightCss,
+    outputPath: "../src/assets/styles/common/font/font-weight.css",
+    watchPath: "../src/tokens/fontWeight.ts",
+  },
+  {
+    name: "fontSize",
+    generateFunction: generateFontSizeCss,
+    outputPath: "../src/assets/styles/common/font/font-size.css",
+    watchPath: "../src/tokens/fontSize.ts",
+  },
+  {
+    name: "lineHeight",
+    generateFunction: generateLineHeightCss,
+    outputPath: "../src/assets/styles/common/font/line-height.css",
+    watchPath: "../src/tokens/lineHeight.ts",
+  },
+
   {
     name: "border",
     generateFunction: generateBorderCss,
@@ -673,12 +746,7 @@ const cssConfigs: CssConfig[] = [
     outputPath: "../src/assets/styles/common/radius.css",
     watchPath: "../src/tokens/size.ts",
   },
-  {
-    name: "text-color",
-    generateFunction: generateTextColorCss,
-    outputPath: "../src/assets/styles/common/text-color.css",
-    watchPath: "../src/tokens/colors.ts",
-  },
+
   {
     name: "elevation",
     generateFunction: generateElevationCss,
@@ -686,33 +754,9 @@ const cssConfigs: CssConfig[] = [
     watchPath: "../src/tokens/elevation.ts",
   },
   {
-    name: "font",
-    generateFunction: generateFontCss,
-    outputPath: "../src/assets/styles/common/font.css",
-    watchPath: "../src/tokens/font.ts",
-  },
-  {
-    name: "fontWeight",
-    generateFunction: generateFontWeightCss,
-    outputPath: "../src/assets/styles/common/font-weight.css",
-    watchPath: "../src/tokens/fontWeight.ts",
-  },
-  {
-    name: "fontSize",
-    generateFunction: generateFontSizeCss,
-    outputPath: "../src/assets/styles/common/font-size.css",
-    watchPath: "../src/tokens/fontSize.ts",
-  },
-  {
-    name: "width",
-    generateFunction: generateWidthCss,
-    outputPath: "../src/assets/styles/common/size.css",
-    watchPath: "../src/tokens/size.ts",
-  },
-  {
     name: "gap",
     generateFunction: generateGapCss,
-    outputPath: "../src/assets/styles/common/gap.css",
+    outputPath: "../src/assets/styles/common/flex-grid/gap.css",
     watchPath: "../src/tokens/gap.ts",
   },
   {
@@ -730,38 +774,37 @@ const cssConfigs: CssConfig[] = [
   {
     name: "width",
     generateFunction: generateWidthCss,
-    outputPath: "../src/assets/styles/common/width.css",
+    outputPath: "../src/assets/styles/common/width/width.css",
     watchPath: "../src/tokens/size.ts",
   },
-  {
-    name: "height",
-    generateFunction: generateHeightCss,
-    outputPath: "../src/assets/styles/common/height.css",
-    watchPath: "../src/tokens/size.ts",
-  },
-
   {
     name: "min-width",
     generateFunction: generateMinWidthCss,
-    outputPath: "../src/assets/styles/common/min-width.css",
+    outputPath: "../src/assets/styles/common/width/min-width.css",
     watchPath: "../src/tokens/size.ts",
   },
   {
     name: "max-width",
     generateFunction: generateMaxWidthCss,
-    outputPath: "../src/assets/styles/common/max-width.css",
+    outputPath: "../src/assets/styles/common/width/max-width.css",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "height",
+    generateFunction: generateHeightCss,
+    outputPath: "../src/assets/styles/common/height/height.css",
     watchPath: "../src/tokens/size.ts",
   },
   {
     name: "min-height",
     generateFunction: generateMinHeightCss,
-    outputPath: "../src/assets/styles/common/min-height.css",
+    outputPath: "../src/assets/styles/common/height/min-height.css",
     watchPath: "../src/tokens/size.ts",
   },
   {
     name: "max-height",
     generateFunction: generateMaxHeightCss,
-    outputPath: "../src/assets/styles/common/max-height.css",
+    outputPath: "../src/assets/styles/common/height/max-height.css",
     watchPath: "../src/tokens/size.ts",
   },
 ];

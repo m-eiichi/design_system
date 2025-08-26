@@ -29,6 +29,10 @@ export const CoreComponent = React.forwardRef(
       flexDirection,
       flexWrap,
       font,
+      fontWeight,
+      fontSize,
+      lineHeight,
+      letterSpacing,
       gap,
       grow,
       justifyContent,
@@ -52,6 +56,11 @@ export const CoreComponent = React.forwardRef(
       py,
       shrink,
       textAlign,
+      // grid
+      gridTemplateColumns,
+      gridColumn,
+      gridTemplateRows,
+      gridRow,
       //
       w,
       h,
@@ -82,6 +91,10 @@ export const CoreComponent = React.forwardRef(
       flexDirection,
       flexWrap,
       font,
+      fontWeight,
+      fontSize,
+      lineHeight,
+      letterSpacing,
       gap,
       grow,
       justifyContent,
@@ -105,6 +118,11 @@ export const CoreComponent = React.forwardRef(
       py,
       shrink,
       textAlign,
+      // grid
+      gridTemplateColumns,
+      gridColumn,
+      gridTemplateRows,
+      gridRow,
       //
       w,
       h,
@@ -125,7 +143,7 @@ export const CoreComponent = React.forwardRef(
           Object.keys(inlineStyles).length > 0
             ? { ...style, ...inlineStyles }
             : style
-        } //TODO
+        }
       />
     );
   },
