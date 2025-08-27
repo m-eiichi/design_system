@@ -172,10 +172,7 @@ export type NativeProps<T extends CoreComponentElement> = Omit<
 
 // 最終的に渡す props
 export type CoreComponentProps<T extends CoreComponentElement> =
-  CoreComponentPropsBase &
-    NativeProps<T> & {
-      as?: T;
-    };
+  CoreComponentPropsBase<T> & NativeProps<T>;
 
 // 外部に公開する型（ref 型もタグに合わせる）
 export type CoreComponentType = <T extends CoreComponentElement = "div">(
