@@ -1,6 +1,7 @@
 import { toSnakeCase } from "./snake-case";
 
 // 動的にCSSクラス名を生成する関数
+// 例: prefix: "bg", value: "red" -> "bg_red"
 const generateClassName = (prefix: string, value: string): string => {
   return `${prefix ? `${prefix}_` : ""}${value}`;
 };
@@ -75,13 +76,13 @@ export const processWidthHeightProperty = (
         return "width";
       case "h":
         return "height";
-      case "minW":
+      case "min_w":
         return "minWidth";
-      case "minH":
+      case "min_h":
         return "minHeight";
-      case "maxW":
+      case "max_w":
         return "maxWidth";
-      case "maxH":
+      case "max_h":
         return "maxHeight";
       default:
         return prefix; // デフォルトの戻り値を追加

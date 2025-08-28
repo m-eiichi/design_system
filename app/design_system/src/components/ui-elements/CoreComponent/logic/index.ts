@@ -128,10 +128,6 @@ export const createStyle = (
     ).map((className) => Styles[className]),
   );
 
-  // GridGap
-
-  // Grid
-
   // Grow
   if (props.grow !== undefined) {
     if (typeof props.grow === "string" || typeof props.grow === "boolean") {
