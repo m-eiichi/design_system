@@ -23,7 +23,7 @@ describe("CoreComponent", () => {
       );
 
       const component = screen.getByTestId("display-test");
-      expect(hasClass(component, "flex")).toBe(true);
+      expect(component).toHaveStyle({ display: "flex" });
     });
 
     it("positionプロパティが正しく適用される", () => {

@@ -12,8 +12,6 @@ import { toSnakeCase } from "@/utils/snake-case";
 import { baseColor, background, status, text } from "@/tokens/color";
 import { baseSizePx, baseSizeRem } from "@/tokens/size";
 
-import { GrowType, ShrinkType } from "@/types";
-
 // 背景色のトークンオブジェクトをフラット化し、キーをキャメルケースに変換してオブジェクトとして返す
 export const flattenedBackgroundColorMap = flattenObject({
   ...baseColor,
@@ -34,458 +32,254 @@ export const flattenedWidthHeightMap = flattenObject({
   ...baseSizeRem,
 });
 
+// パフォーマンス改善のためのヘルパー関数
+const addPropertyClasses = (
+  value: any,
+  prefix: string | undefined,
+  classNames: ClassValue[],
+  toSnakeCase?: (str: string) => string,
+) => {
+  if (value === undefined) return;
+
+  const classes = processProperty(value, prefix, toSnakeCase);
+  if (classes.length > 0) {
+    classNames.push(...classes.map((className) => Styles[className]));
+  }
+};
+
+// カラー系プロパティ用のヘルパー関数
+const addColorPropertyClasses = (
+  value: any,
+  prefix: string,
+  classNames: ClassValue[],
+  colorMap: any,
+  inlineStyles: React.CSSProperties,
+) => {
+  if (value === undefined) return;
+
+  const classes = processColorProperty(value, prefix, colorMap, inlineStyles);
+  if (classes.length > 0) {
+    classNames.push(...classes.map((className) => Styles[className]));
+  }
+};
+
+// サイズ系プロパティ用のヘルパー関数
+const addSizePropertyClasses = (
+  value: any,
+  prefix: string,
+  classNames: ClassValue[],
+  sizeMap: any,
+  inlineStyles: React.CSSProperties,
+) => {
+  if (value === undefined) return;
+
+  const classes = processWidthHeightProperty(
+    value,
+    prefix,
+    sizeMap,
+    inlineStyles,
+  );
+  if (classes.length > 0) {
+    classNames.push(...classes.map((className) => Styles[className]));
+  }
+};
+
+// Grow/Shrink用のヘルパー関数
+const addGrowShrinkClasses = (
+  value: any,
+  prefix: string,
+  classNames: ClassValue[],
+) => {
+  if (value === undefined) return;
+
+  if (typeof value === "string" || typeof value === "boolean") {
+    const numValue = Number(value) ? "1" : "0";
+    classNames.push(Styles[`${prefix}_${numValue}`]);
+  } else if (typeof value === "object") {
+    Object.entries(value).forEach(([key, val]) => {
+      const numVal = Number(val) ? "1" : "0";
+      classNames.push(Styles[`${prefix}_${key}_${numVal}`]);
+    });
+  }
+};
+
 // classNamesとinlineStylesを作成する
 export const createStyle = (
   props: Record<string, string | object | boolean | undefined>,
 ) => {
+  // 早期リターン: プロパティがすべてundefinedの場合は基本クラスのみ返す
+  const hasAnyProps = Object.values(props).some((value) => value !== undefined);
+  if (!hasAnyProps) {
+    return { classNames: [Styles.core_component], inlineStyles: {} };
+  }
+
   // Build class names array for clsx
   const classNames: ClassValue[] = [Styles.core_component];
 
   // Build inline styles for dynamic values
   const inlineStyles: React.CSSProperties = {};
 
-  // Display
-  classNames.push(
-    ...processProperty(
-      props.display as string | object | undefined,
-      undefined,
-      toSnakeCase,
-    ).map((className) => Styles[className]),
-  );
+  // Display - 直接インラインスタイルに設定（パフォーマンス向上）
+  if (props.display !== undefined) {
+    inlineStyles.display = props.display as string;
+  }
 
   // FlexboxDirection
-  classNames.push(
-    ...processProperty(
-      props.flexDirection as string | object | undefined,
-      "flex_direction",
-      toSnakeCase,
-    ).map((className) => Styles[className]),
+  addPropertyClasses(
+    props.flexDirection,
+    "flex_direction",
+    classNames,
+    toSnakeCase,
   );
 
   // FlexboxWrap
-  classNames.push(
-    ...processProperty(
-      props.flexWrap as string | object | undefined,
-      "flex",
-      toSnakeCase,
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.flexWrap, "flex", classNames, toSnakeCase);
 
   // AlignItems
-  classNames.push(
-    ...processProperty(
-      props.alignItems as string | object | undefined,
-      "align_items",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.alignItems, "align_items", classNames);
 
   // JustifyContent
-  classNames.push(
-    ...processProperty(
-      props.justifyContent as string | object | undefined,
-      "justify_content",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.justifyContent, "justify_content", classNames);
 
   // Flex
-  classNames.push(
-    ...processProperty(props.flex as string | object | undefined, "flex").map(
-      (className) => Styles[className],
-    ),
-  );
+  addPropertyClasses(props.flex, "flex", classNames);
 
   // Grid
-
-  // GridColumns
-  classNames.push(
-    ...processProperty(
-      props.gridTemplateColumns as string | object | undefined,
-      "grid_template_columns",
-    ).map((className) => Styles[className]),
+  addPropertyClasses(
+    props.gridTemplateColumns,
+    "grid_template_columns",
+    classNames,
   );
+  addPropertyClasses(props.gridTemplateRows, "grid_template_rows", classNames);
+  addPropertyClasses(props.gridRow, "grid_row", classNames);
+  addPropertyClasses(props.gridColumn, "grid_column", classNames);
 
-  // GridRows
-  classNames.push(
-    ...processProperty(
-      props.gridTemplateRows as string | object | undefined,
-      "grid_template_rows",
-    ).map((className) => Styles[className]),
-  );
-
-  // RowSpan
-  classNames.push(
-    ...processProperty(
-      props.gridRow as string | object | undefined,
-      "grid_row",
-    ).map((className) => Styles[className]),
-  );
-
-  // ColSpan
-  classNames.push(
-    ...processProperty(
-      props.gridColumn as string | object | undefined,
-      "grid_column",
-    ).map((className) => Styles[className]),
-  );
-
-  // Grow
-  if (props.grow !== undefined) {
-    if (typeof props.grow === "string" || typeof props.grow === "boolean") {
-      const growValue = Number(props.grow) ? "1" : "0";
-      classNames.push(Styles[`grow_${growValue}`]);
-    } else if (typeof props.grow === "object") {
-      Object.entries(props.grow).forEach(([key, value]) => {
-        const growKey = value as GrowType;
-        classNames.push(Styles[`grow_${key}_${Number(growKey) ? "1" : "0"}`]);
-      });
-    }
-  }
-
-  // Shrink
-  if (props.shrink !== undefined) {
-    if (typeof props.shrink === "string" || typeof props.shrink === "boolean") {
-      const shrinkValue = Number(props.shrink) ? "1" : "0";
-      classNames.push(Styles[`shrink_${shrinkValue}`]);
-    } else if (typeof props.shrink === "object") {
-      Object.entries(props.shrink).forEach(([key, value]) => {
-        const shrinkKey = value as ShrinkType;
-        classNames.push(
-          Styles[`shrink_${key}_${Number(shrinkKey) ? "1" : "0"}`],
-        );
-      });
-    }
-  }
+  // Grow/Shrink
+  addGrowShrinkClasses(props.grow, "grow", classNames);
+  addGrowShrinkClasses(props.shrink, "shrink", classNames);
 
   // Position
-  classNames.push(
-    ...processProperty(
-      props.position as string | object | undefined,
-      "position",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.position, "position", classNames);
 
   // Overflow
-  classNames.push(
-    ...processProperty(
-      props.overflow as string | object | undefined,
-      "overflow",
-    ).map((className) => Styles[className]),
-  );
-
-  // OverflowX
-  classNames.push(
-    ...processProperty(
-      props.overflowX as string | object | undefined,
-      "overflow_x",
-    ).map((className) => Styles[className]),
-  );
-
-  // OverflowY
-  classNames.push(
-    ...processProperty(
-      props.overflowY as string | object | undefined,
-      "overflow_y",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.overflow, "overflow", classNames);
+  addPropertyClasses(props.overflowX, "overflow_x", classNames);
+  addPropertyClasses(props.overflowY, "overflow_y", classNames);
 
   // TextAlign
-  classNames.push(
-    ...processProperty(
-      props.textAlign as string | object | undefined,
-      "text_align",
-      toSnakeCase,
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.textAlign, "text_align", classNames, toSnakeCase);
 
   // Cursor
-  classNames.push(
-    ...processProperty(
-      props.cursor as string | object | undefined,
-      "cursor",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.cursor, "cursor", classNames);
 
   // Background
-  classNames.push(
-    ...processColorProperty(
-      props.bg as string | object | undefined,
-      "bg",
-      flattenedBackgroundColorMap,
-      inlineStyles,
-    ).map((className) => Styles[className]),
+  addColorPropertyClasses(
+    props.bg,
+    "bg",
+    classNames,
+    flattenedBackgroundColorMap,
+    inlineStyles,
   );
 
   // TextColor
-  classNames.push(
-    ...processColorProperty(
-      props.color as string | object | undefined,
-      "color",
-      flattenedTextColorMap,
-      inlineStyles,
-    ).map((className) => Styles[className]),
+  addColorPropertyClasses(
+    props.color,
+    "color",
+    classNames,
+    flattenedTextColorMap,
+    inlineStyles,
   );
 
-  // Width
-  classNames.push(
-    ...processWidthHeightProperty(
-      props.w as string | object | undefined,
-      "w",
-      flattenedWidthHeightMap,
-      inlineStyles,
-    ).map((className) => Styles[className]),
+  // Width/Height
+  addSizePropertyClasses(
+    props.w,
+    "w",
+    classNames,
+    flattenedWidthHeightMap,
+    inlineStyles,
   );
-
-  // Height
-  classNames.push(
-    ...processWidthHeightProperty(
-      props.h as string | object | undefined,
-      "h",
-      flattenedWidthHeightMap,
-      inlineStyles,
-    ).map((className) => Styles[className]),
+  addSizePropertyClasses(
+    props.h,
+    "h",
+    classNames,
+    flattenedWidthHeightMap,
+    inlineStyles,
   );
-
-  // MinWidth
-  classNames.push(
-    ...processWidthHeightProperty(
-      props.minW as string | object | undefined,
-      "min_w",
-      flattenedWidthHeightMap,
-      inlineStyles,
-    ).map((className) => Styles[className]),
+  addSizePropertyClasses(
+    props.minW,
+    "min_w",
+    classNames,
+    flattenedWidthHeightMap,
+    inlineStyles,
   );
-
-  // MaxWidth
-  classNames.push(
-    ...processWidthHeightProperty(
-      props.maxW as string | object | undefined,
-      "max_w",
-      flattenedWidthHeightMap,
-      inlineStyles,
-    ).map((className) => Styles[className]),
+  addSizePropertyClasses(
+    props.maxW,
+    "max_w",
+    classNames,
+    flattenedWidthHeightMap,
+    inlineStyles,
   );
-
-  // MinHeight
-  classNames.push(
-    ...processWidthHeightProperty(
-      props.minH as string | object | undefined,
-      "min_h",
-      flattenedWidthHeightMap,
-      inlineStyles,
-    ).map((className) => Styles[className]),
+  addSizePropertyClasses(
+    props.minH,
+    "min_h",
+    classNames,
+    flattenedWidthHeightMap,
+    inlineStyles,
   );
-
-  // MaxHeight
-  classNames.push(
-    ...processWidthHeightProperty(
-      props.maxH as string | object | undefined,
-      "max_h",
-      flattenedWidthHeightMap,
-      inlineStyles,
-    ).map((className) => Styles[className]),
+  addSizePropertyClasses(
+    props.maxH,
+    "max_h",
+    classNames,
+    flattenedWidthHeightMap,
+    inlineStyles,
   );
 
   // Font
-  classNames.push(
-    ...processProperty(
-      props.font as string | object | undefined,
-      "font",
-      toSnakeCase,
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.font, "font", classNames, toSnakeCase);
 
   // Elevation
-  classNames.push(
-    ...processProperty(
-      props.elevation as string | object | undefined,
-      "elevation",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.elevation, "elevation", classNames);
 
   // Border
-  classNames.push(
-    ...processProperty(
-      props.border as string | object | undefined,
-      "border",
-    ).map((className) => Styles[className]),
-  );
-
-  // BorderTop
-  classNames.push(
-    ...processProperty(
-      props.borderTop as string | object | undefined,
-      "border_top",
-    ).map((className) => Styles[className]),
-  );
-
-  // BorderRight
-  classNames.push(
-    ...processProperty(
-      props.borderRight as string | object | undefined,
-      "border_right",
-    ).map((className) => Styles[className]),
-  );
-
-  // BorderBottom
-  classNames.push(
-    ...processProperty(
-      props.borderBottom as string | object | undefined,
-      "border_bottom",
-    ).map((className) => Styles[className]),
-  );
-
-  // BorderLeft
-  classNames.push(
-    ...processProperty(
-      props.borderLeft as string | object | undefined,
-      "border_left",
-    ).map((className) => Styles[className]),
-  );
-
-  // BorderRadius
-  classNames.push(
-    ...processProperty(
-      props.borderRadius as string | object | undefined,
-      "border_radius",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.border, "border", classNames);
+  addPropertyClasses(props.borderTop, "border_top", classNames);
+  addPropertyClasses(props.borderRight, "border_right", classNames);
+  addPropertyClasses(props.borderBottom, "border_bottom", classNames);
+  addPropertyClasses(props.borderLeft, "border_left", classNames);
+  addPropertyClasses(props.borderRadius, "border_radius", classNames);
 
   // Gap
-  classNames.push(
-    ...processProperty(props.gap as string | object | undefined, "gap").map(
-      (className) => Styles[className],
-    ),
-  );
+  addPropertyClasses(props.gap, "gap", classNames);
 
   // Margin
-  classNames.push(
-    ...processProperty(props.m as string | object | undefined, "m").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // MarginTop
-  classNames.push(
-    ...processProperty(props.mt as string | object | undefined, "mt").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // MarginRight
-  classNames.push(
-    ...processProperty(props.mr as string | object | undefined, "mr").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // MarginBottom
-  classNames.push(
-    ...processProperty(props.mb as string | object | undefined, "mb").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // MarginLeft
-  classNames.push(
-    ...processProperty(props.ml as string | object | undefined, "ml").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // MarginX
-  classNames.push(
-    ...processProperty(props.mx as string | object | undefined, "mx").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // MarginY
-  classNames.push(
-    ...processProperty(props.my as string | object | undefined, "my").map(
-      (className) => Styles[className],
-    ),
-  );
+  addPropertyClasses(props.m, "m", classNames);
+  addPropertyClasses(props.mt, "mt", classNames);
+  addPropertyClasses(props.mr, "mr", classNames);
+  addPropertyClasses(props.mb, "mb", classNames);
+  addPropertyClasses(props.ml, "ml", classNames);
+  addPropertyClasses(props.mx, "mx", classNames);
+  addPropertyClasses(props.my, "my", classNames);
 
   // Padding
-  classNames.push(
-    ...processProperty(props.p as string | object | undefined, "p").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // PaddingTop
-  classNames.push(
-    ...processProperty(props.pt as string | object | undefined, "pt").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // PaddingRight
-  classNames.push(
-    ...processProperty(props.pr as string | object | undefined, "pr").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // PaddingBottom
-  classNames.push(
-    ...processProperty(props.pb as string | object | undefined, "pb").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // PaddingLeft
-  classNames.push(
-    ...processProperty(props.pl as string | object | undefined, "pl").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // PaddingX
-  classNames.push(
-    ...processProperty(props.px as string | object | undefined, "px").map(
-      (className) => Styles[className],
-    ),
-  );
-
-  // PaddingY
-  classNames.push(
-    ...processProperty(props.py as string | object | undefined, "py").map(
-      (className) => Styles[className],
-    ),
-  );
+  addPropertyClasses(props.p, "p", classNames);
+  addPropertyClasses(props.pt, "pt", classNames);
+  addPropertyClasses(props.pr, "pr", classNames);
+  addPropertyClasses(props.pb, "pb", classNames);
+  addPropertyClasses(props.pl, "pl", classNames);
+  addPropertyClasses(props.px, "px", classNames);
+  addPropertyClasses(props.py, "py", classNames);
 
   // FontWeight
-  classNames.push(
-    ...processProperty(
-      props.fontWeight as string | object | undefined,
-      "font_weight",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.fontWeight, "font_weight", classNames);
 
   // FontSize
-  classNames.push(
-    ...processProperty(
-      props.fontSize as string | object | undefined,
-      "font_size",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.fontSize, "font_size", classNames);
 
   // LineHeight
-  classNames.push(
-    ...processProperty(
-      props.lineHeight as string | object | undefined,
-      "line_height",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.lineHeight, "line_height", classNames);
 
   // LetterSpacing
-  classNames.push(
-    ...processProperty(
-      props.letterSpacing as string | object | undefined,
-      "letter_spacing",
-    ).map((className) => Styles[className]),
-  );
+  addPropertyClasses(props.letterSpacing, "letter_spacing", classNames);
 
   return { classNames, inlineStyles };
 };
