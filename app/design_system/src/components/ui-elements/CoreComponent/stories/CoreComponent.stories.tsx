@@ -105,11 +105,11 @@ const meta: Meta<typeof CoreComponent> = {
       options: ["none", "xs", "s", "m", "l", "xl", "xxl", "full"],
       description: "ボーダー半径",
     },
-    shadow: {
-      control: "select",
-      options: ["none", "01", "02", "03", "04", "05", "06", "07", "08", "09"],
-      description: "シャドウ",
-    },
+    // shadow: {
+    //   control: "select",
+    //   options: ["none", "01", "02", "03", "04", "05", "06", "07", "08", "09"],
+    //   description: "シャドウ",
+    // },
   },
   // tags: ['autodocs'],
 };
@@ -124,8 +124,8 @@ export const Default: Story = {
     p: "4",
     bg: "lightBlue500",
     border: "field",
-    shadow: "02",
-    borderRadius: "m",
+    // shadow: "02",
+    // borderRadius: "m",
   },
 };
 
