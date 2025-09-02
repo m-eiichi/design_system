@@ -1,5 +1,6 @@
 import React from "react";
 import { CoreComponent } from "@/components/ui-elements/CoreComponent";
+import { Button } from "@/components/ui-elements/Button";
 
 export const Home: React.FC = () => {
   return (
@@ -73,6 +74,9 @@ export const Home: React.FC = () => {
           ccc
         </CoreComponent>
       </CoreComponent>
+      <Button fullWidth size="xs">
+        ddd
+      </Button>
     </div>
   );
 };
