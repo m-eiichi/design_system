@@ -38,7 +38,7 @@ describe("<%= name %>", () => {
     // it("variantプロパティが正しく適用される", () => {
     //   render(<<%= name %> variant="primary">テスト</<%= name %>>);
     //   const component = screen.getByText("テスト");
-    //   expect(hasClass(component, "variant_primary")).toBe(true);
+    //   expect(hasClass(component, "size_primary")).toBe(true);
     // });
 
     // it("sizeプロパティが正しく適用される", () => {
@@ -120,13 +120,13 @@ describe("<%= name %>", () => {
     // it("loading状態が正しく表示される", () => {
     //   render(<<%= name %> loading>テスト</<%= name %>>);
     //   const component = screen.getByText("テスト");
-    //   expect(hasClass(component, "loading")).toBe(true);
+    //   expect(hasClass(component, "size_loading")).toBe(true);
     // });
 
     // it("error状態が正しく表示される", () => {
     //   render(<<%= name %> error>テスト</<%= name %>>);
     //   const component = screen.getByText("テスト");
-    //   expect(hasClass(component, "error")).toBe(true);
+    //   expect(hasClass(component, "size_error")).toBe(true);
     // });
   });
 });

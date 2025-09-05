@@ -1,4 +1,4 @@
 
 export type ButtonColorType =
-| "normal" | "hover" | "active" | "disabled" | "normalDark" | "hoverDark" | "activeDark" | "disabledDark"
+| "primaryNormal" | "primaryHover" | "primaryActive" | "primaryContrast" | "secondaryNormal" | "secondaryHover" | "secondaryActive" | "secondaryContrast" | "tertiaryNormal" | "tertiaryHover" | "tertiaryActive" | "tertiaryContrast" | "disabled" | "disabledContrast" | "disabledDark"
 

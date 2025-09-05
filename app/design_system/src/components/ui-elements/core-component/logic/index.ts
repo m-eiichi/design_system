@@ -11,6 +11,7 @@ import { flattenObject } from "@/utils/flatten-object";
 import { toSnakeCase } from "@/utils/snake-case";
 import { baseColor, background, status, text } from "@/tokens/color";
 import { baseSizePx, baseSizeRem } from "@/tokens/size";
+import { height } from "@/tokens/height";
 
 // 背景色のトークンオブジェクトをフラット化し、キーをキャメルケースに変換してオブジェクトとして返す
 export const flattenedBackgroundColorMap = flattenObject({
@@ -27,9 +28,15 @@ const flattenedTextColorMap = flattenObject({
 });
 
 // 幅のトークンオブジェクトをフラット化し、キーをキャメルケースに変換してオブジェクトとして返す
-export const flattenedWidthHeightMap = flattenObject({
+export const flattenedWidthMap = flattenObject({
   ...baseSizePx,
   ...baseSizeRem,
+});
+// 高さのトークンオブジェクトをフラット化し、キーをキャメルケースに変換してオブジェクトとして返す
+export const flattenedHeightMap = flattenObject({
+  ...baseSizePx,
+  ...baseSizeRem,
+  ...height,
 });
 
 // パフォーマンス改善のためのヘルパー関数
@@ -114,7 +121,7 @@ export const createStyle = (
   }
 
   // Build class names array for clsx
-  const classNames: ClassValue[] = [Styles.core_component];
+  const classNames: ClassValue[] = [Styles.root];
 
   // Build inline styles for dynamic values
   const inlineStyles: React.CSSProperties = {};
@@ -195,42 +202,42 @@ export const createStyle = (
     props.w,
     "w",
     classNames,
-    flattenedWidthHeightMap,
+    flattenedWidthMap,
     inlineStyles,
   );
   addSizePropertyClasses(
     props.h,
     "h",
     classNames,
-    flattenedWidthHeightMap,
+    flattenedHeightMap,
     inlineStyles,
   );
   addSizePropertyClasses(
     props.minW,
     "min_w",
     classNames,
-    flattenedWidthHeightMap,
+    flattenedWidthMap,
     inlineStyles,
   );
   addSizePropertyClasses(
     props.maxW,
     "max_w",
     classNames,
-    flattenedWidthHeightMap,
+    flattenedHeightMap,
     inlineStyles,
   );
   addSizePropertyClasses(
     props.minH,
     "min_h",
     classNames,
-    flattenedWidthHeightMap,
+    flattenedHeightMap,
     inlineStyles,
   );
   addSizePropertyClasses(
     props.maxH,
     "max_h",
     classNames,
-    flattenedWidthHeightMap,
+    flattenedHeightMap,
     inlineStyles,
   );
 

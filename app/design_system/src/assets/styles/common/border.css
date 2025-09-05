@@ -81,6 +81,11 @@
 .border_right_disabled_dark_bold { border-right: #666 2px solid; }
 .border_bottom_disabled_dark_bold { border-bottom: #666 2px solid; }
 .border_left_disabled_dark_bold { border-left: #666 2px solid; }
+.border_button_secondary_normal { border: #0031d8 1px solid; }
+.border_top_button_secondary_normal { border-top: #0031d8 1px solid; }
+.border_right_button_secondary_normal { border-right: #0031d8 1px solid; }
+.border_bottom_button_secondary_normal { border-bottom: #0031d8 1px solid; }
+.border_left_button_secondary_normal { border-left: #0031d8 1px solid; }
 
 @media screen and (width <= 575px){
 
@@ -166,6 +171,11 @@
 .border_right_sp_disabled_dark_bold { border-right: #666 2px solid; }
 .border_bottom_sp_disabled_dark_bold { border-bottom: #666 2px solid; }
 .border_left_sp_disabled_dark_bold { border-left: #666 2px solid; }
+.border_sp_button_secondary_normal { border: #0031d8 1px solid; }
+.border_top_sp_button_secondary_normal { border-top: #0031d8 1px solid; }
+.border_right_sp_button_secondary_normal { border-right: #0031d8 1px solid; }
+.border_bottom_sp_button_secondary_normal { border-bottom: #0031d8 1px solid; }
+.border_left_sp_button_secondary_normal { border-left: #0031d8 1px solid; }
 
 }
 
@@ -251,6 +261,11 @@
 .border_right_tb_disabled_dark_bold { border-right: #666 2px solid; }
 .border_bottom_tb_disabled_dark_bold { border-bottom: #666 2px solid; }
 .border_left_tb_disabled_dark_bold { border-left: #666 2px solid; }
+.border_tb_button_secondary_normal { border: #0031d8 1px solid; }
+.border_top_tb_button_secondary_normal { border-top: #0031d8 1px solid; }
+.border_right_tb_button_secondary_normal { border-right: #0031d8 1px solid; }
+.border_bottom_tb_button_secondary_normal { border-bottom: #0031d8 1px solid; }
+.border_left_tb_button_secondary_normal { border-left: #0031d8 1px solid; }
 
 }
 
@@ -336,5 +351,10 @@
 .border_right_pc_disabled_dark_bold { border-right: #666 2px solid; }
 .border_bottom_pc_disabled_dark_bold { border-bottom: #666 2px solid; }
 .border_left_pc_disabled_dark_bold { border-left: #666 2px solid; }
+.border_pc_button_secondary_normal { border: #0031d8 1px solid; }
+.border_top_pc_button_secondary_normal { border-top: #0031d8 1px solid; }
+.border_right_pc_button_secondary_normal { border-right: #0031d8 1px solid; }
+.border_bottom_pc_button_secondary_normal { border-bottom: #0031d8 1px solid; }
+.border_left_pc_button_secondary_normal { border-left: #0031d8 1px solid; }
 
 }

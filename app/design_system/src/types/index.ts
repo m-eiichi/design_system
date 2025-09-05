@@ -22,6 +22,7 @@ export * from "./spacing-type";
 // size
 export * from "./size-type";
 export * from "./size-value";
+export * from "./height-type";
 
 // border
 export * from "./border-value";

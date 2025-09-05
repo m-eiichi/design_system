@@ -38,6 +38,7 @@
 .h_rem88 { height: 5.5rem; }
 .h_rem96 { height: 6rem; }
 .h_rem104 { height: 6.5rem; }
+.h_height_min_button { height: 44px; }
 
 @media screen and (width <= 575px){
 
@@ -80,6 +81,7 @@
 .h_sp_rem88 { height: 5.5rem; }
 .h_sp_rem96 { height: 6rem; }
 .h_sp_rem104 { height: 6.5rem; }
+.h_sp_height_min_button { height: 44px; }
 
 }
 
@@ -122,6 +124,7 @@
 .h_tb_rem88 { height: 5.5rem; }
 .h_tb_rem96 { height: 6rem; }
 .h_tb_rem104 { height: 6.5rem; }
+.h_tb_height_min_button { height: 44px; }
 
 }
 
@@ -164,5 +167,6 @@
 .h_pc_rem88 { height: 5.5rem; }
 .h_pc_rem96 { height: 6rem; }
 .h_pc_rem104 { height: 6.5rem; }
+.h_pc_height_min_button { height: 44px; }
 
 }

@@ -38,6 +38,7 @@
 .max_h_rem88 { max-height: 5.5rem; }
 .max_h_rem96 { max-height: 6rem; }
 .max_h_rem104 { max-height: 6.5rem; }
+.max_h_height_min_button { max-height: 44px; }
 
 @media screen and (width <= 575px){
 
@@ -80,6 +81,7 @@
 .max_h_sp_rem88 { max-height: 5.5rem; }
 .max_h_sp_rem96 { max-height: 6rem; }
 .max_h_sp_rem104 { max-height: 6.5rem; }
+.max_h_sp_height_min_button { max-height: 44px; }
 
 }
 
@@ -122,6 +124,7 @@
 .max_h_tb_rem88 { max-height: 5.5rem; }
 .max_h_tb_rem96 { max-height: 6rem; }
 .max_h_tb_rem104 { max-height: 6.5rem; }
+.max_h_tb_height_min_button { max-height: 44px; }
 
 }
 
@@ -164,5 +167,6 @@
 .max_h_pc_rem88 { max-height: 5.5rem; }
 .max_h_pc_rem96 { max-height: 6rem; }
 .max_h_pc_rem104 { max-height: 6.5rem; }
+.max_h_pc_height_min_button { max-height: 44px; }
 
 }

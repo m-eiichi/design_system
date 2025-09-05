@@ -68,6 +68,6 @@
 
 @import "../../../../src/assets/styles/common/height/max-height.css";
 
-.core_component {
+.root {
   box-sizing: border-box;
 }

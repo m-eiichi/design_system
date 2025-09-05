@@ -25,6 +25,7 @@ import {
   TextAlignType,
   CursorType,
   SizeType,
+  HeightType,
   ElevationType,
   RadiusType,
   GapType,
@@ -37,23 +38,39 @@ import {
 } from "@/types";
 
 // 対応するタグを限定（型爆発防止）
+export type CoreComponentElement =
+  // テキスト系
+  | "p"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "span"
 
-export type ButtonProps = {
+  // コンテナ・セクション系
+  | "div"
+  | "section"
+  | "article"
+  | "main"
+  | "nav"
+  | "aside"
+  | "ul"
+  | "ol"
+  | "li"
+  | "header"
+  | "footer"
+
+  // インタラクティブ系
+  | "button"
+  | "a";
+
+export type CoreComponentPropsBase<T extends CoreComponentElement = "div"> = {
+  as?: T;
   children?: React.ReactNode;
   style?: React.CSSProperties;
-  variant?: "primary" | "secondary" | "tertiary" | "quaternary";
-  size?: "xs" | "sm" | "md" | "lg";
-  disabled?: boolean;
-  fullWidth?: boolean;
-  loading?: boolean;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-  className?: string;
-  as?: React.ElementType;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
 
-  // 以下は補助的なプロパティ
   // Background
   bg?: ResponsiveValue<
     BaseColorType | BackgroundColorType | StatusColorType | ColorValue
@@ -75,8 +92,32 @@ export type ButtonProps = {
   // Cursor
   cursor?: ResponsiveValue<CursorType>;
 
+  // Display
+  display?: ResponsiveValue<DisplayType>;
+
   // Elevation
   elevation?: ResponsiveValue<ElevationType>;
+
+  // Flex
+  flex?: ResponsiveValue<FlexType>;
+  flexDirection?: ResponsiveValue<FlexDirectionType>;
+  flexWrap?: ResponsiveValue<FlexWrapType>;
+
+  // Grid
+  gridTemplateColumns?: ResponsiveValue<GridTemplateColumnsType>;
+  gridColumn?: ResponsiveValue<GridColumnType>;
+  gridTemplateRows?: ResponsiveValue<GridTemplateRowsType>;
+  gridRow?: ResponsiveValue<GridRowType>;
+
+  // Grow / Shrink
+  grow?: ResponsiveValue<GrowType>;
+  shrink?: ResponsiveValue<ShrinkType>;
+
+  // Justify
+  justifyContent?: ResponsiveValue<JustifyContentType>;
+
+  // Align
+  alignItems?: ResponsiveValue<AlignItemsType>;
 
   // Overflow
   overflow?: ResponsiveValue<OverflowType>;
@@ -88,6 +129,8 @@ export type ButtonProps = {
 
   // Text
   textAlign?: ResponsiveValue<TextAlignType>;
+
+  gap?: ResponsiveValue<GapType>;
 
   // Spacing
   p?: ResponsiveValue<SpacingType>;
@@ -114,9 +157,26 @@ export type ButtonProps = {
 
   // Sizing
   w?: ResponsiveValue<SizeType | SizeValue>;
-  h?: ResponsiveValue<SizeType | SizeValue>;
+  h?: ResponsiveValue<SizeType | SizeValue | HeightType>;
   minW?: ResponsiveValue<SizeType | SizeValue>;
-  minH?: ResponsiveValue<SizeType | SizeValue>;
+  minH?: ResponsiveValue<SizeType | SizeValue | HeightType>;
   maxW?: ResponsiveValue<SizeType | SizeValue>;
-  maxH?: ResponsiveValue<SizeType | SizeValue>;
+  maxH?: ResponsiveValue<SizeType | SizeValue | HeightType>;
 };
+
+// T のタグのネイティブ props から共通 props を除外
+export type NativeProps<T extends CoreComponentElement> = Omit<
+  React.ComponentPropsWithoutRef<T>,
+  keyof CoreComponentPropsBase
+>;
+
+// 最終的に渡す props
+export type CoreComponentProps<T extends CoreComponentElement> =
+  CoreComponentPropsBase<T> & NativeProps<T>;
+
+// 外部に公開する型（ref 型もタグに合わせる）
+export type CoreComponentType = <T extends CoreComponentElement = "div">(
+  props: CoreComponentProps<T> & {
+    ref?: React.Ref<HTMLElementTagNameMap[T]>;
+  },
+) => React.ReactElement | null;

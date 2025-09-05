@@ -1,3 +1,3 @@
 export const height = {
-    "height-min-button": "44px",
-}
+  heightMinButton: "44px",
+};

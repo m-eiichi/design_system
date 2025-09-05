@@ -8,6 +8,7 @@ import { flattenTokensToKebabCase } from "../src/utils/flatten-tokens-to-kebab-c
 import { flattenTokensToSnakeCase } from "../src/utils/flatten-tokens-to-snake-case";
 import { tokens } from "../src/tokens/index";
 import { space, baseSizePx, baseSizeRem } from "../src/tokens/size";
+import { height } from "../src/tokens/height";
 import { baseColor, background, status, text } from "../src/tokens/color";
 import { border } from "../src/tokens/border";
 import {
@@ -30,7 +31,7 @@ type CssConfig = {
   watchPath: string;
 };
 
-// トークンをケバブケースフラット化し、CSS 変数として出力する
+// トークンをケバブケースフラット化し、variable.css にCSS 変数として出力する
 const generateVariableCss = () => {
   const flatTokens = flattenTokensToKebabCase(tokens);
   const customProperty = Object.entries(flatTokens)
@@ -332,6 +333,7 @@ const generateHeightCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
     ...baseSizePx,
     rem: baseSizeRem,
+    ...height,
   });
   const heightCss = Object.entries(flatTokens)
     .map(([key, val]) => `.h_${key} { height: ${val}; }`)
@@ -428,6 +430,7 @@ const generateMaxHeightCss = () => {
   const flatTokens = flattenTokensToSnakeCase({
     ...baseSizePx,
     rem: baseSizeRem,
+    ...height,
   });
   const maxHeightCss = Object.entries(flatTokens)
     .map(([key, val]) => `.max_h_${key} { max-height: ${val}; }`)

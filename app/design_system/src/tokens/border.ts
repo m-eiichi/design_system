@@ -19,4 +19,5 @@ export const border = {
   alertDark: `${red[600]} 2px solid`,
   disabledDark: `${grey[600]} 1px solid`,
   disabledDarkBold: `${grey[600]} 2px solid`,
+  buttonSecondaryNormal: `${blue[800]} 1px solid`,
 };

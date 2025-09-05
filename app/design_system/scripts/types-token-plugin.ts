@@ -17,6 +17,7 @@ import {
   // theme,
 } from "../src/tokens/color";
 import { space, radius } from "../src/tokens/size";
+import { height } from "../src/tokens/height";
 import {
   fontSize,
   fontWeight,
@@ -136,6 +137,12 @@ const tokenConfigs: TokenConfig[] = [
     name: "Size",
     token: { ...baseSizePx, rem: baseSizeRem },
     outputPath: "../src/types/size-type.ts",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "Height",
+    token: { ...height },
+    outputPath: "../src/types/height-type.ts",
     watchPath: "../src/tokens/size.ts",
   },
   {

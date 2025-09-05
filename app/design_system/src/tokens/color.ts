@@ -325,13 +325,26 @@ export const icon = {
 
 // === button ===
 export const button = {
-  normal: blue[800],
-  hover: blue[900],
-  active: blue[1100],
+  primary: {
+    normal: blue[800],
+    hover: blue[900],
+    active: blue[1100],
+    contrast: white,
+  },
+  secondary: {
+    normal: white,
+    hover: blue[100],
+    active: blue[200],
+    contrast: blue[800],
+  },
+  tertiary: {
+    normal: white,
+    hover: blue[100],
+    active: blue[200],
+    contrast: blue[800],
+  },
   disabled: grey[500],
-  normalDark: blue[500],
-  hoverDark: blue[100],
-  activeDark: blue[200],
+  disabledContrast: grey[300],
   disabledDark: grey[600],
 };
 
