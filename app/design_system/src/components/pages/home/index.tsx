@@ -1,6 +1,6 @@
 import React from "react";
-import { CoreComponent } from "@/components/ui-elements/CoreComponent";
-import { Button } from "@/components/ui-elements/Button";
+import { CoreComponent } from "@/components/ui-elements/core-component";
+import { Button } from "@/components/ui-elements/button";
 
 export const Home: React.FC = () => {
   return (

@@ -1,33 +1,28 @@
----
-to: "src/components/<%= category %>/<%= subDirectory ? subDirectory + '/' : '' %><%= name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase() %>/__tests__/<%= name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase() %>.test.<%= type === 'tsx' ? 'tsx' : 'jsx' %>"
-when: withTests
----
-
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { <%= name %> } from "../index";
+import { Typography } from "../index";
 
 // CSS Modulesのクラス名をテストするためのヘルパー関数
 const hasClass = (element: HTMLElement, className: string) => {
   return element.className.includes(className);
 };
 
-describe("<%= name %>", () => {
+describe("Typography", () => {
   describe("基本的な機能", () => {
     it("基本的なレンダリングが正常に動作する", () => {
-      render(<<%= name %>>テストコンテンツ</<%= name %>>);
+      render(<Typography>テストコンテンツ</Typography>);
       expect(screen.getByText("テストコンテンツ")).toBeInTheDocument();
     });
 
     it("classNameプロパティが正しく適用される", () => {
       const customClass = "custom-class";
-      render(<<%= name %> className={customClass}>テスト</<%= name %>>);
+      render(<Typography className={customClass}>テスト</Typography>);
       const component = screen.getByText("テスト");
       expect(component.className).toContain(customClass);
     });
 
     it("data-testidプロパティが正しく適用される", () => {
-      render(<<%= name %> data-testid="test-component">テスト</<%= name %>>);
+      render(<Typography data-testid="test-component">テスト</Typography>);
       expect(screen.getByTestId("test-component")).toBeInTheDocument();
     });
   });
@@ -36,13 +31,13 @@ describe("<%= name %>", () => {
     // ここにコンポーネント固有のプロパティのテストを追加してください
     // 例：
     // it("variantプロパティが正しく適用される", () => {
-    //   render(<<%= name %> variant="primary">テスト</<%= name %>>);
+    //   render(<Typography variant="primary">テスト</Typography>);
     //   const component = screen.getByText("テスト");
     //   expect(hasClass(component, "size_primary")).toBe(true);
     // });
 
     // it("sizeプロパティが正しく適用される", () => {
-    //   render(<<%= name %> size="large">テスト</<%= name %>>);
+    //   render(<Typography size="large">テスト</Typography>);
     //   const component = screen.getByText("テスト");
     //   expect(hasClass(component, "size_large")).toBe(true);
     // });
@@ -53,7 +48,7 @@ describe("<%= name %>", () => {
     // 例：
     // it("onClickイベントが正しく発火する", () => {
     //   const handleClick = vi.fn();
-    //   render(<<%= name %> onClick={handleClick}>テスト</<%= name %>>);
+    //   render(<Typography onClick={handleClick}>テスト</Typography>);
     //   const component = screen.getByText("テスト");
     //   fireEvent.click(component);
     //   expect(handleClick).toHaveBeenCalledTimes(1);
@@ -61,7 +56,7 @@ describe("<%= name %>", () => {
 
     // it("disabled状態でクリックイベントが発火しない", () => {
     //   const handleClick = vi.fn();
-    //   render(<<%= name %> disabled onClick={handleClick}>テスト</<%= name %>>);
+    //   render(<Typography disabled onClick={handleClick}>テスト</Typography>);
     //   const component = screen.getByText("テスト");
     //   fireEvent.click(component);
     //   expect(handleClick).not.toHaveBeenCalled();
@@ -72,13 +67,13 @@ describe("<%= name %>", () => {
     // ここにアクセシビリティのテストを追加してください
     // 例：
     // it("aria-labelが正しく設定される", () => {
-    //   render(<<%= name %> aria-label="アクセシビリティテスト">テスト</<%= name %>>);
+    //   render(<Typography aria-label="アクセシビリティテスト">テスト</Typography>);
     //   const component = screen.getByLabelText("アクセシビリティテスト");
     //   expect(component).toBeInTheDocument();
     // });
 
     // it("role属性が正しく設定される", () => {
-    //   render(<<%= name %> role="button">テスト</<%= name %>>);
+    //   render(<Typography role="button">テスト</Typography>);
     //   const component = screen.getByRole("button");
     //   expect(component).toBeInTheDocument();
     // });
@@ -86,18 +81,18 @@ describe("<%= name %>", () => {
 
   describe("エッジケース", () => {
     it("空のchildrenでも正常に動作する", () => {
-      render(<<%= name %>></<%= name %>>);
+      render(<Typography></Typography>);
       const component = screen.getByTestId("test-component");
       expect(component).toBeInTheDocument();
     });
 
     it("undefinedのプロパティでも正常に動作する", () => {
-      render(<<%= name %> prop={undefined}>テスト</<%= name %>>);
+      render(<Typography prop={undefined}>テスト</Typography>);
       expect(screen.getByText("テスト")).toBeInTheDocument();
     });
 
     it("極端な値でもクラッシュしない", () => {
-      render(<<%= name %> className="very-long-class-name-that-might-cause-issues">テスト</<%= name %>>);
+      render(<Typography className="very-long-class-name-that-might-cause-issues">テスト</Typography>);
       expect(screen.getByText("テスト")).toBeInTheDocument();
     });
   });
@@ -106,7 +101,7 @@ describe("<%= name %>", () => {
     // ここにレスポンシブ対応のテストを追加してください
     // 例：
     // it("レスポンシブプロパティが正しく適用される", () => {
-    //   render(<<%= name %> size={{ sp: "small", tb: "medium", pc: "large" }}>テスト</<%= name %>>);
+    //   render(<Typography size={{ sp: "small", tb: "medium", pc: "large" }}>テスト</Typography>);
     //   const component = screen.getByText("テスト");
     //   expect(hasClass(component, "size_sp_small")).toBe(true);
     //   expect(hasClass(component, "size_tb_medium")).toBe(true);
@@ -118,13 +113,13 @@ describe("<%= name %>", () => {
     // ここに状態管理のテストを追加してください
     // 例：
     // it("loading状態が正しく表示される", () => {
-    //   render(<<%= name %> loading>テスト</<%= name %>>);
+    //   render(<Typography loading>テスト</Typography>);
     //   const component = screen.getByText("テスト");
     //   expect(hasClass(component, "size_loading")).toBe(true);
     // });
 
     // it("error状態が正しく表示される", () => {
-    //   render(<<%= name %> error>テスト</<%= name %>>);
+    //   render(<Typography error>テスト</Typography>);
     //   const component = screen.getByText("テスト");
     //   expect(hasClass(component, "size_error")).toBe(true);
     // });

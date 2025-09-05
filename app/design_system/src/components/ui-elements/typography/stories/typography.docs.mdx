@@ -1,16 +1,11 @@
----
-to: "src/components/<%= category %>/<%= subDirectory ? subDirectory + '/' : '' %><%= name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase() %>/stories/<%= name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase() %>.docs.mdx"
-when: withStorybook
-unless_exists: true
----
 import { Canvas, Meta, Source, Markdown } from "@storybook/addon-docs/blocks";
-import * as <%= name %>Stories from './<%= name %>.stories';
+import * as TypographyStories from './Typography.stories';
 
-<Meta of={<%= name %>Stories} />
+<Meta of={TypographyStories} />
 
-# <%= name %>
+# Typography
 
-これは **<%= name %>** コンポーネントのドキュメントです。
+これは **Typography** コンポーネントのドキュメントです。
 
 
 ## Index
@@ -29,8 +24,8 @@ import * as <%= name %>Stories from './<%= name %>.stories';
 
 ## 基本的な使用方法
 
-<Source of={<%= name %>Stories.Default} />
-<Canvas of={<%= name %>Stories.Default} />
+<Source of={TypographyStories.Default} />
+<Canvas of={TypographyStories.Default} />
 
 ## Props一覧
 <Markdown>{`

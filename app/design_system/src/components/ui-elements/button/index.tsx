@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ButtonWrap } from "./ButtonWrap";
+import { ButtonWrap } from "./button-wrap";
 import styles from "./styles.module.css";
 
 import { ButtonProps } from "./types";
@@ -13,7 +13,9 @@ export const Button = ({
   loading = false,
   onClick,
   type = "button",
-  // 以下は CoreComponent と同じ
+
+  leftIcon,
+  rightIcon,
   children,
 }: ButtonProps) => {
   // rest は any にキャストして型爆発防止
@@ -34,7 +36,17 @@ export const Button = ({
           onClick={onClick}
           disabled={disabled}
         >
-          {loading ? "loading..." : children}
+          {loading ? (
+            "loading..."
+          ) : leftIcon || rightIcon ? (
+            <span>
+              {leftIcon && leftIcon}
+              {children}
+              {rightIcon && rightIcon}
+            </span>
+          ) : (
+            children
+          )}
         </button>
       </ButtonWrap>
     );
@@ -47,7 +59,17 @@ export const Button = ({
       onClick={onClick}
       disabled={disabled}
     >
-      {loading ? "loading..." : children}
+      {loading ? (
+        "loading..."
+      ) : leftIcon || rightIcon ? (
+        <span>
+          {leftIcon && leftIcon}
+          {children}
+          {rightIcon && rightIcon}
+        </span>
+      ) : (
+        children
+      )}
     </button>
   );
 };

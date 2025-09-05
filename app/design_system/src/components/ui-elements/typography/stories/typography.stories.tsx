@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button } from "../index";
+import { Typography } from '../index';
 
 // Storybookのメタ情報
-const meta: Meta<typeof Button> = {
-  title: "ui-elements/Button", // Storybookでの表示パス
-  component: Button,
+const meta: Meta<typeof Typography> = {
+  title: 'ui-elements/typography', // Storybookでの表示パス
+  component: Typography,
   parameters: {
-    layout: "fullscreen", // fullWidthに対応するため
+    layout: 'centered',
   },
   // argTypes: {
   //   backgroundColor: { control: 'color' },
@@ -19,8 +19,7 @@ type Story = StoryObj<typeof meta>;
 // デフォルトのストーリー
 export const Default: Story = {
   args: {
-    fullWidth: true,
-    children: "Button",
+    // ここにデフォルトのpropsを設定
   },
 };
 

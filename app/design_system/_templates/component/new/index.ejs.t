@@ -1,26 +1,23 @@
 ---
-to: "src/components/<%= category %>/<%= subDirectory ? subDirectory + '/' : '' %><%= name %>/index.<%= type %>"
+to: "src/components/<%= category %>/<%= subDirectory ? subDirectory + '/' : '' %><%= name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase() %>/index.<%= type %>"
 ---
 
 import clsx from "clsx";
-import { CoreComponent } from "@/components/ui_elements/CoreComponent";
 <% if (withStyles) { %>import styles from "./styles.module.css";
 <% } %>
 <% if (withTypes) { %>import { <%= name %>Props } from './types';
 <% } %>
 
 <% if (type === 'tsx' || type === 'jsx') { %>
-export const <%= name %> = (<%= withTypes ? '{ className } : ' + name + 'Props' : '' %>) => {
+export const <%= name %> = (<% if (withTypes) { %>{ className, ...props }: <%= name %>Props<% } else { %>props<% } %>) => {
   return (
-    <CoreComponent<% if (withStyles) { %> className={clsx(styles.root, className)}<% } %>>
+    <div>
       <%= name %>コンポーネント
-    </CoreComponent>
+    </div>
   );
 };
 <% } else { %>
-export const <%= name %> = (<%= withTypes ? 'props' : '' %>) => {
+export const <%= name %> = (<% if (withTypes) { %>props<% } else { %>props<% } %>) => {
   return null; // または他のロジック
 };
 <% } %>
-
-export default <%= name %>;

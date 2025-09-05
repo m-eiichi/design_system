@@ -48,7 +48,6 @@ export type ButtonProps = {
   loading?: boolean;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
-  className?: string;
   as?: React.ElementType;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
