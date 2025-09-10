@@ -1,5 +1,3 @@
-import { toCamelCase, isCamelCase } from "../utils/camel-case";
-
 export const white = "#fff";
 export const black = "#000";
 export const transparent = "transparent";

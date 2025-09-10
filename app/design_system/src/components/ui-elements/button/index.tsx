@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { ButtonWrap } from "./button-wrap";
-import styles from "./styles.module.css";
+import Styles from "./styles.module.css";
 
 import { ButtonProps } from "./types";
 
@@ -20,11 +20,11 @@ export const Button = ({
 }: ButtonProps) => {
   // rest は any にキャストして型爆発防止
   const className = clsx(
-    styles.root,
-    styles[size],
-    styles[variant],
-    disabled && styles.disabled,
-    fullWidth && styles.fullWidth,
+    Styles.root,
+    Styles[size],
+    Styles[variant],
+    disabled && Styles.disabled,
+    fullWidth && Styles.fullWidth,
   );
 
   if (size === "xs") {

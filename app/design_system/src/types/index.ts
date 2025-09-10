@@ -2,32 +2,32 @@
 export * from "./responsive-value";
 
 // color
-export * from "./color/color-value";
-export * from "./color/base-color-type";
-export * from "./color/background-color-type";
-export * from "./color/text-color-type";
-export * from "./color/status-color-type";
+export * from "./tokens/color/color-value";
+export * from "./tokens/color/base-color-type";
+export * from "./tokens/color/background-color-type";
+export * from "./tokens/color/text-color-type";
+export * from "./tokens/color/status-color-type";
 
 // font
-export * from "./font/font-type";
-export * from "./font/font-weight-type";
-export * from "./font/letter-spacing-type";
-export * from "./font/line-height-type";
-export * from "./font/font-size-type";
+export * from "./tokens/font/font-type";
+export * from "./tokens/font/font-weight-type";
+export * from "./tokens/font/letter-spacing-type";
+export * from "./tokens/font/line-height-type";
+export * from "./tokens/font/font-size-type";
 // text-align
 export * from "./text-align-type";
 
 // spacing
-export * from "./spacing-type";
+export * from "./tokens/spacing-type";
 // size
-export * from "./size-type";
+export * from "./tokens/size-type";
 export * from "./size-value";
-export * from "./height-type";
+export * from "./tokens/height-type";
 
 // border
 export * from "./border-value";
-export * from "./border-type";
-export * from "./radius-type";
+export * from "./tokens/border-type";
+export * from "./tokens/radius-type";
 
 // display
 export * from "./display-type";
@@ -51,7 +51,7 @@ export * from "./flex-grid/grow-type";
 // shrink
 export * from "./flex-grid/shrink-type";
 // gap
-export * from "./flex-grid/gap-type";
+export * from "./tokens/gap-type";
 
 // position
 export * from "./position-type";
@@ -63,4 +63,4 @@ export * from "./overflow-type";
 export * from "./cursor-type";
 
 // elevation
-export * from "./elevation-type";
+export * from "./tokens/elevation-type";

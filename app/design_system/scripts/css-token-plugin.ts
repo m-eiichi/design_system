@@ -6,22 +6,27 @@ import { Plugin } from "vite";
 import path from "path";
 import { flattenTokensToKebabCase } from "../src/utils/flatten-tokens-to-kebab-case";
 import { flattenTokensToSnakeCase } from "../src/utils/flatten-tokens-to-snake-case";
-import { tokens } from "../src/tokens/index";
-import { space, baseSizePx, baseSizeRem } from "../src/tokens/size";
-import { height } from "../src/tokens/height";
-import { baseColor, background, status, text } from "../src/tokens/color";
-import { border } from "../src/tokens/border";
+import { tokens } from "../src/system/tokens";
+import { space, baseSizePx, baseSizeRem } from "../src/system/tokens/size";
+import { height } from "../src/system/tokens/height";
+import {
+  baseColor,
+  background,
+  status,
+  text,
+} from "../src/system/tokens/color";
+import { border } from "../src/system/tokens/border";
 import {
   font,
   fontWeight,
   fontSize,
   lineHeight,
   letterSpacing,
-} from "../src/tokens/font";
-import { elevation } from "../src/tokens/elevation";
-import { mq } from "../src/tokens/mq";
+} from "../src/system/tokens/font";
+import { elevation } from "../src/system/tokens/elevation";
+import { mq } from "../src/system/tokens/mq";
 import { writeIfChanged } from "../src/utils/write-if-changed";
-import { radius } from "../src/tokens/size";
+import { radius } from "../src/system/tokens/size";
 
 // CSS生成の設定
 type CssConfig = {

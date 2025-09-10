@@ -1,6 +1,6 @@
 import { type ClassValue } from "clsx";
 
-import Styles from "../styles.module.css";
+import Styles from "./styles.module.css";
 
 import {
   processProperty,
@@ -9,9 +9,9 @@ import {
 } from "@/utils/create-styles";
 import { flattenObject } from "@/utils/flatten-object";
 import { toSnakeCase } from "@/utils/snake-case";
-import { baseColor, background, status, text } from "@/tokens/color";
-import { baseSizePx, baseSizeRem } from "@/tokens/size";
-import { height } from "@/tokens/height";
+import { baseColor, background, status, text } from "@/system/tokens/color";
+import { baseSizePx, baseSizeRem } from "@/system/tokens/size";
+import { height } from "@/system/tokens/height";
 
 // 背景色のトークンオブジェクトをフラット化し、キーをキャメルケースに変換してオブジェクトとして返す
 export const flattenedBackgroundColorMap = flattenObject({

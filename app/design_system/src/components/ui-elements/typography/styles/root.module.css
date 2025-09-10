@@ -1,0 +1,208 @@
+.root {
+  /* Typography コンポーネントのスタイル */
+}
+
+/* .color_link {
+  color: var(--color-link-text);
+  transition: var(--transition-delay-default);
+
+  &:hover {
+    color: var(--color-hover-text);
+  }
+}
+
+.primary {
+  color: var(--color-base-text);
+}
+
+.secondary {
+  color: var(--color-primary);
+}
+
+.disabled {
+  color: var(--color-disabled-text);
+}
+
+.white {
+  color: var(--color-on-fill-text);
+} */
+
+.body {
+  font-size: var(--font-size16);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height170);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+.h1 {
+  font-size: var(--font-size48);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height140);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+.h2 {
+  font-size: var(--font-size32);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+.h3 {
+  font-size: var(--font-size28);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+.h4 {
+  font-size: var(--font-size24);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+.h5 {
+  font-size: var(--font-size20);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+.h6 {
+  font-size: var(--font-size18);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height160);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+.caption {
+  font-size: var(--font-size14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height100);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+.subtitle1 {
+  font-size: var(--font-size16);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+.subtitle2 {
+  font-size: var(--font-size14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Margin settings */
+
+.margin_both {
+  &.h1 {
+    margin: var(--size-f-05) 0 var(--size-f-03);
+  }
+
+  &.h2 {
+    margin: var(--size-f-04) 0 var(--size-f-03);
+  }
+
+  &.h3,
+  &.h4 {
+    margin: var(--size-f-04) 0 var(--size-f-02);
+  }
+
+  &.h5,
+  &.h6,
+  &.body,
+  &.caption,
+  &.subtitle1,
+  &.subtitle2 {
+    margin: var(--size-f-03) 0 var(--size-f-02);
+  }
+}
+
+.margin_bottom {
+  &.h1,
+  &.h2 {
+    margin: 0 0 var(--size-f-03);
+  }
+
+  &.h3,
+  &.h4,
+  &.h5,
+  &.h6,
+  &.body,
+  &.caption,
+  &.subtitle1,
+  &.subtitle2 {
+    margin: 0 0 var(--size-f-02);
+  }
+}
+
+.none {
+  margin: 0;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.bold {
+  font-weight: var(--font-weight-bold);
+}
+
+@media (--viewport-over-desktop) {
+  .h2 {
+    font-size: var(--font-size36);
+    line-height: var(--line-height140);
+  }
+
+  .h3 {
+    font-size: var(--font-size32);
+  }
+
+  .h4 {
+    font-size: var(--font-size28);
+  }
+
+  .h5 {
+    font-size: var(--font-size24);
+  }
+
+  .h6 {
+    font-size: var(--font-size20);
+    line-height: var(--line-height150);
+  }
+
+  .margin_both {
+    &.h2 {
+      margin: var(--size-f-05) 0 var(--size-f-03);
+    }
+
+    &.h3 {
+      margin: var(--size-f-04) 0 var(--size-f-03);
+    }
+
+    &.h5 {
+      margin: var(--size-f-04) 0 var(--size-f-02);
+    }
+  }
+
+  .margin_bottom {
+    &.h3 {
+      margin: 0 0 var(--size-f-03);
+    }
+  }
+}

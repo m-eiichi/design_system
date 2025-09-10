@@ -11,7 +11,7 @@ const meta: Meta<typeof <%= name %>> = {
   title: '<%= category %>/<%= name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase() %>', // Storybookでの表示パス
   component: <%= name %>,
   parameters: {
-    layout: 'centered',
+    layout: "padded",
   },
   // argTypes: {
   //   backgroundColor: { control: 'color' },

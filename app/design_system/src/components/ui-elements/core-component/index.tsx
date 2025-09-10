@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { createStyle } from "./logic";
+import { createStyle } from "./style-extensions";
 import {
   CoreComponentElement,
   CoreComponentProps,

@@ -1,0 +1,13 @@
+@import "./root.module.css";
+
+@import "../../../../../src/assets/styles/common/display.css";
+
+@import "../../../../../src/assets/styles/common/color/text-color.css";
+
+@import "../../../../../src/assets/styles/common/font/font-weight.css";
+
+@import "../../../../../src/assets/styles/common/font/font-size.css";
+
+@import "../../../../../src/assets/styles/common/text-align.css";
+
+@import "../../../../../src/assets/styles/common/cursor.css";
