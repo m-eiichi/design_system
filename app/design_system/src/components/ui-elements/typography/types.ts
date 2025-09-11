@@ -42,7 +42,7 @@ type TypographySize =
 
 export type TypographyProps = {
   style?: React.CSSProperties;
-  as?: "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "a";
+  as?: "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "a"; //asはResponsiveValueを使用しない
   color?: StatusColorType | TextColorType | "primary" | "secondary";
   size?: ResponsiveValue<TypographySize>;
   textAlign?: ResponsiveValue<TextAlignType>; //ok

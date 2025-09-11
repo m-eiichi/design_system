@@ -1,120 +1,72 @@
-.ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-%body {
+.body {
   font-size: var(--font-size16);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height170);
   letter-spacing: var(--letter-spacing-widest);
 }
 
-%h1 {
-  font-size: clamp(var(--font-size48), 3.125vw, var(--font-size48));
+.h1 {
+  font-size: var(--font-size48);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height140);
   letter-spacing: var(--letter-spacing-widest);
 }
 
-%h2 {
-  font-size: clamp(var(--font-size32), 2.083vw, var(--font-size32));
+.h2 {
+  font-size: var(--font-size32);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-widest);
 }
 
-%h3 {
-  font-size: clamp(var(--font-size28), 1.736vw, var(--font-size28));
+.h3 {
+  font-size: var(--font-size28);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-widest);
 }
 
-%h4 {
-  font-size: clamp(var(--font-size24), 1.528vw, var(--font-size24));
+.h4 {
+  font-size: var(--font-size24);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-widest);
 }
 
-%h5 {
-  font-size: clamp(var(--font-size20), 1.25vw, var(--font-size20));
+.h5 {
+  font-size: var(--font-size20);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-widest);
 }
 
-%h6 {
-  font-size: clamp(var(--font-size18), 1.125vw, var(--font-size18));
+.h6 {
+  font-size: var(--font-size18);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height160);
   letter-spacing: var(--letter-spacing-widest);
 }
 
-%caption {
+.caption {
   font-size: var(--font-size14);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height100);
   letter-spacing: var(--letter-spacing-widest);
 }
 
-%subtitle1 {
+.subtitle1 {
   font-size: var(--font-size16);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-normal);
 }
 
-%subtitle2 {
+.subtitle2 {
   font-size: var(--font-size14);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-normal);
 }
-
-.body {
-  @extend %body;
-}
-
-.h1 {
-  @extend %h1;
-}
-
-.h2 {
-  @extend %h2;
-}
-
-.h3 {
-  @extend %h3;
-}
-
-.h4 {
-  @extend %h4;
-}
-
-.h5 {
-  @extend %h5;
-}
-
-.h6 {
-  @extend %h6;
-}
-
-.caption {
-  @extend %caption;
-}
-
-.subtitle1 {
-  @extend %subtitle1;
-}
-
-.subtitle2 {
-  @extend %subtitle2;
-}
-
-/* =============================================================== */
 
 /* Margin settings */
 
@@ -162,6 +114,12 @@
 
 .none {
   margin: 0;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .cursorPointer {
