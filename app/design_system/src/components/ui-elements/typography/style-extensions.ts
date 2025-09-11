@@ -1,3 +1,5 @@
+// TODO: addPropertyClasses/addColorPropertyClassesをグローバルで共通化したい
+
 import { type ClassValue } from "clsx";
 
 import Styles from "./styles/styles.module.css";
@@ -23,14 +25,18 @@ const flattenedTextColorMap = flattenObject({
 
 // パフォーマンス改善のためのヘルパー関数
 const addPropertyClasses = (
-  value: any,
+  value: string | object | boolean | undefined,
   prefix: string | undefined,
   classNames: ClassValue[],
   toSnakeCase?: (str: string) => string,
 ) => {
-  if (value === undefined) return;
+  if (value === undefined || typeof value === "boolean") return;
 
-  const classes = processProperty(value, prefix, toSnakeCase);
+  const classes = processProperty(
+    value as string | object | undefined,
+    prefix,
+    toSnakeCase,
+  );
   if (classes.length > 0) {
     classNames.push(...classes.map((className) => Styles[className]));
   }
@@ -38,15 +44,20 @@ const addPropertyClasses = (
 
 // カラー系プロパティ用のヘルパー関数
 const addColorPropertyClasses = (
-  value: any,
+  value: string | object | boolean | undefined,
   prefix: string,
   classNames: ClassValue[],
-  colorMap: any,
+  colorMap: Record<string, string>,
   inlineStyles: React.CSSProperties,
 ) => {
-  if (value === undefined) return;
+  if (value === undefined || typeof value === "boolean") return;
 
-  const classes = processColorProperty(value, prefix, colorMap, inlineStyles);
+  const classes = processColorProperty(
+    value as string | object | undefined,
+    prefix,
+    colorMap,
+    inlineStyles,
+  );
   if (classes.length > 0) {
     classNames.push(...classes.map((className) => Styles[className]));
   }
@@ -63,7 +74,7 @@ export const createStyle = (
   }
 
   // Build class names array for clsx
-  const classNames: ClassValue[] = [Styles.root];
+  const classNames: ClassValue[] = [];
 
   // Build inline styles for dynamic values
   const inlineStyles: React.CSSProperties = {};
@@ -108,6 +119,13 @@ export const createStyle = (
   // Size
   if (props.size !== undefined && typeof props.size !== "boolean") {
     const classes = processProperty(props.size, "", toSnakeCase);
+    if (classes.length > 0) {
+      classNames.push(...classes.map((className) => Styles[className]));
+    }
+  }
+
+  if (props.margin !== undefined && typeof props.margin !== "boolean") {
+    const classes = processProperty(props.margin, "", toSnakeCase);
     if (classes.length > 0) {
       classNames.push(...classes.map((className) => Styles[className]));
     }

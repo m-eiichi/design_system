@@ -2,7 +2,7 @@
 
 @import "../../../../../src/assets/styles/common/display.css";
 
-@import "../../../../../src/assets/styles/common/color/text-color.css";
+@import "../../../../../src/assets/styles/common/color/text-color.css"; /* TODO: 不要なCSSもあるため違うファイルにする */
 
 @import "../../../../../src/assets/styles/common/font/font-weight.css";
 

@@ -6,6 +6,7 @@ import {
   TextAlignType,
   FontSizeType,
   CursorType,
+  TextColorType,
   StatusColorType,
 } from "@/types";
 
@@ -42,15 +43,15 @@ type TypographySize =
 export type TypographyProps = {
   style?: React.CSSProperties;
   as?: "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span" | "a";
-  color?: StatusColorType | "primary" | "secondary";
+  color?: StatusColorType | TextColorType | "primary" | "secondary";
   size?: ResponsiveValue<TypographySize>;
   textAlign?: ResponsiveValue<TextAlignType>; //ok
   margin?: "both" | "bottom" | "none";
   fontWeight?: ResponsiveValue<FontWeightType>; //ok
   fontSize?: ResponsiveValue<FontSizeType>; //sizeを使っているので基本使わない ok
-  display?: ResponsiveValue<DisplayType>; //不要なtypeをomitする
+  display?: ResponsiveValue<Omit<DisplayType, "flex" | "inlineFlex" | "grid">>; //不要なtypeをomitする
   onClick?: () => void;
-  ellipsis?: boolean;
+  ellipsis?: boolean; //ok
   cursor?: ResponsiveValue<CursorType>; //ok
   children: React.ReactNode; //ok
 };
