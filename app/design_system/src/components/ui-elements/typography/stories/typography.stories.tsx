@@ -39,11 +39,11 @@ export const Default: Story = {
       tb: "normal",
       pc: "bold",
     },
-    fontSize: {
-      sp: "12",
-      tb: "14",
-      pc: "16",
-    },
+    // fontSize: {
+    //   sp: "12",
+    //   tb: "14",
+    //   pc: "16",
+    // },
     display: {
       sp: "block",
       tb: "inline",

@@ -1,9 +1,3 @@
-.ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 %body {
   font-size: var(--font-size16);
   font-weight: var(--font-weight-normal);
@@ -12,42 +6,42 @@
 }
 
 %h1 {
-  font-size: clamp(var(--font-size48), 3.125vw, var(--font-size48));
+  font-size: clamp(var(--font-size48), 3.125vw, var(--font-size40));
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height140);
   letter-spacing: var(--letter-spacing-widest);
 }
 
 %h2 {
-  font-size: clamp(var(--font-size32), 2.083vw, var(--font-size32));
+  font-size: clamp(var(--font-size36), 2.083vw, var(--font-size32));
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-widest);
 }
 
 %h3 {
-  font-size: clamp(var(--font-size28), 1.736vw, var(--font-size28));
+  font-size: clamp(var(--font-size32), 1.736vw, var(--font-size28));
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-widest);
 }
 
 %h4 {
-  font-size: clamp(var(--font-size24), 1.528vw, var(--font-size24));
+  font-size: clamp(var(--font-size28), 1.528vw, var(--font-size24));
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-widest);
 }
 
 %h5 {
-  font-size: clamp(var(--font-size20), 1.25vw, var(--font-size20));
+  font-size: clamp(var(--font-size22), 1.25vw, var(--font-size20));
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-widest);
 }
 
 %h6 {
-  font-size: clamp(var(--font-size18), 1.125vw, var(--font-size18));
+  font-size: clamp(var(--font-size20), 1.125vw, var(--font-size18));
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height160);
   letter-spacing: var(--letter-spacing-widest);
@@ -72,6 +66,26 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height150);
   letter-spacing: var(--letter-spacing-normal);
+}
+
+/* h6 body caption subtitle1 subtitle2 */
+%margin_both {
+  margin: 1.5rem 0 1rem;
+}
+
+%margin_bottom {
+  margin: 0 0 1rem;
+}
+
+%margin_none {
+  margin: 0;
+}
+
+/* ============================================================== */
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .body {
@@ -114,66 +128,180 @@
   @extend %subtitle2;
 }
 
-/* =============================================================== */
-
-/* Margin settings */
-
-.margin_both {
-  &.h1 {
-    margin: var(--size-f-05) 0 var(--size-f-03);
+@media screen and (width <= 575px) {
+  .sp_body {
+    @extend %body;
   }
 
-  &.h2 {
-    margin: var(--size-f-04) 0 var(--size-f-03);
+  .sp_h1 {
+    @extend %h1;
   }
 
-  &.h3,
-  &.h4 {
-    margin: var(--size-f-04) 0 var(--size-f-02);
+  .sp_h2 {
+    @extend %h2;
   }
 
-  &.h5,
-  &.h6,
-  &.body,
-  &.caption,
-  &.subtitle1,
-  &.subtitle2 {
-    margin: var(--size-f-03) 0 var(--size-f-02);
-  }
-}
-
-.margin_bottom {
-  &.h1,
-  &.h2 {
-    margin: 0 0 var(--size-f-03);
+  .sp_h3 {
+    @extend %h3;
   }
 
-  &.h3,
-  &.h4,
-  &.h5,
-  &.h6,
-  &.body,
-  &.caption,
-  &.subtitle1,
-  &.subtitle2 {
-    margin: 0 0 var(--size-f-02);
+  .sp_h4 {
+    @extend %h4;
+  }
+
+  .sp_h5 {
+    @extend %h5;
+  }
+
+  .sp_h6 {
+    @extend %h6;
+  }
+
+  .sp_caption {
+    @extend %caption;
+  }
+
+  .sp_subtitle1 {
+    @extend %subtitle1;
+  }
+
+  .sp_subtitle2 {
+    @extend %subtitle2;
   }
 }
 
-.none {
-  margin: 0;
+@media (--viewport-tablet) {
+  .tb_body {
+    @extend %body;
+  }
+
+  .tb_h1 {
+    @extend %h1;
+  }
+
+  .tb_h2 {
+    @extend %h2;
+  }
+
+  .tb_h3 {
+    @extend %h3;
+  }
+
+  .tb_h4 {
+    @extend %h4;
+  }
+
+  .tb_h5 {
+    @extend %h5;
+  }
+
+  .tb_h6 {
+    @extend %h6;
+  }
+
+  .tb_caption {
+    @extend %caption;
+  }
+
+  .tb_subtitle1 {
+    @extend %subtitle1;
+  }
+
+  .tb_subtitle2 {
+    @extend %subtitle2;
+  }
 }
 
-.cursorPointer {
-  cursor: pointer;
-}
+@media (--viewport-over-desktop) {
+  .pc_body {
+    @extend %body;
+  }
 
-.normal {
-  font-weight: var(--font-weight-normal);
-}
+  .pc_h1 {
+    @extend %h1;
+  }
 
-.bold {
-  font-weight: var(--font-weight-bold);
+  .pc_h2 {
+    @extend %h2;
+  }
+
+  .pc_h3 {
+    @extend %h3;
+  }
+
+  .pc_h4 {
+    @extend %h4;
+  }
+
+  .pc_h5 {
+    @extend %h5;
+  }
+
+  .pc_h6 {
+    @extend %h6;
+  }
+
+  .pc_caption {
+    @extend %caption;
+  }
+
+  .pc_subtitle1 {
+    @extend %subtitle1;
+  }
+
+  .pc_subtitle2 {
+    @extend %subtitle2;
+  }
+
+  /* =============================================================== */
+
+  /* Margin settings */
+
+  .margin_both {
+    &.h1 {
+      margin: var(--size-f-05) 0 var(--size-f-03);
+    }
+
+    &.h2 {
+      margin: var(--size-f-04) 0 var(--size-f-03);
+    }
+
+    &.h3,
+    &.h4 {
+      margin: var(--size-f-04) 0 var(--size-f-02);
+    }
+
+    &.h5,
+    &.h6,
+    &.body,
+    &.caption,
+    &.subtitle1,
+    &.subtitle2 {
+      margin: var(--size-f-03) 0 var(--size-f-02);
+    }
+  }
+
+  .margin_bottom {
+    &.h1,
+    &.h2 {
+      margin: 0 0 var(--size-f-03);
+    }
+
+    &.h3,
+    &.h4,
+    &.h5,
+    &.h6,
+    &.body,
+    &.caption,
+    &.subtitle1,
+    &.subtitle2 {
+      margin: 0 0 var(--size-f-02);
+    }
+  }
+
+  .none {
+    margin: 0;
+  }
 }
 
 @media (--viewport-over-desktop) {
