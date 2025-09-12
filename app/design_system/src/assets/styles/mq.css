@@ -1,0 +1,11 @@
+@custom-media --viewport-mobile (max-width: 575px);
+
+@custom-media --viewport-tablet (min-width: 576px) and (max-width: 992px);
+
+@custom-media --viewport-desktop (min-width: 993px) and (max-width: 1239px);
+
+@custom-media --viewport-over-tablet (min-width: 576px);
+
+@custom-media --viewport-over-desktop (min-width: 993px);
+
+@custom-media --viewport-l-desktop (min-width: 1240px);

@@ -1059,15 +1059,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/selector-specificity@npm:^2.0.0":
-  version: 2.2.0
-  resolution: "@csstools/selector-specificity@npm:2.2.0"
-  peerDependencies:
-    postcss-selector-parser: ^6.0.10
-  checksum: d81c9b437f7d45ad0171e09240454ced439fa3e67576daae4ec7bb9c03e7a6061afeb0fa21d41f5f45d54bf8e242a7aa8101fbbba7ca7632dd847601468b5d9e
-  languageName: node
-  linkType: hard
-
 "@csstools/selector-specificity@npm:^3.0.0":
   version: 3.0.0
   resolution: "@csstools/selector-specificity@npm:3.0.0"
@@ -3550,6 +3541,13 @@ __metadata:
     no-case: "npm:^2.2.0"
     upper-case: "npm:^1.1.1"
   checksum: 491c6bbf986b9d8355e12cca6beb719b44c2fe96e8526c09958a1b4e0dbb081a82ea59c13b5a6ccf9158ce5979cbe56a8a10d7322bfeed2d84725c6b89d8f934
+  languageName: node
+  linkType: hard
+
+"camelcase-css@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "camelcase-css@npm:2.0.1"
+  checksum: 1a1a3137e8a781e6cbeaeab75634c60ffd8e27850de410c162cce222ea331cd1ba5364e8fb21c95e5ca76f52ac34b81a090925ca00a87221355746d049c6e273
   languageName: node
   linkType: hard
 
@@ -7031,17 +7029,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-extend-rule@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "postcss-extend-rule@npm:4.0.0"
-  dependencies:
-    postcss-nesting: "npm:^10.1.2"
-  peerDependencies:
-    postcss: ^8.4.6
-  checksum: 86510032145ae25a8e3378ed230ad2dc214a34efe09c88fa9991886ef3b4eebcb3992b136d3471722ba1fcc338ee03930e73954ac1c7a3482402dfcea39f1a91
-  languageName: node
-  linkType: hard
-
 "postcss-focus-visible@npm:^9.0.0":
   version: 9.0.0
   resolution: "postcss-focus-visible@npm:9.0.0"
@@ -7106,6 +7093,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-js@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "postcss-js@npm:4.0.1"
+  dependencies:
+    camelcase-css: "npm:^2.0.1"
+  peerDependencies:
+    postcss: ^8.4.21
+  checksum: af35d55cb873b0797d3b42529514f5318f447b134541844285c9ac31a17497297eb72296902967911bb737a75163441695737300ce2794e3bd8c70c13a3b106e
+  languageName: node
+  linkType: hard
+
 "postcss-lab-function@npm:^6.0.7":
   version: 6.0.7
   resolution: "postcss-lab-function@npm:6.0.7"
@@ -7131,15 +7129,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-nesting@npm:^10.1.2":
-  version: 10.2.0
-  resolution: "postcss-nesting@npm:10.2.0"
+"postcss-mixins@npm:^12.1.2":
+  version: 12.1.2
+  resolution: "postcss-mixins@npm:12.1.2"
   dependencies:
-    "@csstools/selector-specificity": "npm:^2.0.0"
-    postcss-selector-parser: "npm:^6.0.10"
+    postcss-js: "npm:^4.0.1"
+    postcss-simple-vars: "npm:^7.0.1"
+    sugarss: "npm:^5.0.0"
+    tinyglobby: "npm:^0.2.14"
   peerDependencies:
-    postcss: ^8.2
-  checksum: 1f44201edeedaab3af8552a7e231cf8530785245ec56e30a7f756076ffa58ec97c12b75a8761327bf278b26aa9903351b2f3324d11784f239b07dc79295e0a77
+    postcss: ^8.2.14
+  checksum: cbd33a40545ebcaa08acc9126a6cbffc48db968ea5a555c397b3c5b30e0f805fb2de3381556b36efe3dc9eb935d51c6056b86d6367fb6204f6c1ae492017524d
   languageName: node
   linkType: hard
 
@@ -7322,6 +7322,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-simple-vars@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "postcss-simple-vars@npm:7.0.1"
+  peerDependencies:
+    postcss: ^8.2.1
+  checksum: b59c750b2f406a18b133184144b5ffefbd21a2179c5bf5d54651269c0b6bb0110c2bbed33a9161d8b93f8a11cf7725da0a65653e7c2786c8a59f937591115a33
+  languageName: node
+  linkType: hard
+
 "postcss-sorting@npm:^8.0.2":
   version: 8.0.2
   resolution: "postcss-sorting@npm:8.0.2"
@@ -7458,8 +7467,8 @@ __metadata:
     license-checker: "npm:^25.0.1"
     postcss: "npm:^8.4.31"
     postcss-conditionals: "npm:^2.1.0"
-    postcss-extend-rule: "npm:^4.0.0"
     postcss-import: "npm:^15.1.0"
+    postcss-mixins: "npm:^12.1.2"
     postcss-preset-env: "npm:^9.3.0"
     prettier: "npm:^3.1.0"
     react: "npm:^18.2.0"
@@ -8629,6 +8638,15 @@ __metadata:
   version: 4.2.0
   resolution: "stylis@npm:4.2.0"
   checksum: a7128ad5a8ed72652c6eba46bed4f416521bc9745a460ef5741edc725252cebf36ee45e33a8615a7057403c93df0866ab9ee955960792db210bb80abd5ac6543
+  languageName: node
+  linkType: hard
+
+"sugarss@npm:^5.0.0":
+  version: 5.0.1
+  resolution: "sugarss@npm:5.0.1"
+  peerDependencies:
+    postcss: ^8.3.3
+  checksum: 479d0b194bdb731000a323a0addcd1ffe29e4b7a93eb5cbe3efc34f01beb4ef0397d448f3b654ba5afa4a0e526d6758bcce4f41713806cb6a5a9383982eda6c8
   languageName: node
   linkType: hard
 

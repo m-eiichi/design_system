@@ -21,12 +21,12 @@ export const Default: Story = {
   args: {
     children: "Typographyコンポーネント",
     color: "success",
-    // size: {
-    //   sp: "h1",
-    //   tb: "h2",
-    //   pc: "h3",
-    // },
-    size: "h5",
+    size: {
+      sp: "h1",
+      tb: "h2",
+      pc: "h3",
+    },
+    // size: "body",
     textAlign: {
       sp: "right",
       tb: "center",
