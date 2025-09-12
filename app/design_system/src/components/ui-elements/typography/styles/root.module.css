@@ -1,5 +1,3 @@
-@import "../../../../assets/styles/mq.css";
-
 @define-mixin body {
   font-size: var(--font-size16);
   font-weight: var(--font-weight-normal);
@@ -255,4 +253,16 @@
   .pc_subtitle2 {
     @mixin subtitle2;
   }
+}
+
+.margin_both {
+  margin: 1.5rem 0 1rem;
+}
+
+.margin_bottom {
+  margin: 0 0 1rem;
+}
+
+.margin_none {
+  margin: 0;
 }

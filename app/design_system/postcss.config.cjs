@@ -1,7 +1,9 @@
 module.exports = {
   plugins: {
+    "@csstools/postcss-global-data": {
+      files: ["./src/assets/styles/mq.css"],
+    },
     "postcss-import": {},
-    "postcss-mixins": {},
     "postcss-preset-env": {
       autoprefixer: {
         flexbox: "no-2009",
@@ -12,5 +14,6 @@ module.exports = {
         "custom-properties": false, //カスタムプロパティを 変換せずそのまま残す
       },
     },
+    "postcss-mixins": {},
   },
 };

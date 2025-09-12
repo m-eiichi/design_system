@@ -1,3 +1,5 @@
+/* TODO 自動生成 */
+
 @custom-media --viewport-mobile (max-width: 575px);
 
 @custom-media --viewport-tablet (min-width: 576px) and (max-width: 992px);
