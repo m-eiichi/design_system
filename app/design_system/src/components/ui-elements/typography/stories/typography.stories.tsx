@@ -33,7 +33,11 @@ export const Default: Story = {
       pc: "left",
     },
     // textAlign: "right",
-    margin: "none",
+    margin: {
+      sp: "both",
+      tb: "bottom",
+      pc: "none",
+    },
     fontWeight: {
       sp: "thin",
       tb: "normal",
@@ -44,11 +48,7 @@ export const Default: Story = {
     //   tb: "14",
     //   pc: "16",
     // },
-    display: {
-      sp: "block",
-      tb: "inline",
-      pc: "inlineBlock",
-    },
+    display: "block",
     cursor: {
       sp: "pointer",
       tb: "default",

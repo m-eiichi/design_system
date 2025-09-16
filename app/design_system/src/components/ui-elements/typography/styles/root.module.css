@@ -68,8 +68,6 @@
   letter-spacing: var(--letter-spacing-normal);
 }
 
-/* h6 body caption subtitle1 subtitle2 */
-
 @define-mixin margin_both {
   margin: 1.5rem 0 1rem;
 }
@@ -129,6 +127,18 @@
   @mixin subtitle2;
 }
 
+.margin_both {
+  @mixin margin_both;
+}
+
+.margin_bottom {
+  @mixin margin_bottom;
+}
+
+.margin_none {
+  @mixin margin_none;
+}
+
 @media (--viewport-mobile) {
   .sp_body {
     @mixin body;
@@ -168,6 +178,18 @@
 
   .sp_subtitle2 {
     @mixin subtitle2;
+  }
+
+  .margin_sp_both {
+    @mixin margin_both;
+  }
+
+  .margin_sp_bottom {
+    @mixin margin_bottom;
+  }
+
+  .margin_sp_none {
+    @mixin margin_none;
   }
 }
 
@@ -211,6 +233,18 @@
   .tb_subtitle2 {
     @mixin subtitle2;
   }
+
+  .margin_tb_both {
+    @mixin margin_both;
+  }
+
+  .margin_tb_bottom {
+    @mixin margin_bottom;
+  }
+
+  .margin_tb_none {
+    @mixin margin_none;
+  }
 }
 
 @media (--viewport-over-desktop) {
@@ -253,16 +287,16 @@
   .pc_subtitle2 {
     @mixin subtitle2;
   }
-}
 
-.margin_both {
-  margin: 1.5rem 0 1rem;
-}
+  .margin_pc_both {
+    @mixin margin_both;
+  }
 
-.margin_bottom {
-  margin: 0 0 1rem;
-}
+  .margin_pc_bottom {
+    @mixin margin_bottom;
+  }
 
-.margin_none {
-  margin: 0;
+  .margin_pc_none {
+    @mixin margin_none;
+  }
 }

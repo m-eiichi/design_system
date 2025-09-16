@@ -46,7 +46,7 @@ export type TypographyProps = {
   color?: StatusColorType | TextColorType | "primary" | "secondary";
   size?: ResponsiveValue<TypographySize>;
   textAlign?: ResponsiveValue<TextAlignType>; //ok
-  margin?: "both" | "bottom" | "none";
+  margin?: ResponsiveValue<"both" | "bottom" | "none">;
   fontWeight?: ResponsiveValue<FontWeightType>; //ok
   fontSize?: ResponsiveValue<FontSizeType>; //sizeを使っているので基本使わない ok
   display?: ResponsiveValue<Omit<DisplayType, "flex" | "inlineFlex" | "grid">>; //不要なtypeをomitする

@@ -125,7 +125,7 @@ export const createStyle = (
   }
 
   if (props.margin !== undefined && typeof props.margin !== "boolean") {
-    const classes = processProperty(props.margin, "", toSnakeCase);
+    const classes = processProperty(props.margin, "margin", toSnakeCase);
     if (classes.length > 0) {
       classNames.push(...classes.map((className) => Styles[className]));
     }
@@ -135,6 +135,6 @@ export const createStyle = (
   if (props.ellipsis !== undefined) {
     classNames.push(Styles.ellipsis);
   }
-
+  console.log(props.margin);
   return { classNames, inlineStyles };
 };
