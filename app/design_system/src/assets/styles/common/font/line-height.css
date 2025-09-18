@@ -1,0 +1,53 @@
+/* line-height.css */
+  
+
+.line_height_100 { line-height: 1; }
+.line_height_120 { line-height: 1.2; }
+.line_height_130 { line-height: 1.3; }
+.line_height_140 { line-height: 1.4; }
+.line_height_150 { line-height: 1.5; }
+.line_height_160 { line-height: 1.6; }
+.line_height_170 { line-height: 1.7; }
+.line_height_175 { line-height: 1.75; }
+
+  @media screen and (width <= 575px){
+
+  
+
+.line_height_sp_100 { line-height: 1; }
+.line_height_sp_120 { line-height: 1.2; }
+.line_height_sp_130 { line-height: 1.3; }
+.line_height_sp_140 { line-height: 1.4; }
+.line_height_sp_150 { line-height: 1.5; }
+.line_height_sp_160 { line-height: 1.6; }
+.line_height_sp_170 { line-height: 1.7; }
+.line_height_sp_175 { line-height: 1.75; }
+
+  }
+
+  @media screen and (width >= 576px) and (width <= 992px){
+
+  .line_height_tb_100 { line-height: 1; }
+.line_height_tb_120 { line-height: 1.2; }
+.line_height_tb_130 { line-height: 1.3; }
+.line_height_tb_140 { line-height: 1.4; }
+.line_height_tb_150 { line-height: 1.5; }
+.line_height_tb_160 { line-height: 1.6; }
+.line_height_tb_170 { line-height: 1.7; }
+.line_height_tb_175 { line-height: 1.75; }
+
+  }
+
+  @media screen and (width >= 993px) {
+
+  .line_height_pc_100 { line-height: 1; }
+.line_height_pc_120 { line-height: 1.2; }
+.line_height_pc_130 { line-height: 1.3; }
+.line_height_pc_140 { line-height: 1.4; }
+.line_height_pc_150 { line-height: 1.5; }
+.line_height_pc_160 { line-height: 1.6; }
+.line_height_pc_170 { line-height: 1.7; }
+.line_height_pc_175 { line-height: 1.75; }
+
+  }
+  

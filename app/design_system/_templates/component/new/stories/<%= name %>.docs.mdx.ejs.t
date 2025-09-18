@@ -1,5 +1,6 @@
 ---
-to: "src/components/<%= category %>/<%= subDirectory ? subDirectory + '/' : '' %><%= name %>/stories/<%= name %>.docs.mdx"
+to: "src/components/<%= category %>/<%= subDirectory ? subDirectory + '/' : '' %><%= name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase() %>/stories/<%= name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase() %>.docs.mdx"
+when: withStorybook
 unless_exists: true
 ---
 import { Canvas, Meta, Source, Markdown } from "@storybook/addon-docs/blocks";

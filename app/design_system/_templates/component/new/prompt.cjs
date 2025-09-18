@@ -9,7 +9,7 @@ module.exports = [
     type: "select",
     name: "category",
     message: "Atomic Design のカテゴリを選択してください:",
-    choices: ["atoms", "molecules", "organisms", "templates", "pages"],
+    choices: ["ui-elements", "ui-parts", "features", "templates", "pages"],
   },
   {
     type: "input",
@@ -41,6 +41,12 @@ module.exports = [
     type: "confirm",
     name: "withStorybook",
     message: "Storybookファイル（.stories.tsx / .docs.mdx）も生成しますか？",
+    default: true,
+  },
+  {
+    type: "confirm",
+    name: "withTests",
+    message: "テストファイル（__tests__/index.test.tsx）も生成しますか？",
     default: true,
   },
 ];

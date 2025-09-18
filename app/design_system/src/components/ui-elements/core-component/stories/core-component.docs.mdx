@@ -1,0 +1,953 @@
+import { Canvas, Meta, Source, Markdown } from "@storybook/addon-docs/blocks";
+import * as CoreComponentStories from "./core-component.stories";
+
+<Meta of={CoreComponentStories} />
+
+# CoreComponent コンポーネント
+
+## Index
+
+- [基本的な使用方法](#基本的な使用方法)
+- [Props 一覧](#props一覧)
+- [実用例](#実用例)
+- [ベストプラクティス](#ベストプラクティス)
+
+## 基本的な使用方法
+
+<Source of={CoreComponentStories.Default} />
+<Canvas of={CoreComponentStories.Default} />
+
+## Props一覧
+
+<br />
+
+### コアプロパティ
+
+<Markdown>
+{`
+| プロパティ | 型 | デフォルト | 説明 |
+| --- | --- | --- | --- |
+| as | keyof JSX.IntrinsicElements | 'div' | レンダリングするHTML要素 |
+| children | React.ReactNode | undefined | 子要素 |
+| className | string | undefined | 追加のCSSクラス |
+`}
+
+</Markdown>
+
+---
+
+### レイアウトプロパティ
+
+<table>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>型</th>
+      <th>デフォルト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>display</td>
+      <td>
+        'block' \| 'inline' \| 'inlineBlock' \| 'flex' \| 'inlineFlex' \| 'grid'
+        \| 'inlineGrid' \| 'hidden'
+      </td>
+      <td>-</td>
+      <td>CSS display プロパティ</td>
+    </tr>
+    <tr>
+      <td>position</td>
+      <td>'static' \| 'relative' \| 'absolute' \| 'fixed' \| 'sticky'</td>
+      <td>-</td>
+      <td>CSS position プロパティ</td>
+    </tr>
+    <tr>
+      <td>overflow</td>
+      <td>'auto' \| 'hidden' \| 'visible' \| 'scroll'</td>
+      <td>-</td>
+      <td>CSS overflow プロパティ</td>
+    </tr>
+    <tr>
+      <td>overflowX</td>
+      <td>'auto' \| 'hidden' \| 'visible' \| 'scroll'</td>
+      <td>-</td>
+      <td>CSS overflow-x プロパティ</td>
+    </tr>
+    <tr>
+      <td>overflowY</td>
+      <td>'auto' \| 'hidden' \| 'visible' \| 'scroll'</td>
+      <td>-</td>
+      <td>CSS overflow-y プロパティ</td>
+    </tr>
+  </tbody>
+</table>
+
+### Flex・Gridプロパティ
+
+<table>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>型</th>
+      <th>デフォルト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>gap</td>
+      <td>
+        '0' \| '2' \| '4' \| '8' \| '12' \| '16' \| '20' \| '24' \| '32' \| '40'
+        \| '48' \| '56' \| '64' \| '72' \| '80' \| '88' \| '96' \| '104' \| 'xs'
+        \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'xxl' \| 'rem0' \| 'rem2' \| 'rem4'
+        \| 'rem8' \| 'rem12' \| 'rem16' \| 'rem20' \| 'rem24' \| 'rem28' \|
+        'rem32' \| 'rem40' \| 'rem48' \| 'rem56' \| 'rem64' \| 'rem72' \|
+        'rem80' \| 'rem88' \| 'rem96' \| 'rem104'
+      </td>
+      <td>-</td>
+      <td>Flexbox・Gridのgap</td>
+    </tr>
+    <tr>
+      <td>grow</td>
+      <td>'0' \| '1' \| 'auto'</td>
+      <td>-</td>
+      <td>Flexboxのflex-grow</td>
+    </tr>
+    <tr>
+      <td>shrink</td>
+      <td>'0' \| '1' \| 'auto'</td>
+      <td>-</td>
+      <td>Flexboxのflex-shrink</td>
+    </tr>
+    <tr>
+      <td>justifyContent</td>
+      <td>'start' \| 'end' \| 'center' \| 'between' \| 'around' \| 'evenly'</td>
+      <td>-</td>
+      <td>Flexbox・Gridのjustify-content</td>
+    </tr>
+    <tr>
+      <td>alignItems</td>
+      <td>'start' \| 'end' \| 'center' \| 'baseline' \| 'stretch'</td>
+      <td>-</td>
+      <td>Flexbox・Gridのalign-items</td>
+    </tr>
+  </tbody>
+</table>
+
+### Flexプロパティ
+
+<table>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>型</th>
+      <th>デフォルト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>flex</td>
+      <td>'0' \| '1' \| 'auto' \| 'initial' \| 'none'</td>
+      <td>-</td>
+      <td>CSS flex プロパティ</td>
+    </tr>
+    <tr>
+      <td>flexDirection</td>
+      <td>'row' \| 'rowReverse' \| 'col' \| 'colReverse'</td>
+      <td>-</td>
+      <td>CSS flex-direction プロパティ</td>
+    </tr>
+    <tr>
+      <td>flexWrap</td>
+      <td>'nowrap' \| 'wrap' \| 'wrapReverse'</td>
+      <td>-</td>
+      <td>CSS flex-wrap プロパティ</td>
+    </tr>
+  </tbody>
+</table>
+
+### Gridプロパティ
+
+<table>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>型</th>
+      <th>デフォルト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>gridTemplateColumns</td>
+      <td>
+        '1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '12' \| 'auto' \| 'min' \|
+        'max' \| 'fit'
+      </td>
+      <td>-</td>
+      <td>CSS grid-template-columns プロパティ</td>
+    </tr>
+    <tr>
+      <td>gridColumn</td>
+      <td>
+        '1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '12' \| 'auto' \| 'span'
+      </td>
+      <td>-</td>
+      <td>CSS grid-column プロパティ</td>
+    </tr>
+    <tr>
+      <td>gridTemplateRows</td>
+      <td>
+        '1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '12' \| 'auto' \| 'min' \|
+        'max' \| 'fit'
+      </td>
+      <td>-</td>
+      <td>CSS grid-template-rows プロパティ</td>
+    </tr>
+    <tr>
+      <td>gridRow</td>
+      <td>
+        '1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '12' \| 'auto' \| 'span'
+      </td>
+      <td>-</td>
+      <td>CSS grid-row プロパティ</td>
+    </tr>
+  </tbody>
+</table>
+
+### スペーシングプロパティ
+
+<table>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>型</th>
+      <th>デフォルト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>m</td>
+      <td>
+        '0' \| '2' \| '4' \| '8' \| '12' \| '16' \| '20' \| '24' \| '32' \| '40'
+        \| '48' \| '56' \| '64' \| '72' \| '80' \| '88' \| '96' \| '104' \| 'xs'
+        \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'xxl' \| 'rem0' \| 'rem2' \| 'rem4'
+        \| 'rem8' \| 'rem12' \| 'rem16' \| 'rem20' \| 'rem24' \| 'rem28' \|
+        'rem32' \| 'rem40' \| 'rem48' \| 'rem56' \| 'rem64' \| 'rem72' \|
+        'rem80' \| 'rem88' \| 'rem96' \| 'rem104'
+      </td>
+      <td>-</td>
+      <td>全方向のmargin</td>
+    </tr>
+    <tr>
+      <td>mt</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>上方向のmargin</td>
+    </tr>
+    <tr>
+      <td>mr</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>右方向のmargin</td>
+    </tr>
+    <tr>
+      <td>mb</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>下方向のmargin</td>
+    </tr>
+    <tr>
+      <td>ml</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>左方向のmargin</td>
+    </tr>
+    <tr>
+      <td>mx</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>左右方向のmargin</td>
+    </tr>
+    <tr>
+      <td>my</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>上下方向のmargin</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>全方向のpadding</td>
+    </tr>
+    <tr>
+      <td>pt</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>上方向のpadding</td>
+    </tr>
+    <tr>
+      <td>pr</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>右方向のpadding</td>
+    </tr>
+    <tr>
+      <td>pb</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>下方向のpadding</td>
+    </tr>
+    <tr>
+      <td>pl</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>左方向のpadding</td>
+    </tr>
+    <tr>
+      <td>px</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>左右方向のpadding</td>
+    </tr>
+    <tr>
+      <td>py</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>上下方向のpadding</td>
+    </tr>
+  </tbody>
+</table>
+
+### サイジングプロパティ
+
+<table>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>型</th>
+      <th>デフォルト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>w</td>
+      <td>
+        '0' \| '2' \| '4' \| '8' \| '12' \| '16' \| '20' \| '24' \| '32' \| '40'
+        \| '48' \| '56' \| '64' \| '72' \| '80' \| '88' \| '96' \| '104' \|
+        'rem0' \| 'rem2' \| 'rem4' \| 'rem8' \| 'rem12' \| 'rem16' \| 'rem20' \|
+        'rem24' \| 'rem28' \| 'rem32' \| 'rem40' \| 'rem48' \| 'rem56' \|
+        'rem64' \| 'rem72' \| 'rem80' \| 'rem88' \| 'rem96' \| 'rem104' \|
+        カスタム値（px, rem, em等）
+      </td>
+      <td>-</td>
+      <td>幅（トークン値またはカスタム値）</td>
+    </tr>
+    <tr>
+      <td>h</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>高さ（トークン値またはカスタム値）</td>
+    </tr>
+    <tr>
+      <td>minW</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>最小幅（トークン値またはカスタム値）</td>
+    </tr>
+    <tr>
+      <td>minH</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>最小高さ（トークン値またはカスタム値）</td>
+    </tr>
+    <tr>
+      <td>maxW</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>最大幅（トークン値またはカスタム値）</td>
+    </tr>
+    <tr>
+      <td>maxH</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>最大高さ（トークン値またはカスタム値）</td>
+    </tr>
+  </tbody>
+</table>
+
+### カラープロパティ
+
+<table>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>型</th>
+      <th>デフォルト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bg</td>
+      <td>
+        BaseColorType \| BackgroundColorType \| StatusColorType \| ColorValue
+      </td>
+      <td>-</td>
+      <td>背景色</td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>BaseColorType \| TextColorType \| StatusColorType \| ColorValue</td>
+      <td>-</td>
+      <td>テキスト色</td>
+    </tr>
+  </tbody>
+</table>
+
+### フォントプロパティ
+
+<table>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>型</th>
+      <th>デフォルト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>font</td>
+      <td>'sans' \| 'serif' \| 'mono'</td>
+      <td>-</td>
+      <td>フォントファミリー</td>
+    </tr>
+    <tr>
+      <td>fontWeight</td>
+      <td>'normal' \| 'medium' \| 'semibold' \| 'bold' \| 'extrabold'</td>
+      <td>-</td>
+      <td>フォントウェイト</td>
+    </tr>
+    <tr>
+      <td>fontSize</td>
+      <td>
+        '12' \| '14' \| '16' \| '17' \| '18' \| '20' \| '22' \| '24' \| '26' \|
+        '28' \| '32' \| '36' \| '44' \| '48' \| '56' \| '64'
+      </td>
+      <td>-</td>
+      <td>フォントサイズ</td>
+    </tr>
+    <tr>
+      <td>lineHeight</td>
+      <td>'120' \| '130' \| '140' \| '150' \| '160' \| '170' \| '180'</td>
+      <td>-</td>
+      <td>行の高さ</td>
+    </tr>
+    <tr>
+      <td>letterSpacing</td>
+      <td>'tight' \| 'normal' \| 'wide' \| 'wider' \| 'widest'</td>
+      <td>-</td>
+      <td>文字間隔</td>
+    </tr>
+    <tr>
+      <td>textAlign</td>
+      <td>'left' \| 'center' \| 'right' \| 'justify'</td>
+      <td>-</td>
+      <td>テキストの配置</td>
+    </tr>
+  </tbody>
+</table>
+
+### ボーダープロパティ
+
+<table>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>型</th>
+      <th>デフォルト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>border</td>
+      <td>BorderValue \| BorderType</td>
+      <td>-</td>
+      <td>全方向のボーダー</td>
+    </tr>
+    <tr>
+      <td>borderTop</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>上方向のボーダー</td>
+    </tr>
+    <tr>
+      <td>borderRight</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>右方向のボーダー</td>
+    </tr>
+    <tr>
+      <td>borderBottom</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>下方向のボーダー</td>
+    </tr>
+    <tr>
+      <td>borderLeft</td>
+      <td>同上</td>
+      <td>-</td>
+      <td>左方向のボーダー</td>
+    </tr>
+    <tr>
+      <td>borderRadius</td>
+      <td>'none' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'</td>
+      <td>-</td>
+      <td>ボーダーの角丸</td>
+    </tr>
+  </tbody>
+</table>
+
+### その他のプロパティ
+
+<table>
+  <thead>
+    <tr>
+      <th>プロパティ</th>
+      <th>型</th>
+      <th>デフォルト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>cursor</td>
+      <td>
+        'auto' \| 'default' \| 'pointer' \| 'wait' \| 'text' \| 'move' \| 'help'
+        \| 'notAllowed'
+      </td>
+      <td>-</td>
+      <td>マウスカーソルの形状</td>
+    </tr>
+    <tr>
+      <td>elevation</td>
+      <td>'0' \| '1' \| '2' \| '3' \| '4' \| '5'</td>
+      <td>-</td>
+      <td>影の深さ</td>
+    </tr>
+  </tbody>
+</table>
+
+## 実用例
+
+### 基本的なレイアウト
+
+```tsx
+// カードコンポーネント
+<CoreComponent p="6" bg="white" borderRadius="lg" elevation="2" border="field">
+  <h3>カードタイトル</h3>
+  <p>カードの内容がここに入ります</p>
+</CoreComponent>
+```
+
+### Flexboxレイアウト
+
+```tsx
+// ナビゲーションバー
+<CoreComponent
+  as="nav"
+  display="flex"
+  justifyContent="between"
+  alignItems="center"
+  p="4"
+  bg="primary"
+  color="white"
+>
+  <CoreComponent as="h1" fontSize="20" fontWeight="bold">
+    ロゴ
+  </CoreComponent>
+  <CoreComponent display="flex" gap="4">
+    <CoreComponent as="a" href="/">
+      ホーム
+    </CoreComponent>
+    <CoreComponent as="a" href="/about">
+      会社概要
+    </CoreComponent>
+    <CoreComponent as="a" href="/contact">
+      お問い合わせ
+    </CoreComponent>
+  </CoreComponent>
+</CoreComponent>
+```
+
+### グリッドレイアウト
+
+```tsx
+// カードグリッド
+<CoreComponent display="grid" gridTemplateColumns="3" gap="6" p="8">
+  {items.map((item) => (
+    <CoreComponent
+      key={item.id}
+      p="4"
+      bg="white"
+      borderRadius="md"
+      border="field"
+      elevation="1"
+    >
+      <h4>{item.title}</h4>
+      <p>{item.description}</p>
+    </CoreComponent>
+  ))}
+</CoreComponent>
+```
+
+### レスポンシブデザイン
+
+```tsx
+// レスポンシブなボタン
+<CoreComponent
+  as="button"
+  p={{ sp: "3", tb: "4", pc: "6" }}
+  fontSize={{ sp: "14", tb: "16", pc: "18" }}
+  bg="primary"
+  color="white"
+  borderRadius="md"
+  cursor="pointer"
+>
+  ボタン
+</CoreComponent>
+```
+
+### フォーム要素
+
+```tsx
+// フォームグループ
+<CoreComponent display="flex" flexDirection="col" gap="4">
+  <CoreComponent>
+    <CoreComponent
+      as="label"
+      display="block"
+      mb="2"
+      fontSize="14"
+      fontWeight="medium"
+      color="description"
+    >
+      メールアドレス
+    </CoreComponent>
+    <CoreComponent
+      as="input"
+      type="email"
+      w="full"
+      p="3"
+      border="field"
+      borderRadius="md"
+      fontSize="16"
+    />
+  </CoreComponent>
+</CoreComponent>
+```
+
+### モーダル・オーバーレイ
+
+```tsx
+// モーダル
+<CoreComponent
+  position="fixed"
+  top="0"
+  left="0"
+  w="full"
+  h="full"
+  bg="rgba(0, 0, 0, 0.5)"
+  display="flex"
+  alignItems="center"
+  justifyContent="center"
+  zIndex="1000"
+>
+  <CoreComponent
+    bg="white"
+    borderRadius="lg"
+    p="8"
+    maxW="500px"
+    w="90%"
+    elevation="3"
+  >
+    <h2>モーダルタイトル</h2>
+    <p>モーダルの内容</p>
+  </CoreComponent>
+</CoreComponent>
+```
+
+## ベストプラクティス
+
+### 1. プロパティの優先順位
+
+```tsx
+// ✅ 良い例：一貫性のある順序
+<CoreComponent
+  // レイアウト
+  display="flex"
+  flexDirection="col"
+  gap="4"
+  // スペーシング
+  p="6"
+  m="4"
+  // サイジング
+  w="full"
+  maxW="800px"
+  // タイポグラフィ
+  fontSize="16"
+  lineHeight="150"
+  // カラー・ボーダー
+  bg="white"
+  border="field"
+  borderRadius="md"
+  // その他
+  elevation="1"
+  cursor="pointer"
+>
+  コンテンツ
+</CoreComponent>
+```
+
+### 2. レスポンシブ値の活用
+
+```tsx
+// ✅ 良い例：段階的なレスポンシブ
+<CoreComponent
+  fontSize={{ sp: "14", tb: "16", pc: "18" }}
+  p={{ sp: "3", tb: "4", pc: "6" }}
+  gap={{ sp: "2", tb: "4", pc: "6" }}
+>
+  レスポンシブコンテンツ
+</CoreComponent>
+
+// ❌ 悪い例：一つの値のみ
+<CoreComponent fontSize="16" p="4" gap="4">
+  レスポンシブでないコンテンツ
+</CoreComponent>
+```
+
+### 3. トークン値の活用
+
+```tsx
+// ✅ 良い例：デザイントークンを使用
+<CoreComponent
+  p="6"        // 24px
+  fontSize="16" // 16px
+  gap="4"      // 16px
+  borderRadius="md"
+  elevation="2"
+>
+  トークンを使用したコンポーネント
+</CoreComponent>
+
+// ❌ 悪い例：カスタム値を多用
+<CoreComponent
+  p="24px"
+  fontSize="16px"
+  gap="16px"
+  borderRadius="4px"
+  boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
+>
+  カスタム値を多用したコンポーネント
+</CoreComponent>
+```
+
+### 4. セマンティックなHTML要素
+
+```tsx
+// ✅ 良い例：適切なHTML要素を使用
+<CoreComponent as="article" p="6" bg="white">
+  <CoreComponent as="h2" fontSize="24" fontWeight="bold" mb="4">
+    記事タイトル
+  </CoreComponent>
+  <CoreComponent as="p" fontSize="16" lineHeight="160">
+    記事の内容
+  </CoreComponent>
+</CoreComponent>
+
+// ❌ 悪い例：divを多用
+<CoreComponent p="6" bg="white">
+  <CoreComponent fontSize="24" fontWeight="bold" mb="4">
+    記事タイトル
+  </CoreComponent>
+  <CoreComponent fontSize="16" lineHeight="160">
+    記事の内容
+  </CoreComponent>
+</CoreComponent>
+```
+
+### 5. パフォーマンスの最適化
+
+```tsx
+// ✅ 良い例：必要なプロパティのみ
+<CoreComponent
+  display="flex"
+  alignItems="center"
+  gap="4"
+  p="4"
+>
+  シンプルなコンポーネント
+</CoreComponent>
+
+// ❌ 悪い例：不要なプロパティを含む
+<CoreComponent
+  display="flex"
+  alignItems="center"
+  justifyContent="start" // デフォルト値なので不要
+  gap="4"
+  p="4"
+  m="0" // デフォルト値なので不要
+  w="auto" // デフォルト値なので不要
+>
+  冗長なコンポーネント
+</CoreComponent>
+```
+
+### 6. アクセシビリティの考慮
+
+```tsx
+// ✅ 良い例：アクセシビリティを考慮
+<CoreComponent
+  as="button"
+  p="4"
+  bg="primary"
+  color="white"
+  borderRadius="md"
+  cursor="pointer"
+  // アクセシビリティ属性
+  aria-label="送信ボタン"
+  role="button"
+  tabIndex={0}
+>
+  送信
+</CoreComponent>
+```
+
+### 7. 再利用可能なパターン
+
+```tsx
+// ✅ 良い例：再利用可能なパターン
+const Card = ({ children, ...props }) => (
+  <CoreComponent
+    p="6"
+    bg="white"
+    borderRadius="lg"
+    elevation="2"
+    border="field"
+    {...props}
+  >
+    {children}
+  </CoreComponent>
+);
+
+// 使用例
+<Card>
+  <h3>カードタイトル</h3>
+  <p>カードの内容</p>
+</Card>
+
+<Card p="8" elevation="3">
+  <h3>特別なカード</h3>
+  <p>より大きなパディングと影</p>
+</Card>
+```
+
+### 8. エラーハンドリング
+
+```tsx
+// ✅ 良い例：エラー状態のスタイリング
+<CoreComponent
+  p="4"
+  bg="error"
+  color="white"
+  borderRadius="md"
+  border="error"
+  display="flex"
+  alignItems="center"
+  gap="2"
+>
+  <Icon name="error" />
+  <span>エラーメッセージが表示されます</span>
+</CoreComponent>
+```
+
+## よくある使用パターン
+
+### ボタン
+
+```tsx
+const Button = ({ variant = "primary", size = "md", children, ...props }) => {
+  const variants = {
+    primary: { bg: "primary", color: "white" },
+    secondary: { bg: "secondary", color: "white" },
+    outline: { bg: "transparent", color: "primary", border: "primary" },
+  };
+
+  const sizes = {
+    sm: { p: "2", fontSize: "14" },
+    md: { p: "3", fontSize: "16" },
+    lg: { p: "4", fontSize: "18" },
+  };
+
+  return (
+    <CoreComponent
+      as="button"
+      borderRadius="md"
+      cursor="pointer"
+      fontWeight="medium"
+      {...variants[variant]}
+      {...sizes[size]}
+      {...props}
+    >
+      {children}
+    </CoreComponent>
+  );
+};
+```
+
+### カード
+
+```tsx
+const Card = ({ variant = "default", padding = "6", children, ...props }) => {
+  const variants = {
+    default: { bg: "white", elevation: "1" },
+    elevated: { bg: "white", elevation: "3" },
+    outlined: { bg: "transparent", border: "field" },
+  };
+
+  return (
+    <CoreComponent
+      borderRadius="lg"
+      p={padding}
+      {...variants[variant]}
+      {...props}
+    >
+      {children}
+    </CoreComponent>
+  );
+};
+```
+
+### レイアウトコンテナ
+
+```tsx
+const Container = ({
+  maxWidth = "1200px",
+  padding = "6",
+  children,
+  ...props
+}) => (
+  <CoreComponent w="full" maxW={maxWidth} mx="auto" px={padding} {...props}>
+    {children}
+  </CoreComponent>
+);
+```

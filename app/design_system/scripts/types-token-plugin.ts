@@ -1,13 +1,11 @@
-// Vite プラグインとして CSS トークンを生成する
-// このプラグインは、ビルド時に一度だけ CSS トークンを生成し、
-// `src/assets/styles/variable.css` に書き込みます。
-// また、`src/tokens/index.ts` の変更を監視し、
-// 変更があった場合に再生成します。
+// Vite プラグインとして TypeScript 型定義を生成する
+// このプラグインは、ビルド時に一度だけ型定義を生成し、
+// 各トークンファイルの変更を監視し、変更があった場合に再生成します。
 
 import { Plugin } from "vite";
 import path from "path";
 import { flattenTokensKeyToCamelCase } from "../src/utils/flatten-tokens-key-to-camel-case";
-
+import { baseSizePx, baseSizeRem } from "../src/system/tokens/size";
 import {
   baseColor,
   background,
@@ -17,610 +15,209 @@ import {
   chart,
   status,
   // theme,
-} from "../src/tokens/color";
+} from "../src/system/tokens/color";
+import { space, radius } from "../src/system/tokens/size";
+import { height } from "../src/system/tokens/height";
 import {
   fontSize,
   fontWeight,
   letterSpacing,
   lineHeight,
   font,
-} from "../src/tokens/font";
-import { elevation } from "../src/tokens/elevation";
-import { border } from "../src/tokens/border";
+} from "../src/system/tokens/font";
+import { elevation } from "../src/system/tokens/elevation";
+import { border } from "../src/system/tokens/border";
 import { writeIfChanged } from "../src/utils/write-if-changed";
 
-type generateTypesProps = {
+// 型定義生成の設定
+type TokenConfig = {
   name: string;
   token: Record<string, unknown>;
+  outputPath: string;
+  watchPath: string;
 };
+
 // トークンをキャメルケースでフラット化する
-const generateTypes = ({ name, token }: generateTypesProps) => {
+const generateTypes = ({
+  name,
+  token,
+}: {
+  name: string;
+  token: Record<string, unknown>;
+}) => {
   const flatTokens = flattenTokensKeyToCamelCase(token);
   return `
-  export type ${name}Type =
-  | "${flatTokens.join('" | "')}"
+export type ${name}Type =
+| "${flatTokens.join('" | "')}"
 
-  `;
+`;
 };
 
-// プラグインを定義
-export const baseColorTypesTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/base-color-type.ts",
-  );
+// 全ての型定義設定を定義
+const tokenConfigs: TokenConfig[] = [
+  {
+    name: "BaseColor",
+    token: baseColor,
+    outputPath: "../src/types/tokens/color/base-color-type.ts",
+    watchPath: "../src/tokens/colors.ts",
+  },
+  {
+    name: "BackgroundColor",
+    token: background,
+    outputPath: "../src/types/tokens/color/background-color-type.ts",
+    watchPath: "../src/tokens/colors.ts",
+  },
+  {
+    name: "TextColor",
+    token: text,
+    outputPath: "../src/types/tokens/color/text-color-type.ts",
+    watchPath: "../src/tokens/colors.ts",
+  },
+  {
+    name: "IconColor",
+    token: icon,
+    outputPath: "../src/types/tokens/color/icon-color-type.ts",
+    watchPath: "../src/tokens/colors.ts",
+  },
+  {
+    name: "ButtonColor",
+    token: button,
+    outputPath: "../src/types/tokens/color/button-color-type.ts",
+    watchPath: "../src/tokens/colors.ts",
+  },
+  {
+    name: "ChartColor",
+    token: chart,
+    outputPath: "../src/types/tokens/color/chart-color-type.ts",
+    watchPath: "../src/tokens/colors.ts",
+  },
+  {
+    name: "StatusColor",
+    token: status,
+    outputPath: "../src/types/tokens/color/status-color-type.ts",
+    watchPath: "../src/tokens/colors.ts",
+  },
+  {
+    name: "Font",
+    token: font,
+    outputPath: "../src/types/tokens/font/font-type.ts",
+    watchPath: "../src/tokens/font.ts",
+  },
+  {
+    name: "FontSize",
+    token: fontSize,
+    outputPath: "../src/types/tokens/font/font-size-type.ts",
+    watchPath: "../src/tokens/font.ts",
+  },
+  {
+    name: "FontWeight",
+    token: fontWeight,
+    outputPath: "../src/types/tokens/font/font-weight-type.ts",
+    watchPath: "../src/tokens/font.ts",
+  },
+  {
+    name: "LineHeight",
+    token: lineHeight,
+    outputPath: "../src/types/tokens/font/line-height-type.ts",
+    watchPath: "../src/tokens/font.ts",
+  },
+  {
+    name: "LetterSpacing",
+    token: letterSpacing,
+    outputPath: "../src/types/tokens/font/letter-spacing-type.ts",
+    watchPath: "../src/tokens/font.ts",
+  },
+  {
+    name: "Border",
+    token: border,
+    outputPath: "../src/types/tokens/border-type.ts",
+    watchPath: "../src/tokens/border.ts",
+  },
+  {
+    name: "Size",
+    token: { ...baseSizePx, rem: baseSizeRem },
+    outputPath: "../src/types/tokens/size-type.ts",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "Height",
+    token: { ...height },
+    outputPath: "../src/types/tokens/height-type.ts",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "Radius",
+    token: { ...radius, ...baseSizePx, rem: baseSizeRem },
+    outputPath: "../src/types/tokens/radius-type.ts",
+    watchPath: "../src/tokens/size.ts",
+  },
+  {
+    name: "Gap",
+    token: { ...space, ...baseSizePx, rem: baseSizeRem },
+    outputPath: "../src/types/tokens/gap-type.ts",
+    watchPath: "../src/tokens/gap.ts",
+  },
+  {
+    name: "Elevation",
+    token: elevation,
+    outputPath: "../src/types/tokens/elevation-type.ts",
+    watchPath: "../src/tokens/elevation.ts",
+  },
+  {
+    name: "Spacing",
+    token: { ...space, ...baseSizePx, rem: baseSizeRem },
+    outputPath: "../src/types/tokens/spacing-type.ts",
+    watchPath: "../src/tokens/spacing.ts",
+  },
+];
+
+// 統合プラグイン
+export const typesTokenPlugin = (): Plugin => {
+  // 監視対象のファイルパスを重複除去して取得
+  const watchPaths = tokenConfigs
+    .map((config) => config.watchPath)
+    .filter((path, index, array) => array.indexOf(path) === index);
 
   return {
     name: "generate-types-tokens",
 
     buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "BaseColor",
-        token: baseColor,
+      // ビルド開始時に全ての型定義ファイルを生成
+      tokenConfigs.forEach((config) => {
+        const outputFilePath = path.resolve(__dirname, config.outputPath);
+        const types = generateTypes({
+          name: config.name,
+          token: config.token,
+        });
+        writeIfChanged(outputFilePath, types);
       });
-      writeIfChanged(outputFilePath, types);
 
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
+      // 監視対象のファイルを追加
+      watchPaths.forEach((watchPath) => {
+        const tokenFilePath = path.resolve(__dirname, watchPath);
+        this.addWatchFile(tokenFilePath);
+      });
     },
 
     watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "BaseColor",
-          token: baseColor,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-export const backgroundColorTypesTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/background-color-type.ts",
-  );
-  const backgroundColor = background;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "BackgroundColor",
-        token: backgroundColor,
+      // 変更されたファイルに対応する設定を取得
+      const changedConfigs = tokenConfigs.filter((config) => {
+        const tokenFilePath = path.resolve(__dirname, config.watchPath);
+        return id === tokenFilePath;
       });
-      writeIfChanged(outputFilePath, types);
 
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
+      // 対応する型定義ファイルを再生成
+      changedConfigs.forEach((config) => {
+        console.log(
+          `🔄 ${config.watchPath} changed → regenerate ${config.name} types`,
+        );
+        const outputFilePath = path.resolve(__dirname, config.outputPath);
         const types = generateTypes({
-          name: "BackgroundColor",
-          token: backgroundColor,
+          name: config.name,
+          token: config.token,
         });
         writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-export const textColorTypesTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/text-color-type.ts",
-  );
-  const textColor = text;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "TextColor",
-        token: textColor,
       });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "TextColor",
-          token: textColor,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
     },
   };
 };
-
-// icon-color-type.ts
-export const iconColorTypesTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/icon-color-type.ts",
-  );
-  const iconColor = icon;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "IconColor",
-        token: iconColor,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "IconColor",
-          token: iconColor,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// button-color-type.ts
-export const buttonColorTypesTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/button-color-type.ts",
-  );
-  const buttonColor = button;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "ButtonColor",
-        token: buttonColor,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "ButtonColor",
-          token: buttonColor,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// chart-color-type.ts
-export const chartColorTypesTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/chart-color-type.ts",
-  );
-  const chartColor = chart;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "ChartColor",
-        token: chartColor,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "ChartColor",
-          token: chartColor,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// status-color-type.ts
-export const statusColorTypesTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/status-color-type.ts",
-  );
-  const statusColor = status;
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "StatusColor",
-        token: statusColor,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "StatusColor",
-          token: statusColor,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// theme-color-type.ts
-// export const themeColorTypesTokenPlugin = (): Plugin => {
-//   const tokenFilePath = path.resolve(__dirname, "../src/tokens/colors.ts");
-//   const outputFilePath = path.resolve(
-//     __dirname,
-//     "../src/types/theme-color-type.ts",
-//   );
-//   // 現在は空のオブジェクトを使用
-//   const themeColor = theme;
-
-//   return {
-//     name: "generate-types-tokens",
-
-//     buildStart() {
-//       // ビルド開始時に一度生成
-//       const types = generateTypes({
-//         name: "themeColor",
-//         token: themeColor,
-//       });
-//       writeIfChanged(outputFilePath, types);
-
-//       // tokens.ts を監視対象に追加
-//       this.addWatchFile(tokenFilePath);
-//     },
-
-//     watchChange(id) {
-//       if (id === tokenFilePath) {
-//         console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-//         const types = generateTypes({
-//           name: "themeColor",
-//           token: themeColor,
-//         });
-//         writeIfChanged(outputFilePath, types);
-//       }
-//     },
-//   };
-// };
-
-// font-size-type.ts
-export const fontSizeTypeTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/font.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/font-size-type.ts",
-  );
-  const fontSizeValue = fontSize;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "FontSize",
-        token: fontSizeValue,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "FontSize",
-          token: fontSizeValue,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// font-weight-type.ts
-export const fontWeightTypeTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/font.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/font-weight-type.ts",
-  );
-  const fontWeightValue = fontWeight;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "FontWeight",
-        token: fontWeightValue,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "FontWeight",
-          token: fontWeightValue,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// line-height-type.ts
-export const lineHeightTypeTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/font.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/line-height-type.ts",
-  );
-  const lineHeightValue = lineHeight;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "LineHeight",
-        token: lineHeightValue,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "LineHeight",
-          token: lineHeightValue,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// letter-spacing-type.ts
-export const letterSpacingTypeTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/font.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/letter-spacing-type.ts",
-  );
-  const letterSpacingValue = letterSpacing;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "LetterSpacing",
-        token: letterSpacingValue,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "LetterSpacing",
-          token: letterSpacingValue,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// border-type.ts
-export const borderTypeTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/border.ts");
-  const outputFilePath = path.resolve(__dirname, "../src/types/border-type.ts");
-  const borderValue = border;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "Border",
-        token: borderValue,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "Border",
-          token: borderValue,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// gap-type.ts
-export const gapTypeTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/gap.ts");
-  const outputFilePath = path.resolve(__dirname, "../src/types/gap-type.ts");
-  const gapValue = border;
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "Gap",
-        token: gapValue,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "Gap",
-          token: gapValue,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// font-type.ts
-export const fontTypeTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/font.ts");
-  const outputFilePath = path.resolve(__dirname, "../src/types/font-type.ts");
-  const fontValue = font;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "Font",
-        token: fontValue,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "Font",
-          token: fontValue,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// elevation-type.ts
-export const elevationTypeTokenPlugin = (): Plugin => {
-  const tokenFilePath = path.resolve(__dirname, "../src/tokens/elevation.ts");
-  const outputFilePath = path.resolve(
-    __dirname,
-    "../src/types/elevation-type.ts",
-  );
-  const elevationValue = elevation;
-
-  return {
-    name: "generate-types-tokens",
-
-    buildStart() {
-      // ビルド開始時に一度生成
-      const types = generateTypes({
-        name: "Elevation",
-        token: elevationValue,
-      });
-      writeIfChanged(outputFilePath, types);
-
-      // tokens.ts を監視対象に追加
-      this.addWatchFile(tokenFilePath);
-    },
-
-    watchChange(id) {
-      if (id === tokenFilePath) {
-        console.log(`🔄 tokens.ts changed → regenerate CSS tokens`);
-        const types = generateTypes({
-          name: "Elevation",
-          token: elevationValue,
-        });
-        writeIfChanged(outputFilePath, types);
-      }
-    },
-  };
-};
-
-// sizeing-type.ts
-// spacing-type.ts

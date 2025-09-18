@@ -4,17 +4,16 @@ module.exports = {
       files: ["./src/assets/styles/mq.css"],
     },
     "postcss-import": {},
-    "postcss-extend-rule": {},
     "postcss-preset-env": {
       autoprefixer: {
         flexbox: "no-2009",
       },
       stage: 3,
       features: {
-        "nesting-rules": true,
         "custom-media-queries": true,
-        "custom-properties": false,
+        "custom-properties": false, //カスタムプロパティを 変換せずそのまま残す
       },
     },
+    "postcss-mixins": {},
   },
 };

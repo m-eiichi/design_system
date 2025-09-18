@@ -1,0 +1,302 @@
+@define-mixin body {
+  font-size: var(--font-size16);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height170);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+@define-mixin h1 {
+  font-size: clamp(var(--font-size44), 3.125vw, var(--font-size48));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height140);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+@define-mixin h2 {
+  font-size: clamp(var(--font-size32), 2.083vw, var(--font-size36));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+@define-mixin h3 {
+  font-size: clamp(var(--font-size28), 1.736vw, var(--font-size32));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+@define-mixin h4 {
+  font-size: clamp(var(--font-size24), 1.528vw, var(--font-size28));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+@define-mixin h5 {
+  font-size: clamp(var(--font-size20), 1.25vw, var(--font-size22));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+@define-mixin h6 {
+  font-size: clamp(var(--font-size18), 1.125vw, var(--font-size20));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height160);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+@define-mixin caption {
+  font-size: var(--font-size14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height100);
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+@define-mixin subtitle1 {
+  font-size: var(--font-size16);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+@define-mixin subtitle2 {
+  font-size: var(--font-size14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height150);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+@define-mixin margin_both {
+  margin: 1.5rem 0 1rem;
+}
+
+@define-mixin margin_bottom {
+  margin: 0 0 1rem;
+}
+
+@define-mixin margin_none {
+  margin: 0;
+}
+
+/* ============================================================== */
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.body {
+  @mixin body;
+}
+
+.h1 {
+  @mixin h1;
+}
+
+.h2 {
+  @mixin h2;
+}
+
+.h3 {
+  @mixin h3;
+}
+
+.h4 {
+  @mixin h4;
+}
+
+.h5 {
+  @mixin h5;
+}
+
+.h6 {
+  @mixin h6;
+}
+
+.caption {
+  @mixin caption;
+}
+
+.subtitle1 {
+  @mixin subtitle1;
+}
+
+.subtitle2 {
+  @mixin subtitle2;
+}
+
+.margin_both {
+  @mixin margin_both;
+}
+
+.margin_bottom {
+  @mixin margin_bottom;
+}
+
+.margin_none {
+  @mixin margin_none;
+}
+
+@media (--viewport-mobile) {
+  .sp_body {
+    @mixin body;
+  }
+
+  .sp_h1 {
+    @mixin h1;
+  }
+
+  .sp_h2 {
+    @mixin h2;
+  }
+
+  .sp_h3 {
+    @mixin h3;
+  }
+
+  .sp_h4 {
+    @mixin h4;
+  }
+
+  .sp_h5 {
+    @mixin h5;
+  }
+
+  .sp_h6 {
+    @mixin h6;
+  }
+
+  .sp_caption {
+    @mixin caption;
+  }
+
+  .sp_subtitle1 {
+    @mixin subtitle1;
+  }
+
+  .sp_subtitle2 {
+    @mixin subtitle2;
+  }
+
+  .margin_sp_both {
+    @mixin margin_both;
+  }
+
+  .margin_sp_bottom {
+    @mixin margin_bottom;
+  }
+
+  .margin_sp_none {
+    @mixin margin_none;
+  }
+}
+
+@media (--viewport-tablet) {
+  .tb_body {
+    @mixin body;
+  }
+
+  .tb_h1 {
+    @mixin h1;
+  }
+
+  .tb_h2 {
+    @mixin h2;
+  }
+
+  .tb_h3 {
+    @mixin h3;
+  }
+
+  .tb_h4 {
+    @mixin h4;
+  }
+
+  .tb_h5 {
+    @mixin h5;
+  }
+
+  .tb_h6 {
+    @mixin h6;
+  }
+
+  .tb_caption {
+    @mixin caption;
+  }
+
+  .tb_subtitle1 {
+    @mixin subtitle1;
+  }
+
+  .tb_subtitle2 {
+    @mixin subtitle2;
+  }
+
+  .margin_tb_both {
+    @mixin margin_both;
+  }
+
+  .margin_tb_bottom {
+    @mixin margin_bottom;
+  }
+
+  .margin_tb_none {
+    @mixin margin_none;
+  }
+}
+
+@media (--viewport-over-desktop) {
+  .pc_body {
+    @mixin body;
+  }
+
+  .pc_h1 {
+    @mixin h1;
+  }
+
+  .pc_h2 {
+    @mixin h2;
+  }
+
+  .pc_h3 {
+    @mixin h3;
+  }
+
+  .pc_h4 {
+    @mixin h4;
+  }
+
+  .pc_h5 {
+    @mixin h5;
+  }
+
+  .pc_h6 {
+    @mixin h6;
+  }
+
+  .pc_caption {
+    @mixin caption;
+  }
+
+  .pc_subtitle1 {
+    @mixin subtitle1;
+  }
+
+  .pc_subtitle2 {
+    @mixin subtitle2;
+  }
+
+  .margin_pc_both {
+    @mixin margin_both;
+  }
+
+  .margin_pc_bottom {
+    @mixin margin_bottom;
+  }
+
+  .margin_pc_none {
+    @mixin margin_none;
+  }
+}

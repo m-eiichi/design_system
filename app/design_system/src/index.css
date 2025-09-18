@@ -1,3 +1,5 @@
 @import "./assets/styles/variable.css";
 
+@import "./assets/styles/mq.css";
+
 @import "./assets/styles/base.css";

@@ -12,7 +12,6 @@ export const writeIfChanged = (filePath: string, content: string) => {
     const current = readFileSync(filePath, "utf-8");
     // ファイルの内容が変更されていない場合
     if (current === content) {
-      console.log("✅ File unchanged. Skip write.");
       return;
     }
   }

@@ -1,0 +1,117 @@
+.grid_template_columns1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid_template_columns2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid_template_columns3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid_template_columns4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid_template_columns5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid_template_columns6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.grid_template_columns12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+@media screen and (width <= 575px) {
+  .grid_template_columns_sp1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_sp2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_sp3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_sp4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_sp5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_sp6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_sp12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .grid_template_columns_tb1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_tb2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_tb3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_tb4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_tb5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_tb6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_tb12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+@media screen and (width >= 993px) {
+  .grid_template_columns_pc1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_pc2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_pc3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_pc4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_pc5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_pc6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .grid_template_columns_pc12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}

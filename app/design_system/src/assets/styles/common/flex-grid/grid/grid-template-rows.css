@@ -1,0 +1,101 @@
+.grid_template_rows1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
+.grid_template_rows2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.grid_template_rows3 {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+.grid_template_rows4 {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+
+.grid_template_rows5 {
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+}
+
+.grid_template_rows6 {
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+}
+
+@media screen and (width <= 575px) {
+  .grid_template_rows_sp1 {
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_sp2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_sp3 {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_sp4 {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_sp5 {
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_sp6 {
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media screen and (width >= 576px) and (width <= 992px) {
+  .grid_template_rows_tb1 {
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_tb2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_tb3 {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_tb4 {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_tb5 {
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_tb6 {
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media screen and (width >= 993px) {
+  .grid_template_rows_pc1 {
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_pc2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_pc3 {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_pc4 {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_pc5 {
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+  }
+
+  .grid_template_rows_pc6 {
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+  }
+}

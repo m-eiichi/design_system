@@ -1,0 +1,19 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: var(--height-min-button);
+}
+
+.xs {
+  padding: var(--size-space-xs) 0;
+}
+
+.sm {
+  padding: var(--size4) 0;
+}
+
+.fullWidth {
+  width: 100%;
+}
