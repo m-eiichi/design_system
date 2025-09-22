@@ -5,47 +5,29 @@ import { createStyle } from "./style-extensions";
 import { TypographyProps } from "./types";
 
 /**
- * Typography コンポーネント
+ * テキスト表示用の汎用Typographyコンポーネント
  *
- * テキスト表示用の汎用コンポーネント。以下の機能を提供：
+ * セマンティックHTML、レスポンシブ対応、動的スタイリングをサポートする
+ * テキスト表示コンポーネント。適切なHTMLタグの自動選択とトークンベースの
+ * スタイル適用により、一貫性のあるタイポグラフィを提供。
  *
- * ## 主な機能
- * - **セマンティックHTML**: sizeやasプロパティに基づいて適切なHTMLタグ（h1-h6, p等）を自動選択
- * - **スタイリング**: カラー、サイズ、フォントウェイト、テキスト配置、マージン等の柔軟なスタイル制御
- * - **レスポンシブ対応**: 各プロパティでレスポンシブ値をサポート
- * - **インラインスタイル**: 動的な値はインラインスタイルとして適用
- * - **CSSクラス**: 静的な値はCSSクラスとして適用
+ * @component
+ * @example
+ * ```tsx
+ * // 基本的な使用
+ * <Typography>基本テキスト</Typography>
  *
- * ## プロパティ
- * - `as`: レンダリングするHTMLタグを明示的に指定（p, h1-h6, span, a）
- * - `size`: テキストサイズ（h1-h6, body, caption, subtitle1, subtitle2）を指定
- * - `color`: テキストカラー（primary, secondary等）
- * - `textAlign`: テキストの配置（left, center, right等）
- * - `margin`: マージン設定（both, bottom, none）
- * - `fontWeight`: フォントウェイト
- * - `fontSize`: フォントサイズ
- * - `display`: CSS displayプロパティ
- * - `ellipsis`: テキストオーバーフロー時の省略表示
- * - `cursor`: マウスカーソルのスタイル
- * - `onClick`: クリックイベントハンドラー
+ * // 見出しとして使用
+ * <Typography as="h1" size="h1">メインタイトル</Typography>
  *
- * ## 自動タグ選択ロジック
- * - `as`が指定されている場合: そのタグを使用
- * - `as`が未指定の場合: `size`プロパティに基づいてデフォルトタグを選択
- *   - h1-h6 → 対応するh1-h6タグ
- *   - その他（body, caption等） → pタグ
- *
- * ## デフォルトサイズ決定ロジック
- * - `size`が指定されている場合: そのサイズを使用
- * - `size`が未指定の場合: `as`プロパティに基づいてデフォルトサイズを決定
- *   - h1-h6 → 対応するh1-h6サイズ
- *   - p, span, a → bodyサイズ
- *   - `as`が未指定の場合: デフォルトサイズは適用されない
- *
- * ## スタイル生成
- * - `createStyle`関数を使用してCSSクラスとインラインスタイルを生成
- * - 静的な値（トークン値）はCSSクラスとして適用
- * - 動的な値（数値等）はインラインスタイルとして適用
+ * // レスポンシブ対応
+ * <Typography
+ *   size={{ sp: "body", md: "h3" }}
+ *   textAlign={{ sp: "center", md: "left" }}
+ * >
+ *   レスポンシブテキスト
+ * </Typography>
+ * ```
  */
 
 export const Typography = ({

@@ -135,6 +135,6 @@ export const createStyle = (
   if (props.ellipsis !== undefined) {
     classNames.push(Styles.ellipsis);
   }
-  console.log(props.margin);
+
   return { classNames, inlineStyles };
 };
